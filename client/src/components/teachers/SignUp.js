@@ -5,6 +5,9 @@ const SignUp = () => {
   const [ firstName, setFirstName ] = useState('')
   const [ lastName, setLastName ] = useState('')
 
+  const submitHandler = () => {
+    console.log(firstName, lastName)
+  }
 
   return (
     <div className="signup-wrapper">
@@ -12,9 +15,22 @@ const SignUp = () => {
         <div className="flexseats-title">
           <strong>Flex</strong>Seats Sign Up
         </div>
-        <input type="text" placeholder="Enter first name"/>
-        <input type="text" placeholder="Enter last name"/>
-        <button className="myButton">Create Account</button>
+        <input
+          type="text"
+          placeholder="Enter first name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Enter last name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <button
+          onClick={() => submitHandler()}
+          className="myButton">Create Account
+        </button>
       </div>
     </div>
   )
