@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  database: seating_chart_development
+  pool: 5
+  timeout: 5000
+test:
+  adapter: postgresql
+  database: seating_chart_test
+  pool: 5
+  timeout: 5000
+production:
+  adapter: postgresql
+  database: seating_chart_production
+  pool: 5
+  timeout: 5000
