@@ -1,0 +1,9 @@
+.navbar-wrapper {
+  display: flex;
+  background-color: gray;
+  padding: 10px;
+}
+
+.navbar-wrapper > div {
+  margin: 0 10px;
+}
