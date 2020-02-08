@@ -1,7 +1,8 @@
 import React from 'react';
-import Login from './sessions/Login'
-import NavBar from './navBar/NavBar'
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import Login from './components/sessions/Login'
+import SignUp from './components/teachers/SignUp'
+import NavBar from './components/navBar/NavBar'
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom"
 
 function App() {
   return (
@@ -11,7 +12,11 @@ function App() {
           <NavBar />
         </header>
         <main>
-          <Route exact path="/" component={Login} />
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={SignUp} />
+          </Switch>
         </main>
       </div>
     </Router>
