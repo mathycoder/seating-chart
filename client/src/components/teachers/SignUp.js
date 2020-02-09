@@ -6,13 +6,16 @@ import { signupTeacher } from '../../actions/teacherActions.js'
 const SignUp = ({ signupTeacher }) => {
   const [ firstName, setFirstName ] = useState('')
   const [ lastName, setLastName ] = useState('')
+  const [ email, setEmail ] = useState('')
+  const [ password, setPassword ] = useState('')
 
   const submitHandler = () => {
     const data = {
       first_name: firstName,
-      last_name: lastName
+      last_name: lastName,
+      email: email,
+      password: password
     }
-    
     signupTeacher(data)
   }
 
@@ -33,6 +36,18 @@ const SignUp = ({ signupTeacher }) => {
           placeholder="Enter last name"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Enter email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Enter password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button
           onClick={() => submitHandler()}
