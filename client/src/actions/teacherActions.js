@@ -10,7 +10,7 @@ export function signupTeacher(teacherData, history){
     })
       .then(resp => resp.json())
       .then(user => {
-
+        
         // if (user.error){
         //   dispatch({ type: 'ADD_FLASH_MESSAGE', message: user.error })
         // } else {
