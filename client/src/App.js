@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Login from './components/sessions/Login'
 import SignUp from './components/teachers/SignUp'
 import NavBar from './components/navBar/NavBar'
+import { getCurrentUser } from './actions/currentUserActions.js'
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom"
+import { connect } from 'react-redux'
 
-function App() {
+const App = ({ getCurrentUser }) => {
+  useEffect(() => {
+    getCurrentUser()
+  }, [])
+
   return (
     <Router>
       <div className="App">
@@ -23,4 +29,10 @@ function App() {
   );
 }
 
-export default App;
+function mapDispatchToProps(dispatch){
+  return {
+    getCurrentUser: () => dispatch(getCurrentUser())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App);

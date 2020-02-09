@@ -1,13 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 
-//import klassReducer from './reducers/klassReducer.js'
+import currentUserReducer from './reducers/currentUserReducer.js'
 
 import { combineReducers } from 'redux'
 
 
 const rootReducer = combineReducers({
-  //klasses: klassReducer
+  currentUser: currentUserReducer
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
