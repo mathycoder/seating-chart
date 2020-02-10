@@ -34,7 +34,7 @@ const Login = ({ login, history }) => {
         />
         <button
           onClick={() => submitHandler()}
-          className="myButton">Create Account
+          className="myButton">Log In
         </button>
       </div>
     </div>
