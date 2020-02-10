@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchKlasses } from '../../actions/klassActions.js'
 
-const KlassesContainer = ({ currentUser, fetchKlasses }) => {
+const KlassesContainer = ({ currentUser, fetchKlasses, klasses }) => {
   useEffect(() => {
     fetchKlasses()
   }, [])
@@ -14,6 +14,15 @@ const KlassesContainer = ({ currentUser, fetchKlasses }) => {
           {`${currentUser.firstName}'s Classes`}
         </div>
 
+        {klasses.allIds.map(klassId => {
+          const klass = klasses.byId[klassId]
+          return (
+            <div className="klass-row">
+              {klass.name}
+            </div>
+          )
+        })}
+
       </div>
     </div>
   )
@@ -21,7 +30,8 @@ const KlassesContainer = ({ currentUser, fetchKlasses }) => {
 
 function mapStateToProps(state){
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    klasses: state.klasses
   }
 }
 
