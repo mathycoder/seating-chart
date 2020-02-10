@@ -5,15 +5,27 @@ import SignUp from './components/teachers/SignUp'
 import NavBar from './components/navBar/NavBar'
 import KlassesContainer from './components/klasses/KlassesContainer'
 import { getCurrentUser } from './actions/currentUserActions.js'
-import { BrowserRouter as Router } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import PrivateRoute from './routes/PrivateRoute'
 import PublicRoute from './routes/PublicRoute'
 import { connect } from 'react-redux'
 
-const App = ({ getCurrentUser }) => {
+const App = ({ currentUser, getCurrentUser }) => {
   useEffect(() => {
     getCurrentUser()
   }, [])
+
+  const renderRoutes = () => {
+    return (
+      <Switch>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/login" component={Login} />
+        <PrivateRoute path="/logout" component={Logout} />
+        <Route exact path="/signup" component={SignUp} />
+        <PrivateRoute path="/classes" component={KlassesContainer} />
+      </Switch>
+    )
+  }
 
   return (
     <Router>
@@ -22,15 +34,17 @@ const App = ({ getCurrentUser }) => {
           <NavBar />
         </header>
         <main>
-          <PublicRoute path="/" component={Login} />
-          <PublicRoute path="/login" component={Login} />
-          <PrivateRoute path="/logout" component={Logout} />
-          <PublicRoute path="/signup" component={SignUp} />
-          <PrivateRoute path="/classes" component={KlassesContainer} />
+          { currentUser ? renderRoutes() : null }
         </main>
       </div>
     </Router>
   );
+}
+
+function mapStateToProps(state){
+  return {
+    currentUser: state.currentUser
+  }
 }
 
 function mapDispatchToProps(dispatch){
@@ -39,4 +53,4 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
