@@ -28,7 +28,7 @@ const KlassesContainer = ({ currentUser, fetchKlasses, klasses }) => {
         {klasses.allIds.map(klassId => {
           const klass = klasses.byId[klassId]
           return (
-            <div className="klass-row">
+            <div className="klass-row" key={klassId}>
               <div>{klass.period}</div>
               <div>{klass.name}</div>
               <div>
@@ -38,11 +38,10 @@ const KlassesContainer = ({ currentUser, fetchKlasses, klasses }) => {
           )
         })}
         { displayForm ? <KlassForm /> : null }
-        <button
+        { !displayForm ? <button
           onClick={() => displayFormSet(!displayForm)}
-          className="myButton">Create Class</button>
+          className="myButton">Create Class</button> : null}
       </div>
-
     </div>
   )
 }

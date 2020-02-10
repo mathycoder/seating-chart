@@ -22,7 +22,7 @@
   width: 30px;
 }
 
-.klass-index .klass-row button {
+.klass-index .klass-row button, .klass-row input[type=submit]{
   padding: 4px 8px;
   margin: 0;
 }
