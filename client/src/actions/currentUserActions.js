@@ -37,7 +37,7 @@ export function login(credentials, history){
           dispatch({ type: 'ADD_FLASH_MESSAGE', message: "Email or password incorrect" })
         } else {
           dispatch({ type: 'SET_CURRENT_USER', user })
-          user.type === "teacher" ? history.push('/classes') : history.push('/myagenda')
+          history.push('/classes')
         }
       })
       .catch(console.log)
@@ -60,7 +60,7 @@ export function logout(history){
           console.log(user.error)
         } else {
           dispatch({ type: 'CLEAR_CURRENT_USER' })
-          //history.push('/login')
+          history.push('/login')
         }
       })
       .catch(console.log)

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { login } from '../../actions/currentUserActions.js'
 
-const Login = ({ login }) => {
+const Login = ({ login, history }) => {
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
 
@@ -11,14 +11,14 @@ const Login = ({ login }) => {
       email: email,
       password: password
     }
-    login(data)
+    login(data, history)
   }
 
   return (
     <div className="signup-wrapper">
       <div className="signup-form">
         <div className="flexseats-title">
-          <strong>Flex</strong>Seats Sign Up
+          Login
         </div>
         <input
           type="text"
