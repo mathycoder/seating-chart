@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  #skip_before_action :require_login, only: [:create, :get_current_user]
+  skip_before_action :require_login, only: [:create, :get_current_user]
 
   def create
     @teacher = Teacher.find_by(email: params[:session][:email])

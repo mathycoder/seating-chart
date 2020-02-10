@@ -1,4 +1,5 @@
 class TeachersController < ApplicationController
+  skip_before_action :require_login, only: [:create]
 
   def create
     @teacher = Teacher.new(teacher_params)
