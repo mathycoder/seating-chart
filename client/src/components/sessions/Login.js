@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { login } from '../../actions/currentUserActions.js'
 
-const Login = () => {
+const Login = ({ login }) => {
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
 
@@ -9,7 +11,7 @@ const Login = () => {
       email: email,
       password: password
     }
-    //signupTeacher(data)
+    login(data)
   }
 
   return (
@@ -39,4 +41,10 @@ const Login = () => {
   )
 }
 
-export default Login
+function mapDispatchToProps(dispatch){
+  return {
+    login: (credentials, history) => dispatch(login(credentials, history))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login)
