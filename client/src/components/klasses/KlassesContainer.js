@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { fetchKlasses } from '../../actions/klassActions.js'
+import { NavLink } from 'react-router-dom'
+import KlassForm from './KlassForm'
 import './css/klassesContainer.css'
 
 const KlassesContainer = ({ currentUser, fetchKlasses, klasses }) => {
+  const [displayForm, displayFormSet] = useState(false)
+
   useEffect(() => {
     fetchKlasses()
   }, [])
@@ -33,10 +37,12 @@ const KlassesContainer = ({ currentUser, fetchKlasses, klasses }) => {
             </div>
           )
         })}
-
-        <button className="myButton">Create Class</button>
-
+        { displayForm ? <KlassForm /> : null }
+        <button
+          onClick={() => displayFormSet(!displayForm)}
+          className="myButton">Create Class</button>
       </div>
+
     </div>
   )
 }

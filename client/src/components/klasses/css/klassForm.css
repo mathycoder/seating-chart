@@ -1,0 +1,7 @@
+.klass-form select{
+  font-size: 18px;
+}
+
+.klass-form input[type=text]{
+  margin: 0;
+}
