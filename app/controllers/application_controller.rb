@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::API
   include ::ActionController::Cookies
   before_action :require_login
-  
-  def fallback_index_html
-    # render :file => 'index.html'
-    #render file: "#{Rails.root}/public/index.html", layout: false
-    #render :file => 'public/index.html'
-    render :file=>'index.html', :layout=>false
-  end
+
+  # def fallback_index_html
+  #   # render :file => 'index.html'
+  #   #render file: "#{Rails.root}/public/index.html", layout: false
+  #   #render :file => 'public/index.html'
+  #   render :file=>'index.html', :layout=>false
+  # end
 
   def current_user
     Teacher.find_by(id: session[:user_id])
