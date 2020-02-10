@@ -60,7 +60,7 @@ export function logout(history){
           console.log(user.error)
         } else {
           dispatch({ type: 'CLEAR_CURRENT_USER' })
-          history.push('/login')
+          //history.push('/login')
         }
       })
       .catch(console.log)
