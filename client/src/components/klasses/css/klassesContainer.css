@@ -1,0 +1,28 @@
+.klass-index .klass-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.klass-index .klass-row div {
+  margin: 10px;
+  font-size: 22px;
+}
+
+.klass-index .klass-row div:first-child {
+  width: 50px;
+  text-align: center;
+  margin-right: 30px;
+}
+
+.klass-index .klass-row div:nth-child(2) {
+  width: 150px;
+}
+
+.klass-index .klass-row div:nth-child(3) {
+  width: 30px;
+}
+
+.klass-index .klass-row button {
+  padding: 4px 8px;
+  margin: 0;
+}
