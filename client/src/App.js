@@ -5,7 +5,9 @@ import SignUp from './components/teachers/SignUp'
 import NavBar from './components/navBar/NavBar'
 import KlassesContainer from './components/klasses/KlassesContainer'
 import { getCurrentUser } from './actions/currentUserActions.js'
-import { Route, Switch, BrowserRouter as Router } from "react-router-dom"
+import { BrowserRouter as Router } from "react-router-dom"
+import PrivateRoute from './routes/PrivateRoute'
+import PublicRoute from './routes/PublicRoute'
 import { connect } from 'react-redux'
 
 const App = ({ getCurrentUser }) => {
@@ -20,13 +22,11 @@ const App = ({ getCurrentUser }) => {
           <NavBar />
         </header>
         <main>
-          <Switch>
-            <Route exact path="/" component={Login} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/logout" component={Logout} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/classes" component={KlassesContainer} />
-          </Switch>
+          <PublicRoute path="/" component={Login} />
+          <PublicRoute path="/login" component={Login} />
+          <PrivateRoute path="/logout" component={Logout} />
+          <PublicRoute path="/signup" component={SignUp} />
+          <PrivateRoute path="/classes" component={KlassesContainer} />
         </main>
       </div>
     </Router>
