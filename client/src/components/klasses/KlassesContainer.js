@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import KlassForm from './KlassForm'
 import './css/klassesIndexContainer.css'
 
-const KlassesContainer = ({ fetchKlasses }) => {
+const KlassesContainer = ({ fetchKlasses, klasses }) => {
   useEffect(() => {
     fetchKlasses()
   }, [])
@@ -16,10 +16,21 @@ const KlassesContainer = ({ fetchKlasses }) => {
     <>
       <Switch>
         <Route exact path="/classes" component={KlassesIndexContainer} />
-        <Route path="/classes/:id" component={KlassesShowContainer} />
+        <Route path="/classes/:id"
+          render={({ match }) => {
+            const klass = klasses.byId[`klass${match.params.id}`]
+            return <KlassesShowContainer klass={klass}/>
+          }}
+        />
       </Switch>
     </>
   )
+}
+
+function mapStateToProps(state){
+  return {
+    klasses: state.klasses
+  }
 }
 
 function mapDispatchToProps(dispatch){
@@ -28,4 +39,4 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect(null, mapDispatchToProps)(KlassesContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(KlassesContainer)

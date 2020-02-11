@@ -1,12 +1,18 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-const KlassesShowContainer = (props) => {
-  console.log(props)
-  return (
-    <div>
-      Klass Show Container
-    </div>
-  )
+const KlassesShowContainer = ({ klass }) => {
+
+
+
+  if (klass) {
+    return (
+      <div>
+        <h1>Class { klass.name }</h1>
+      </div>
+    )
+  } else {
+    return null
+  }
 }
 
 export default KlassesShowContainer
