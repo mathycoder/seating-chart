@@ -1,0 +1,12 @@
+.klass-show-wrapper {
+  margin: 20px;
+}
+
+.klass-show-header {
+  display: flex;
+  align-items: center;
+}
+
+.klass-show-header div {
+  margin-right: 20px;
+}
