@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { addKlass, updateKlass } from '../../actions/klassActions.js'
+import { addKlass, updateKlass, deleteKlass } from '../../actions/klassActions.js'
 import { connect } from 'react-redux'
 import './css/klassForm.css'
 
-const KlassForm = ({ addKlass, updateKlass, klass, setEditKlassId, displayFormSet }) => {
+const KlassForm = ({ addKlass, updateKlass, deleteKlass, klass, setEditKlassId, displayFormSet }) => {
   const [name, setName] = useState('')
   const [period, setPeriod] = useState(1)
 
@@ -31,6 +31,10 @@ const KlassForm = ({ addKlass, updateKlass, klass, setEditKlassId, displayFormSe
     }
   }
 
+  const handleDelete = () => {
+    deleteKlass(klass)
+  }
+
   return (
     <form className="klass-form klass-row" onSubmit={(e) => submitHandler(e)}>
       <div>
@@ -53,7 +57,7 @@ const KlassForm = ({ addKlass, updateKlass, klass, setEditKlassId, displayFormSe
 
       <div>
         <input className="myButton" type="submit" value={klass ? 'Update' : 'Add'}/>
-        { klass ? <button className="myButton">Delete</button> : null }
+        { klass ? <button className="myButton" onClick={() => handleDelete()}>Delete</button> : null }
       </div>
     </form>
   )
@@ -63,6 +67,7 @@ function mapDispatchToProps(dispatch){
   return {
     addKlass: (klassData) => dispatch(addKlass(klassData)),
     updateKlass: (klassData, klass) => dispatch(updateKlass(klassData, klass)),
+    deleteKlass: (klass) => dispatch(deleteKlass(klass))
   }
 }
 

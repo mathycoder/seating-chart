@@ -28,6 +28,11 @@ function klassesById(state = {}, action) {
         [`klass${action.klass.id}`]: action.klass
       }
 
+    case 'DELETE_KLASS':
+      const deleteKlassId = `klass${action.klass.id}`
+      const { [deleteKlassId]: value, ...withoutKlass } = state
+      return { ...withoutKlass }
+
     default:
       return state;
   }
@@ -45,6 +50,10 @@ function allKlasses(state = [], action) {
       return [
         ...state, `klass${action.klass.id}`
       ]
+
+    case 'DELETE_KLASS':
+      const deleteKlassId = `klass${action.klass.id}`
+        return [...state.filter(id => id !== deleteKlassId)]
 
     default:
       return state;
