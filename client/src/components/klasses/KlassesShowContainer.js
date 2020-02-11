@@ -5,7 +5,7 @@ import StudentsIndex from './StudentsIndex'
 import { Switch, Route, NavLink } from 'react-router-dom'
 import './css/klassShow.css'
 
-const KlassesShowContainer = ({ klass, fetchStudents }) => {
+const KlassesShowContainer = ({ klass, fetchStudents, students }) => {
   useEffect(() => {
     if (klass) {fetchStudents(klass)}
   }, [klass])
@@ -23,7 +23,7 @@ const KlassesShowContainer = ({ klass, fetchStudents }) => {
         </div>
         <Switch>
           <Route path="/classes/:id/students"
-            render={() => <StudentsIndex klass={klass} />}
+            render={() => <StudentsIndex klass={klass} students={students} />}
           />
         </Switch>
       </div>
@@ -33,10 +33,16 @@ const KlassesShowContainer = ({ klass, fetchStudents }) => {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    students: state.students
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchStudents: klass => dispatch(fetchStudents(klass))
   }
 }
 
-export default connect(null, mapDispatchToProps)(KlassesShowContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(KlassesShowContainer)
