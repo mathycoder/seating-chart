@@ -1,18 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import './css/studentIndex.css'
 
 const StudentsIndex = ({ klass }) => {
   return (
-    <div>
+    <div className="student-index">
       Students Index {klass.name}
     </div>
   )
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    
-  }
-}
 
-export default connect(null, mapDispatchToProps)(StudentsIndex)
+export default connect(null, null)(StudentsIndex)
