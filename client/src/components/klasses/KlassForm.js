@@ -1,11 +1,18 @@
-import React, { useState } from 'react'
-import { addKlass } from '../../actions/klassActions.js'
+import React, { useState, useEffect } from 'react'
+import { addKlass, updateKlass } from '../../actions/klassActions.js'
 import { connect } from 'react-redux'
 import './css/klassForm.css'
 
-const KlassForm = ({ addKlass }) => {
+const KlassForm = ({ addKlass, updateKlass, klass, setEditKlassId, displayFormSet }) => {
   const [name, setName] = useState('')
   const [period, setPeriod] = useState(1)
+
+  useEffect(() => {
+    if (klass){
+      setName(klass.name)
+      setPeriod(klass.period)
+    }
+  }, [])
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -15,7 +22,13 @@ const KlassForm = ({ addKlass }) => {
         period: period
       }
     }
-    addKlass(params)
+    if (klass){
+      updateKlass(params, klass)
+      setEditKlassId(null)
+    } else {
+      addKlass(params)
+      displayFormSet(false)
+    }
   }
 
   return (
@@ -39,7 +52,8 @@ const KlassForm = ({ addKlass }) => {
       </div>
 
       <div>
-        <input className="myButton" type="submit" value="Add"/>
+        <input className="myButton" type="submit" value={klass ? 'Update' : 'Add'}/>
+        { klass ? <button className="myButton">Delete</button> : null }
       </div>
     </form>
   )
@@ -47,7 +61,8 @@ const KlassForm = ({ addKlass }) => {
 
 function mapDispatchToProps(dispatch){
   return {
-    addKlass: (klassData) => dispatch(addKlass(klassData))
+    addKlass: (klassData) => dispatch(addKlass(klassData)),
+    updateKlass: (klassData, klass) => dispatch(updateKlass(klassData, klass)),
   }
 }
 

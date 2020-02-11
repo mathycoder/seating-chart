@@ -22,6 +22,12 @@ function klassesById(state = {}, action) {
         [`klass${action.klass.id}`]: action.klass
       }
 
+    case 'EDIT_KLASS':
+      return {
+        ...state,
+        [`klass${action.klass.id}`]: action.klass
+      }
+
     default:
       return state;
   }

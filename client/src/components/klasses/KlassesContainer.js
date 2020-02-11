@@ -7,6 +7,7 @@ import './css/klassesContainer.css'
 
 const KlassesContainer = ({ currentUser, fetchKlasses, klasses }) => {
   const [displayForm, displayFormSet] = useState(false)
+  const [editKlassId, setEditKlassId] = useState(null)
 
   useEffect(() => {
     fetchKlasses()
@@ -27,18 +28,29 @@ const KlassesContainer = ({ currentUser, fetchKlasses, klasses }) => {
 
         {klasses.allIds.map(klassId => {
           const klass = klasses.byId[klassId]
-          return (
-            <div className="klass-row" key={klassId}>
-              <div>{klass.period}</div>
-              <div>{klass.name}</div>
-              <div>
-                <button className="myButton">Edit</button>
+          if (klassId !== editKlassId){
+            return (
+              <div className="klass-row" key={klassId}>
+                <div>{klass.period}</div>
+                <div>{klass.name}</div>
+                <div>
+                  <button
+                    onClick={() => setEditKlassId(klassId)}
+                    className="myButton">Edit</button>
+                </div>
               </div>
-            </div>
-          )
+            )
+          } else {
+            return <KlassForm
+                      setEditKlassId={setEditKlassId}
+                      key={klassId}
+                      klass={klass}
+                    />
+          }
+
         })}
-        { displayForm ? <KlassForm /> : null }
-        { !displayForm ? <button
+        { displayForm ? <KlassForm displayFormSet={displayFormSet}/> : null }
+        { !displayForm && !editKlassId ? <button
           onClick={() => displayFormSet(!displayForm)}
           className="myButton">Create Class</button> : null}
       </div>

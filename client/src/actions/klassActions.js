@@ -41,3 +41,26 @@ export function addKlass(klassData){
       })
   }
 }
+
+export function updateKlass(klassData, klass){
+  return (dispatch) => {
+    dispatch({type: 'START_EDITING_KLASS_REQUEST'})
+    fetch(`/klasses/${klass.id}`, {
+      method: "PATCH",
+      credentials: "include",
+      body: JSON.stringify(klassData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(resp => resp.json())
+      .then(klass => {
+        console.log(klass)
+        if (klass.error){
+          //dispatch({ type: 'ADD_FLASH_MESSAGE', message: klass.error })
+        } else {
+          dispatch({ type: 'EDIT_KLASS', klass })
+        }
+      })
+  }
+}
