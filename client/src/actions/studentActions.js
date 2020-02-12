@@ -42,3 +42,25 @@ export function addStudent(klass, studentData){
       .catch(console.log)
   }
 }
+
+export function deleteStudent(klass, student){
+  return (dispatch) => {
+    dispatch({ type: 'DELETE_STUDENT_REQUEST' })
+     fetch(`/klasses/${klass.id}/students/${student.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
+    })
+      .then(resp => resp.json())
+      .then(student => {
+        if (student.error){
+
+        } else {
+          dispatch({ type: 'DELETE_STUDENT', student })
+        }
+      })
+      .catch(console.log)
+  }
+}

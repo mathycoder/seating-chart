@@ -1,16 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import StudentForm from '../students/StudentForm'
+import { deleteStudent } from '../../actions/studentActions.js'
 import './css/studentIndex.css'
 
-const StudentsIndex = ({ klass, students }) => {
+const StudentsIndex = ({ klass, students, deleteStudent }) => {
   return (
     <div className="student-index-wrapper">
       <div className="student-index-row header">
         <div>First Name</div>
         <div>Last Name</div>
-        <div>Academic Score</div>
-        <div>Behavior Score</div>
+        <div className="scores">Academic Score <br/>(5 is best)</div>
+        <div className="scores">Behavior Score <br/>(5 is best)</div>
         <div></div>
       </div>
       {students.allIds.map(studentId => {
@@ -23,7 +24,7 @@ const StudentsIndex = ({ klass, students }) => {
             <div className="scores">{student.behaviorScore}</div>
             <div className="student-edit-buttons">
               <button>Edit</button>
-              <button>Delete</button>
+              <button onClick={() => deleteStudent(klass, student)}>Delete</button>
             </div>
           </div>
         )
@@ -33,5 +34,10 @@ const StudentsIndex = ({ klass, students }) => {
   )
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteStudent: (klass, student) => dispatch(deleteStudent(klass, student))
+  }
+}
 
-export default connect(null, null)(StudentsIndex)
+export default connect(null, mapDispatchToProps)(StudentsIndex)

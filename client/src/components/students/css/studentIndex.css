@@ -4,8 +4,8 @@
   max-width: 600px;
 }
 
-.student-index-wrapper > div:nth-child(2n+1) {
-  background-color: gray;
+.student-index-wrapper > div:nth-child(2n+3) {
+  background-color: lightgray;
 }
 
 .student-index-row.header{

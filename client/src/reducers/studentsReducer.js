@@ -21,6 +21,12 @@ function studentsById(state = {}, action) {
         ...state, ...normalizedObject([action.student])
       }
 
+    case 'DELETE_STUDENT':
+      const {[`student${action.student.id}`]: value, ...newState } = state
+      return {
+        ...newState
+      }
+
     default:
       return state;
   }
@@ -35,6 +41,9 @@ function allStudents(state = [], action) {
     case 'ADD_STUDENT':
       return [...state, `student${action.student.id}`]
 
+    case 'DELETE_STUDENT':
+      return state.filter(stId => stId !== `student${action.student.id}`)
+
     default:
       return state;
   }
@@ -47,7 +56,8 @@ function normalizedObject(students){
       firstName: student.first_name,
       lastName: student.last_name,
       academicScore: student.academic_score,
-      behaviorScore: student.behavior_score
+      behaviorScore: student.behavior_score,
+      id: student.id
     }
   })
   return normalizedObj

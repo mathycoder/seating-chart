@@ -16,6 +16,12 @@ class StudentsController < ApplicationController
     end
   end
 
+  def destroy
+    @student = Student.find_by(id: params[:id])
+    @student.destroy
+    render json: @student
+  end
+
   private
     def student_params
       params.require(:student).permit(:first_name, :last_name, :behavior_score, :academic_score)
