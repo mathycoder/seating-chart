@@ -16,6 +16,11 @@ function studentsById(state = {}, action) {
         ...normalizedObject(action.students)
       }
 
+    case 'ADD_STUDENT':
+      return {
+        ...state, ...normalizedObject([action.student])
+      }
+
     default:
       return state;
   }
@@ -26,6 +31,9 @@ function allStudents(state = [], action) {
   switch(action.type) {
     case 'FETCH_STUDENTS':
       return [ ...action.students.map(student => `student${student.id}`)]
+
+    case 'ADD_STUDENT':
+      return [...state, `student${action.student.id}`]
 
     default:
       return state;

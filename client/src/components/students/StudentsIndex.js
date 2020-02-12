@@ -28,7 +28,7 @@ const StudentsIndex = ({ klass, students }) => {
           </div>
         )
       })}
-      <StudentForm />
+      <StudentForm klass={ klass }/>
     </div>
   )
 }

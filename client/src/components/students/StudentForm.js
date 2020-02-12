@@ -1,14 +1,32 @@
 import React, { useState } from 'react'
+import { addStudent } from '../../actions/studentActions.js'
+import { connect } from 'react-redux'
 import './css/studentForm.css'
 
-const StudentForm = () => {
+const StudentForm = ({ klass, addStudent }) => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [academicScore, setAcademicScore] = useState(1)
   const [behaviorScore, setBehaviorScore] = useState(1)
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const studentData = {
+      student: {
+        first_name: firstName,
+        last_name: lastName,
+        academic_score: academicScore,
+        behavior_score: behaviorScore
+      }
+    }
+    addStudent(klass, studentData)
+  }
+
   return (
-    <form className="student-index-row student-form">
+    <form
+      className="student-index-row student-form"
+      onSubmit={(e) => handleSubmit(e)}
+    >
       <div>
         <input
           type="text"
@@ -57,4 +75,10 @@ const StudentForm = () => {
   )
 }
 
-export default StudentForm
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addStudent: (klass, studentData) => dispatch(addStudent(klass, studentData))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(StudentForm)

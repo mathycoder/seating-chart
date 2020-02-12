@@ -19,3 +19,26 @@ export function fetchStudents(klass){
       .catch(console.log)
   }
 }
+
+export function addStudent(klass, studentData){
+  return (dispatch) => {
+    dispatch({ type: 'ADD_STUDENT_REQUEST' })
+     fetch(`/klasses/${klass.id}/students`, {
+      method: "POST",
+      body: JSON.stringify(studentData),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
+    })
+      .then(resp => resp.json())
+      .then(student => {
+        if (student.error){
+
+        } else {
+          dispatch({ type: 'ADD_STUDENT', student })
+        }
+      })
+      .catch(console.log)
+  }
+}
