@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchStudents } from '../../actions/studentActions.js'
-import StudentsIndex from './StudentsIndex'
+import StudentsIndex from '../students/StudentsIndex'
 import { Switch, Route, NavLink } from 'react-router-dom'
 import './css/klassShow.css'
 

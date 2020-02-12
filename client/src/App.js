@@ -7,7 +7,6 @@ import KlassesContainer from './components/klasses/KlassesContainer'
 import { getCurrentUser } from './actions/currentUserActions.js'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import PrivateRoute from './routes/PrivateRoute'
-import PublicRoute from './routes/PublicRoute'
 import { connect } from 'react-redux'
 
 const App = ({ currentUser, getCurrentUser }) => {

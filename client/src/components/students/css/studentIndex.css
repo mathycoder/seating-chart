@@ -24,6 +24,10 @@
   width: 100px;
 }
 
+.scores {
+  text-align: center;
+}
+
 
 .student-index-row .student-edit-buttons {
   display: flex;

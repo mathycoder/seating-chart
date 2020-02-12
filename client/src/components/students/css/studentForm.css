@@ -1,0 +1,20 @@
+.student-index-row.student-form {
+}
+
+.student-form input[type=text] {
+  align-self: center;
+  width: 90px;
+  padding: 4px 8px;
+  font-size: 16px;
+
+}
+
+.student-form select {
+  display: block;
+  margin: 0 auto;
+  align-self: center;
+  width: 50px;
+  padding: 4px 8px;
+  font-size: 16px;
+  margin-top: 3px;
+}

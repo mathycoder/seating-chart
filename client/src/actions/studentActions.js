@@ -13,7 +13,6 @@ export function fetchStudents(klass){
         if (students.error){
 
         } else {
-          console.log(students)
           dispatch({ type: 'FETCH_STUDENTS', students })
         }
       })
