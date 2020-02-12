@@ -69,7 +69,6 @@ const StudentForm = ({ klass, addStudent }) => {
 
       <div className="student-edit-buttons">
         <input type="submit" value="Add" />
-        <button>Cancel</button>
       </div>
     </form>
   )
