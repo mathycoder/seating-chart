@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchStudents } from '../../actions/studentActions.js'
 import StudentsIndex from '../students/StudentsIndex'
+import DesksContainer from '../desks/DesksContainer'
 import { Switch, Route, NavLink } from 'react-router-dom'
 import './css/klassShow.css'
 
@@ -24,6 +25,9 @@ const KlassesShowContainer = ({ klass, fetchStudents, students }) => {
           </div>
         </div>
         <Switch>
+          <Route exact path="/classes/:id"
+            render={() => <DesksContainer klass={klass} students={students} />}
+          />
           <Route path="/classes/:id/students"
             render={() => <StudentsIndex klass={klass} students={students} />}
           />
