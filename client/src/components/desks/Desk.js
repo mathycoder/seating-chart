@@ -4,7 +4,8 @@ import './css/desk.css'
 const Desk = ({ student }) => {
   return (
     <div className="desk">
-      {student.firstName}
+      {student.firstName}<br/>
+      {student.lastName}
     </div>
   )
 }
