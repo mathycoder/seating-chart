@@ -10,3 +10,8 @@
 .klass-show-header div {
   margin-right: 20px;
 }
+
+.klass-title a {
+  text-decoration: none;
+  color: black;
+}
