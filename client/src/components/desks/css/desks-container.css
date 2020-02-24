@@ -1,5 +1,6 @@
 .desks-container {
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(4, 122px 122px 40px);
-  grid-template-rows: repeat(4, 100px);
+  grid-template-rows: repeat(4, 120px);
 }
