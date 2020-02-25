@@ -17,6 +17,11 @@ class StudentsController < ApplicationController
     end
   end
 
+  def update
+    @student = Student.find_by(id: params[:id])
+    binding.pry
+  end
+
   def destroy
     @student = Student.find_by(id: params[:id])
     @student.destroy

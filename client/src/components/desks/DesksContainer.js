@@ -1,11 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Desk from './Desk'
 import './css/desks-container.css'
+import { swapSeats } from '../../actions/studentActions.js'
 import { DragDropContext } from 'react-beautiful-dnd'
+import { connect } from 'react-redux'
 
-const DesksContainer = ({ klass, students }) => {
-  const handleDragEnd = () => {
-    console.log("drag ended!")
+const DesksContainer = ({ klass, students, swapSeats }) => {
+  const handleDragEnd = (result) => {
+    const studentId = result.draggableId.split("-")[1]
+    const indexData = {
+      originalIndex: result.source.index,
+      newIndex: result.destination.index
+    }
+    swapSeats(klass, studentId, indexData)
   }
 
   const studentsInTheirSeats = () => {
@@ -18,7 +25,7 @@ const DesksContainer = ({ klass, students }) => {
 
   return (
     <DragDropContext
-      onDragEnd={() => handleDragEnd()}
+      onDragEnd={(result) => handleDragEnd(result)}
     >
       <div className="desks-container">
         {studentsInTheirSeats().map((studentId, index) => {
@@ -35,4 +42,10 @@ const DesksContainer = ({ klass, students }) => {
   )
 }
 
-export default DesksContainer
+const mapDispatchToProps = (dispatch) => {
+  return {
+    swapSeats: (klass, studentId, indexData) => dispatch(swapSeats(klass, studentId, indexData))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(DesksContainer)

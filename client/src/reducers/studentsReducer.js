@@ -57,7 +57,8 @@ function normalizedObject(students){
       lastName: student.last_name,
       academicScore: student.academic_score,
       behaviorScore: student.behavior_score,
-      id: student.id
+      id: student.id,
+      seat: student.seat
     }
   })
   return normalizedObj

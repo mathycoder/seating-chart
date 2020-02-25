@@ -43,6 +43,29 @@ export function addStudent(klass, studentData){
   }
 }
 
+export function swapSeats(klass, studentId, indexData){
+  return (dispatch) => {
+    dispatch({ type: 'SWAP_STUDENTS_REQUEST' })
+     fetch(`/klasses/${klass.id}/students/${studentId}`, {
+      method: "PATCH",
+      body: JSON.stringify(indexData),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
+    })
+      .then(resp => resp.json())
+      .then(students => {
+        if (students.error){
+
+        } else {
+          dispatch({ type: 'SWAP_STUDENT', students })
+        }
+      })
+      .catch(console.log)
+  }
+}
+
 export function deleteStudent(klass, student){
   return (dispatch) => {
     dispatch({ type: 'DELETE_STUDENT_REQUEST' })
