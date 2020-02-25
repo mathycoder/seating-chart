@@ -7,10 +7,16 @@ import { connect } from 'react-redux'
 
 const DesksContainer = ({ klass, students, swapSeats }) => {
   const handleDragEnd = (result) => {
-    const studentId = result.draggableId.split("-")[1]
+    const { source, destination, draggableId } = result
+
+    if (!destination || destination.index === source.index) {
+      return
+    }
+
+    const studentId = draggableId.split("-")[1]
     const indexData = {
-      originalIndex: result.source.index,
-      newIndex: result.destination.index
+      originalIndex: source.index,
+      newIndex: destination.index
     }
     swapSeats(klass, studentId, indexData)
   }
@@ -30,12 +36,7 @@ const DesksContainer = ({ klass, students, swapSeats }) => {
       <div className="desks-container">
         {studentsInTheirSeats().map((studentId, index) => {
           const student = students.byId[studentId]
-          return (
-            <>
-              <Desk student={student} index={index}/>
-              {index % 2 === 1 ? <div className="gap"></div> : null}
-            </>
-          )
+          return <Desk key={index} student={student} index={index}/>
         })}
       </div>
     </DragDropContext>

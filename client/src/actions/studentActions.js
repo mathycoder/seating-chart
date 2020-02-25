@@ -59,7 +59,7 @@ export function swapSeats(klass, studentId, indexData){
         if (students.error){
 
         } else {
-          dispatch({ type: 'SWAP_STUDENT', students })
+          dispatch({ type: 'SWAP_STUDENTS', students })
         }
       })
       .catch(console.log)

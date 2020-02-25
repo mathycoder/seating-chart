@@ -7,7 +7,7 @@ class StudentsController < ApplicationController
   def create
     @klass = Klass.find_by(id: params[:klass_id])
     @student = @klass.students.build(student_params)
-    @student.seat = @klass.students.length
+    @student.seat = @klass.students.length - 1
     if @student.save
       render json: @student, status: 201
     else
@@ -18,8 +18,12 @@ class StudentsController < ApplicationController
   end
 
   def update
+    @klass = Klass.find_by(id: params[:klass_id])
     @student = Student.find_by(id: params[:id])
-    binding.pry
+    @student.update(seat: params[:newIndex])
+    switch_student = Student.find_by(seat: params[:newIndex])
+    switch_student.update(seat: params[:originalIndex])
+    render json: @klass.students, status: 201
   end
 
   def destroy
