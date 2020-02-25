@@ -7,6 +7,7 @@ class StudentsController < ApplicationController
   def create
     @klass = Klass.find_by(id: params[:klass_id])
     @student = @klass.students.build(student_params)
+    @student.seat = @klass.students.length
     if @student.save
       render json: @student, status: 201
     else

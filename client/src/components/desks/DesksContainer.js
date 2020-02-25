@@ -8,12 +8,20 @@ const DesksContainer = ({ klass, students }) => {
     console.log("drag ended!")
   }
 
+  const studentsInTheirSeats = () => {
+    return students.allIds.sort((a,b) => {
+      const studentA = students.byId[a]
+      const studentB = students.byId[b]
+      return studentA.seat - studentB.seat
+    })
+  }
+
   return (
     <DragDropContext
       onDragEnd={() => handleDragEnd()}
     >
       <div className="desks-container">
-        {students.allIds.map((studentId, index) => {
+        {studentsInTheirSeats().map((studentId, index) => {
           const student = students.byId[studentId]
           return (
             <>
