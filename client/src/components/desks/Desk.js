@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
 import './css/desk.css'
 // import styled from 'styled-components'
@@ -12,7 +12,10 @@ const Desk = ({ student, index }) => {
           {...provided.droppableProps}
           className="desk-container"
         >
-          <Draggable draggableId={`draggable-${student.id}`} index={index}>
+          <Draggable
+            draggableId={`draggable-${student.id}`}
+            index={index}
+          >
             {(provided2) => (
               <div
                 className="desk"

@@ -1,7 +1,8 @@
 .desk-container {
   background-color: yellow;
-  height:80px;
-  width:120px;
+  height:82px;
+  width:122px;
+  overflow: hidden;
 }
 
 .desk {
@@ -13,4 +14,5 @@
   font-weight: bold;
   border-radius: 10px;
   background-color: white;
+  margin-bottom: 38px;
 }
