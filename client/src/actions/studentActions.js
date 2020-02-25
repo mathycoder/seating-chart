@@ -45,7 +45,7 @@ export function addStudent(klass, studentData){
 
 export function swapSeats(klass, studentId, indexData){
   return (dispatch) => {
-    dispatch({ type: 'SWAP_STUDENTS_REQUEST' })
+    dispatch({ type: 'SWAP_STUDENTS_REQUEST', indexData })
      fetch(`/klasses/${klass.id}/students/${studentId}`, {
       method: "PATCH",
       body: JSON.stringify(indexData),

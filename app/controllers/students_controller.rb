@@ -19,11 +19,11 @@ class StudentsController < ApplicationController
 
   def update
     @klass = Klass.find_by(id: params[:klass_id])
-    @student = Student.find_by(id: params[:id])
-    @student.update(seat: params[:newIndex])
+    student = Student.find_by(id: params[:id])
+    #@student.update(seat: params[:newIndex])
     switch_student = Student.find_by(seat: params[:newIndex])
-    switch_student.update(seat: params[:originalIndex])
-    render json: @klass.students, status: 201
+    #switch_student.update(seat: params[:originalIndex])
+    render json: @klass.new_seats(student, switch_student, params[:newIndex], params[:originalIndex]), status: 201
   end
 
   def destroy

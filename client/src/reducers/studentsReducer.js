@@ -21,6 +21,11 @@ function studentsById(state = {}, action) {
         ...state, ...normalizedObject([action.student])
       }
 
+    case 'SWAP_STUDENTS_REQUEST':
+      return {
+        ...state, ...swapSeats({...state}, action.indexData)
+      }
+
     case 'SWAP_STUDENTS':
       return {
         ...state, ...normalizedObject(action.students)
@@ -67,4 +72,18 @@ function normalizedObject(students){
     }
   })
   return normalizedObj
+}
+
+function swapSeats(stateCopy, indexData){
+  const normObj = {}
+  for (const studentId in stateCopy) {
+    const student = stateCopy[studentId]
+    if (student.seat === indexData.originalIndex){
+      student.seat = indexData.newIndex
+    } else if (student.seat === indexData.newIndex){
+      student.seat = indexData.originalIndex
+    }
+    normObj[`student${student.id}`] = student
+  }
+  return normObj
 }
