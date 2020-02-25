@@ -1,3 +1,9 @@
+.desk-container {
+  background-color: yellow;
+  height:80px;
+  width:120px;
+}
+
 .desk {
   padding: 20px;
   border: 1px solid black;

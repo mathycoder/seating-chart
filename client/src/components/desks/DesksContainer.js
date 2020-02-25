@@ -7,7 +7,7 @@ const DesksContainer = ({ klass, students }) => {
   const handleDragEnd = () => {
     console.log("drag ended!")
   }
-  
+
   return (
     <DragDropContext onDragEnd={() => handleDragEnd()}>
       <div className="desks-container">
@@ -15,7 +15,7 @@ const DesksContainer = ({ klass, students }) => {
           const student = students.byId[studentId]
           return (
             <>
-              <Desk student={student}/>
+              <Desk student={student} index={index} />
               {index % 2 === 1 ? <div className="gap"></div> : null}
             </>
           )
