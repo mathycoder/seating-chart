@@ -25,8 +25,9 @@ const GroupDesksContainer = ({ klass, students }) => {
   const myStudents = students.allIds.map(stId => students.byId[stId])
   return (
     <div className="group-seating-wrapper">
-      <Group axis="xy" students={myStudents.slice(0,4)} />
-      <Group axis="xy" students={myStudents.slice(4,8)} />
+      {[...Array(Math.ceil(students.allIds.length / 4)).keys()].map((groupNum, index) => (
+          <Group axis="xy" students={myStudents.slice(index*4,(index+1)*4)} />
+      ))}
     </div>
   )
 }

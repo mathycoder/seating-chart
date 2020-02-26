@@ -1,17 +1,17 @@
 .group-seating-wrapper {
   display: grid;
   grid-template-columns: 300px 300px;
-  grid-template-rows: 400px 400px;
+  grid-template-rows: 200px 200px;
 }
 
 .group {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  width: 250px;
+  /* align-items: center;
+  justify-content: center; */
+  width: 244px;
   height: 164px;
-  /* border: 1px red solid; */
+  border: 3px gray dashed;
 }
 
 .group-desk {
