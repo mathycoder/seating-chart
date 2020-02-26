@@ -3,7 +3,7 @@ import { Droppable, Draggable } from 'react-beautiful-dnd'
 import './css/desk.css'
 // import styled from 'styled-components'
 
-const Desk = ({ student, index }) => {
+const Desk = ({ student, index, startingDesk, overDesk }) => {
   return (
     <>
       <Droppable droppableId={`droppable-${index}`}>
@@ -13,12 +13,13 @@ const Desk = ({ student, index }) => {
             {...provided.droppableProps}
             className="desk-container"
           >
+            {overDesk && startingDesk === index && startingDesk !== overDesk.seat ? overDesk.firstName : null}
             <Draggable
               draggableId={`draggable-${student.id}`}
               index={index}
               key={`draggable-${student.id}`}
             >
-              {(provided2) => (
+              {(provided2, snapshot2) => (
                 <div
                   className="desk"
                   {...provided2.draggableProps}
