@@ -1,0 +1,26 @@
+.group-seating-wrapper {
+  display: grid;
+  grid-template-columns: 300px 300px;
+  grid-template-rows: 400px 400px;
+}
+
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 164px;
+  /* border: 1px red solid; */
+}
+
+.group-desk {
+  padding: 20px;
+  border: 1px solid black;
+  width: 80px;
+  height: 40px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: white;
+}

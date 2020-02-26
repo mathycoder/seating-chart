@@ -1,28 +1,34 @@
 import React from 'react'
+import './css/group-desk.css'
 import { SortableContainer, SortableElement } from 'react-sortable-hoc'
 
-const SortableItem = SortableElement(({value}) => <div>{value}</div>)
-
-const SortableList = SortableContainer(({items}) => {
+const SortableItem = SortableElement(({student}) => {
   return (
-    <div>
-      {items.map((value, index) => (
-        <SortableItem key={`item-${value}`} index={index} value={value} />
+    <div className="group-desk">
+      {student.firstName}<br/>
+      {student.lastName}
+    </div>
+  )
+})
+
+const Group = SortableContainer(({students}) => {
+  return (
+    <div className="group">
+      {students.map((student, index) => (
+        <SortableItem key={`item-${student.id}`} index={index} student={student} />
       ))}
     </div>
   );
 });
 
 const GroupDesksContainer = ({ klass, students }) => {
-
-  const myStudents = () => {
-    return students.allIds.map(stId => {
-      const student = students.byId[stId]
-      return student.firstName
-    })
-  }
-
-  return <SortableList items={myStudents()} />
+  const myStudents = students.allIds.map(stId => students.byId[stId])
+  return (
+    <div className="group-seating-wrapper">
+      <Group axis="xy" students={myStudents.slice(0,4)} />
+      <Group axis="xy" students={myStudents.slice(4,8)} />
+    </div>
+  )
 }
 
 export default GroupDesksContainer
