@@ -13,7 +13,12 @@ const Desk = ({ student, index, startingDesk, overDesk }) => {
             {...provided.droppableProps}
             className="desk-container"
           >
-            {overDesk && startingDesk === index && startingDesk !== overDesk.seat ? overDesk.firstName : null}
+            {overDesk && startingDesk === index && startingDesk !== overDesk.seat
+              ? <div className="desk">
+                {overDesk.firstName}<br/>
+                {overDesk.lastName}
+              </div>
+              : null}
             <Draggable
               draggableId={`draggable-${student.id}`}
               index={index}
