@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchStudents } from '../../actions/studentActions.js'
 import StudentsIndex from '../students/StudentsIndex'
@@ -8,8 +8,6 @@ import { Switch, Route, NavLink } from 'react-router-dom'
 import './css/klassShow.css'
 
 const KlassesShowContainer = ({ klass, fetchStudents, students }) => {
-  const [pairSeating, setPairSeating] = useState(true)
-
   useEffect(() => {
     if (klass) {fetchStudents(klass)}
   }, [klass])
@@ -27,23 +25,22 @@ const KlassesShowContainer = ({ klass, fetchStudents, students }) => {
             </NavLink>
           </div>
           <div>
-            <button
-              className="myButton"
-              onClick={() => setPairSeating(true)}>Pairs
-            </button>
+            <NavLink to={`/classes/${klass.id}/pairs`}>
+              <button className="myButton">Pairs</button>
+            </NavLink>
           </div>
           <div>
-            <button
-              className="myButton"
-              onClick={() => setPairSeating(false)}>Groups
-            </button>
+            <NavLink to={`/classes/${klass.id}/groups`}>
+              <button className="myButton">Groups</button>
+            </NavLink>
           </div>
         </div>
         <Switch>
-          <Route exact path="/classes/:id"
-            render={() => pairSeating ? <DesksContainer klass={klass} students={students} />
-          : <GroupDesksContainer klass={klass} students={students} />
-            }
+          <Route exact path="/classes/:id/pairs"
+            render={() => <DesksContainer klass={klass} students={students} />}
+          />
+          <Route exact path="/classes/:id/groups"
+            render={() => <GroupDesksContainer klass={klass} students={students} />}
           />
           <Route path="/classes/:id/students"
             render={() => <StudentsIndex klass={klass} students={students} />}
