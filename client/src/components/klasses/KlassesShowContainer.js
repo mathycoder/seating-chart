@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchStudents } from '../../actions/studentActions.js'
 import StudentsIndex from '../students/StudentsIndex'
 import DesksContainer from '../desks/DesksContainer'
+import PairDesksContainer from '../desks/PairDesksContainer'
 import GroupDesksContainer from '../desks/GroupDesksContainer'
 import { Switch, Route, NavLink } from 'react-router-dom'
 import './css/klassShow.css'
@@ -34,6 +35,11 @@ const KlassesShowContainer = ({ klass, fetchStudents, students }) => {
               <button className="myButton">Groups</button>
             </NavLink>
           </div>
+          <div>
+            <NavLink to={`/classes/${klass.id}/pairs2`}>
+              <button className="myButton">Pairs React DnD</button>
+            </NavLink>
+          </div>
         </div>
         <Switch>
           <Route exact path="/classes/:id/pairs"
@@ -44,6 +50,9 @@ const KlassesShowContainer = ({ klass, fetchStudents, students }) => {
           />
           <Route path="/classes/:id/students"
             render={() => <StudentsIndex klass={klass} students={students} />}
+          />
+          <Route path="/classes/:id/pairs2"
+            render={() => <PairDesksContainer klass={klass} students={students} />}
           />
         </Switch>
       </div>
