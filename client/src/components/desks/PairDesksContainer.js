@@ -1,18 +1,23 @@
 import React from 'react'
-import { DndProvider, useDrag } from 'react-dnd'
-import Backend from 'react-dnd-html5-backend'
+import Desk2 from './Desk2'
+import { useDrag } from 'react-dnd'
 
 const PairDesksContainer = ({ klass, students }) => {
-  const [{ isDragging }, drag] = useDrag({
-    item: { type: "desk" },
-    collect: monitor => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  })
+
+  const studentsInTheirSeats = () => {
+    return students.allIds.sort((a,b) => {
+      const studentA = students.byId[a]
+      const studentB = students.byId[b]
+      return studentA.seat - studentB.seat
+    })
+  }
 
   return (
-    <div ref={drag}>
-      Pair Desks Container
+    <div className="desks-container">
+      {studentsInTheirSeats().map((studentId, index) => {
+        const student = students.byId[studentId]
+        return <Desk2 key={index} student={student} index={index} />
+      })}
     </div>
   )
 }
