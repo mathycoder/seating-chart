@@ -5,6 +5,7 @@ import { swapSeats2 } from '../../actions/studentActions.js'
 import { connect } from 'react-redux'
 
 const Desk2 = ({ klass, student, students, index, swap }) => {
+
   const [{ isDragging }, drag] = useDrag({
     item: { type: "desk", student: student },
     collect: monitor => ({
@@ -12,9 +13,11 @@ const Desk2 = ({ klass, student, students, index, swap }) => {
     }),
   })
 
-  const [collectedProps, drop] = useDrop({
+  const [{ hover }, drop] = useDrop({
     accept: "desk",
-    collect: () => ({ student: student }),
+    collect: monitor => {
+      return ({ student: student, hover: monitor.isOver() })
+    },
     drop: (item, monitor) => {
       swap(klass, student, item.student)
     },
@@ -23,7 +26,7 @@ const Desk2 = ({ klass, student, students, index, swap }) => {
   return (
     <>
       <div ref={drop}>
-        <div ref={drag} className="desk">
+        <div ref={drag} className={`desk ${hover ? 'hover' : ''}`}>
           {student.firstName}<br/>
           {student.lastName}
         </div>
