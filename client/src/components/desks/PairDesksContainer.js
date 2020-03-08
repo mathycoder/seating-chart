@@ -16,7 +16,7 @@ const PairDesksContainer = ({ klass, students }) => {
     <div className="desks-container">
       {studentsInTheirSeats().map((studentId, index) => {
         const student = students.byId[studentId]
-        return <Desk2 key={index} student={student} index={index} />
+        return <Desk2 key={index} klass={klass} student={student} index={index} students={students} />
       })}
     </div>
   )

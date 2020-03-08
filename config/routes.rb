@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  post '/klasses/:klass_id/students/swap', to: 'students#swap'
+
   resources :teachers, only: [:create]
   resources :klasses, only: [:index, :create, :update, :destroy]
 
