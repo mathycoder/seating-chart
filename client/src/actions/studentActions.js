@@ -68,7 +68,7 @@ export function swapSeats(klass, studentId, indexData){
 
 export function swapSeats2(klass, student1, student2){
   return (dispatch) => {
-    dispatch({ type: 'SWAP_STUDENTS_REQUEST2', student1, student2 })
+    dispatch({ type: 'SWAP_STUDENTS_REQUEST2' })
     const params = {studentId1: student1.id, studentId2: student2.id}
      fetch(`/klasses/${klass.id}/students/swap`, {
       method: "POST",

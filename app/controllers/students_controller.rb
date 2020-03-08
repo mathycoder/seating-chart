@@ -33,12 +33,14 @@ class StudentsController < ApplicationController
   end
 
   def swap
+    @klass = Klass.find_by(id: params[:klass_id])
     @student_1 = Student.find_by(id: params[:studentId1])
     seat_1 = @student_1.seat
     @student_2 = Student.find_by(id: params[:studentId2])
     seat_2 = @student_2.seat
     @student_1.update(seat: seat_2)
     @student_2.update(seat: seat_1)
+    render json: @klass.students, status: 201
   end
 
   private
