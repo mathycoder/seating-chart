@@ -6,6 +6,8 @@ class CreateStudents < ActiveRecord::Migration[5.2]
       t.integer :academic_score
       t.integer :behavior_score
       t.integer :klass_id
+      t.integer :seat_pair
+      t.integer :seat_group
     end
   end
 end
