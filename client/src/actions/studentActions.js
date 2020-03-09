@@ -20,6 +20,27 @@ export function fetchStudents(klass){
   }
 }
 
+export function dynamicPairs(klass){
+  return (dispatch) => {
+     fetch(`/klasses/${klass.id}/students/dynamic_pairs`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
+    })
+      .then(resp => resp.json())
+      .then(students => {
+        if (students.error){
+
+        } else {
+          dispatch({ type: 'FETCH_STUDENTS', students })
+        }
+      })
+      .catch(console.log)
+  }
+}
+
 export function addStudent(klass, studentData){
   return (dispatch) => {
     dispatch({ type: 'ADD_STUDENT_REQUEST' })

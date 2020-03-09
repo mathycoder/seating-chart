@@ -35,12 +35,20 @@
   opacity: 1;
 }
 
+.desk span {
+  font-weight: lighter;
+  margin: 0 10px;
+  font-size: 12px;
+}
+
 .desk .behavior-score {
   color: red;
-  margin: 0 10px;
 }
 
 .desk .academic-score {
   color: green;
-  margin: 0 10px;
+}
+
+.desk.dragging span {
+  color: lightgray;
 }

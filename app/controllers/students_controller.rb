@@ -49,6 +49,10 @@ class StudentsController < ApplicationController
     render json: @klass.students, status: 201
   end
 
+  def dynamic_pairs
+    binding.pry
+  end
+
   private
     def student_params
       params.require(:student).permit(:first_name, :last_name, :behavior_score, :academic_score)

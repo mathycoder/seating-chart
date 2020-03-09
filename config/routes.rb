@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   post '/klasses/:klass_id/students/swap', to: 'students#swap'
+  get '/klasses/:klass_id/students/dynamic_pairs', to: 'students#dynamic_pairs'
 
   resources :teachers, only: [:create]
   resources :klasses, only: [:index, :create, :update, :destroy]

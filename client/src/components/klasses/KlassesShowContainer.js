@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { fetchStudents } from '../../actions/studentActions.js'
+import { fetchStudents, dynamicPairs } from '../../actions/studentActions.js'
 import StudentsIndex from '../students/StudentsIndex'
 import PairDesksContainer from '../desks/PairDesksContainer'
 import GroupDesksContainer from '../desks/GroupDesksContainer'
@@ -9,7 +9,7 @@ import './css/klassShow.css'
 import { DndProvider } from 'react-dnd'
 import Backend from 'react-dnd-html5-backend'
 
-const KlassesShowContainer = ({ klass, fetchStudents, students }) => {
+const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs }) => {
   useEffect(() => {
     if (klass) {fetchStudents(klass)}
   }, [klass])
@@ -38,7 +38,7 @@ const KlassesShowContainer = ({ klass, fetchStudents, students }) => {
               </NavLink>
             </div>
             <div>
-              <button className="myButton">Dynamic Pairs</button>
+              <button onClick={() => dynamicPairs(klass)} className="myButton">Dynamic Pairs</button>
             </div>
           </div>
           <Switch>
@@ -68,7 +68,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchStudents: klass => dispatch(fetchStudents(klass))
+    fetchStudents: klass => dispatch(fetchStudents(klass)),
+    dynamicPairs: klass => dispatch(dynamicPairs(klass))
   }
 }
 
