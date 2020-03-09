@@ -43,10 +43,10 @@ export function addStudent(klass, studentData){
   }
 }
 
-export function swapSeats(klass, student1, student2){
+export function swapSeats(klass, student1, student2, type){
   return (dispatch) => {
     dispatch({ type: 'SWAP_STUDENTS_REQUEST2' })
-    const params = {studentId1: student1.id, studentId2: student2.id}
+    const params = {studentId1: student1.id, studentId2: student2.id, type: type}
      fetch(`/klasses/${klass.id}/students/swap`, {
       method: "POST",
       body: JSON.stringify(params),

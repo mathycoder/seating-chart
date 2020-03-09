@@ -33,11 +33,19 @@ class StudentsController < ApplicationController
   def swap
     @klass = Klass.find_by(id: params[:klass_id])
     @student_1 = Student.find_by(id: params[:studentId1])
-    seat_1 = @student_1.seat
     @student_2 = Student.find_by(id: params[:studentId2])
-    seat_2 = @student_2.seat
-    @student_1.update(seat: seat_2)
-    @student_2.update(seat: seat_1)
+
+    if params[:type] == "pair"
+      seat_1 = @student_1.seat_pair
+      seat_2 = @student_2.seat_pair
+      @student_1.update(seat_pair: seat_2)
+      @student_2.update(seat_pair: seat_1)
+    else
+      seat_1 = @student_1.seat_group
+      seat_2 = @student_2.seat_group
+      @student_1.update(seat_group: seat_2)
+      @student_2.update(seat_group: seat_1)
+    end
     render json: @klass.students, status: 201
   end
 

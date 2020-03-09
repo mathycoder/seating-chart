@@ -31,6 +31,7 @@ const PairDesksContainer = ({ klass, students }) => {
         const student = students.byId[studentId]
         return student ?
               <Desk
+                type={"pair"}
                 key={index}
                 klass={klass}
                 student={student}
@@ -38,6 +39,7 @@ const PairDesksContainer = ({ klass, students }) => {
                 students={students}
                />
              : <EmptyDesk
+                type={"pair"}
                 key={index}
                 index={index}
                 klass={klass}

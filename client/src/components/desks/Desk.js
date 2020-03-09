@@ -4,7 +4,7 @@ import { useDrag, useDrop } from 'react-dnd'
 import { swapSeats } from '../../actions/studentActions.js'
 import { connect } from 'react-redux'
 
-const Desk = ({ klass, student, students, index, swap }) => {
+const Desk = ({ klass, student, students, index, swap, type }) => {
   const [{ isDragging }, drag] = useDrag({
     item: { type: "desk", student: student },
     collect: monitor => ({
@@ -18,7 +18,7 @@ const Desk = ({ klass, student, students, index, swap }) => {
       return ({ student: student, hover: monitor.isOver() })
     },
     drop: (item, monitor) => {
-      swap(klass, student, item.student)
+      swap(klass, student, item.student, type)
     },
   })
 
@@ -37,7 +37,7 @@ const Desk = ({ klass, student, students, index, swap }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    swap: (klass, student1, student2) => dispatch(swapSeats(klass, student1, student2))
+    swap: (klass, student1, student2, type) => dispatch(swapSeats(klass, student1, student2, type))
   }
 }
 
