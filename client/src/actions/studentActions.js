@@ -90,6 +90,30 @@ export function swapSeats2(klass, student1, student2){
   }
 }
 
+export function newSeat(klass, student, seat){
+  return dispatch => {
+    dispatch({ type: 'NEW_SEAT_REQUEST' })
+    const params = {seat: seat}
+     fetch(`/klasses/${klass.id}/students/${student.id}`, {
+      method: "PATCH",
+      body: JSON.stringify(params),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
+    })
+      .then(resp => resp.json())
+      .then(student => {
+        if (student.error){
+
+        } else {
+          dispatch({ type: 'NEW_SEAT', student })
+        }
+      })
+      .catch(console.log)
+  }
+}
+
 export function deleteStudent(klass, student){
   return (dispatch) => {
     dispatch({ type: 'DELETE_STUDENT_REQUEST' })

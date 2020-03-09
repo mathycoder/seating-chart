@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './css/desk.css'
 import { useDrag, useDrop } from 'react-dnd'
 import { swapSeats2 } from '../../actions/studentActions.js'

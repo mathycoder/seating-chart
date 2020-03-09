@@ -38,6 +38,7 @@ const PairDesksContainer = ({ klass, students }) => {
              : <EmptyDesk2
                 key={index}
                 index={index}
+                klass={klass}
                />
 
       })}
