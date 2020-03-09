@@ -1,6 +1,7 @@
 .navbar-wrapper {
   display: flex;
-  background-color: gray;
+  /* background-color: gray; */
+  background-color: rgb(125, 166, 200);
   padding: 10px;
   align-items: center;
 }

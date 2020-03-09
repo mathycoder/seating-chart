@@ -8,17 +8,20 @@
 .desk {
   padding: 20px;
   border: 1px solid black;
+  /* border-color: rgb(166, 152, 143); */
   width: 80px;
   height: 40px;
   text-align: center;
   font-weight: bold;
   border-radius: 10px;
-  background-color: white;
+  /* background-color: white; */
+  background-color: rgb(225, 217, 214);
   margin-bottom: 38px;
 }
 
 .desk.empty {
   border-color: lightgray;
+  background-color: white;
 }
 
 .desk.hover {
@@ -28,5 +31,6 @@
 .desk.dragging {
   border-color: lightgray;
   color: lightgray;
+  background-color: white;
   opacity: 1;
 }
