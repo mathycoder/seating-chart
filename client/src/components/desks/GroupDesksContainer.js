@@ -4,9 +4,9 @@ import EmptyDesk from './EmptyDesk'
 import DeskDrag from './DeskDrag'
 import { useDrag } from 'react-dnd'
 import './css/desks-containers.css'
+import './css/group-desk.css'
 
-const PairDesksContainer = ({ klass, students }) => {
-
+const GroupDesksContainer = ({ students, klass }) => {
   const studentsInTheirSeats = () => {
     return students.allIds.sort((a,b) => {
       const studentA = students.byId[a]
@@ -26,7 +26,7 @@ const PairDesksContainer = ({ klass, students }) => {
   }
 
   return (
-    <div className="pair-desks-container">
+    <div className="group-desks-container">
       {seats().map((studentId, index) => {
         const student = students.byId[studentId]
         return student ?
@@ -47,4 +47,4 @@ const PairDesksContainer = ({ klass, students }) => {
   )
 }
 
-export default PairDesksContainer
+export default GroupDesksContainer

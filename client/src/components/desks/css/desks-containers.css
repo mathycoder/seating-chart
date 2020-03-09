@@ -4,3 +4,10 @@
   grid-template-columns: repeat(4, 1fr 1fr 40px);
   grid-template-rows: repeat(4, 120px);
 }
+
+.group-desks-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr 1fr 40px);
+  grid-template-rows: repeat(4, 82px 121px);
+}
