@@ -1,7 +1,8 @@
 import React from 'react'
-import Desk2 from './Desk2'
-import EmptyDesk2 from './EmptyDesk2'
+import Desk from './Desk'
+import EmptyDesk from './EmptyDesk'
 import { useDrag } from 'react-dnd'
+import './css/desks-containers.css'
 
 const PairDesksContainer = ({ klass, students }) => {
 
@@ -24,18 +25,18 @@ const PairDesksContainer = ({ klass, students }) => {
   }
 
   return (
-    <div className="desks-container">
+    <div className="pair-desks-container">
       {seats().map((studentId, index) => {
         const student = students.byId[studentId]
         return student ?
-              <Desk2
+              <Desk
                 key={index}
                 klass={klass}
                 student={student}
                 index={index}
                 students={students}
                />
-             : <EmptyDesk2
+             : <EmptyDesk
                 key={index}
                 index={index}
                 klass={klass}

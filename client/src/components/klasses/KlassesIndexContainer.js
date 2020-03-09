@@ -28,7 +28,7 @@ const KlassesIndexContainer = ({ currentUser, fetchKlasses, klasses }) => {
             return (
               <div className="klass-row" key={klassId}>
                 <div>{klass.period}</div>
-                <div><NavLink to={`/classes/${klass.id}`}>{klass.name}</NavLink></div>
+                <div><NavLink to={`/classes/${klass.id}/pairs`}>{klass.name}</NavLink></div>
                 <div>
                   <button
                     onClick={() => setEditKlassId(klassId)}

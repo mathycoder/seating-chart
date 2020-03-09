@@ -1,48 +1,44 @@
-import React, { useState } from 'react'
-import { Droppable, Draggable } from 'react-beautiful-dnd'
+import React from 'react'
 import './css/desk.css'
-// import styled from 'styled-components'
+import { useDrag, useDrop } from 'react-dnd'
+import { swapSeats2 } from '../../actions/studentActions.js'
+import { connect } from 'react-redux'
 
-const Desk = ({ student, index, startingDesk, overDesk }) => {
+const Desk = ({ klass, student, students, index, swap }) => {
+  const [{ isDragging }, drag] = useDrag({
+    item: { type: "desk", student: student },
+    collect: monitor => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  })
+
+  const [{ hover }, drop] = useDrop({
+    accept: "desk",
+    collect: monitor => {
+      return ({ student: student, hover: monitor.isOver() })
+    },
+    drop: (item, monitor) => {
+      swap(klass, student, item.student)
+    },
+  })
+
   return (
     <>
-      <Droppable droppableId={`droppable-${index}`}>
-        {(provided) => (
-          <div
-            ref={node => provided.innerRef(node)}
-            {...provided.droppableProps}
-            className="desk-container"
-          >
-            {overDesk && startingDesk === index && startingDesk !== overDesk.seat
-              ? <div className="desk">
-                {overDesk.firstName}<br/>
-                {overDesk.lastName}
-              </div>
-              : null}
-            <Draggable
-              draggableId={`draggable-${student.id}`}
-              index={index}
-              key={`draggable-${student.id}`}
-            >
-              {(provided2, snapshot2) => (
-                <div
-                  className="desk"
-                  {...provided2.draggableProps}
-                  {...provided2.dragHandleProps}
-                  ref={node => provided2.innerRef(node)}
-                >
-                  {student.firstName}<br/>
-                  {student.lastName}
-                </div>
-              )}
-            </Draggable>
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
+      <div ref={drop}>
+        <div ref={drag} className={`desk ${hover ? 'hover' : ''} ${isDragging ? 'dragging' : ''}`}>
+          {student.firstName}<br/>
+          {student.lastName}
+        </div>
+      </div>
       {index % 2 === 1 ? <div className="gap"></div> : null}
     </>
   )
 }
 
-export default Desk
+const mapDispatchToProps = dispatch => {
+  return {
+    swap: (klass, student1, student2) => dispatch(swapSeats2(klass, student1, student2))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Desk)

@@ -4,7 +4,7 @@ import { useDrag, useDrop } from 'react-dnd'
 import { newSeat } from '../../actions/studentActions.js'
 import { connect } from 'react-redux'
 
-const EmptyDesk2 = ({ klass, index, newSeat }) => {
+const EmptyDesk = ({ klass, index, newSeat }) => {
   const [{ hover }, drop] = useDrop({
     accept: "desk",
     collect: monitor => {
@@ -32,4 +32,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(EmptyDesk2)
+export default connect(null, mapDispatchToProps)(EmptyDesk)
