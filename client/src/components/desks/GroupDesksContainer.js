@@ -31,6 +31,7 @@ const GroupDesksContainer = ({ students, klass }) => {
         const student = students.byId[studentId]
         return student ?
               <Desk
+                type={"group"}
                 key={index}
                 klass={klass}
                 student={student}
@@ -38,6 +39,7 @@ const GroupDesksContainer = ({ students, klass }) => {
                 students={students}
                />
              : <EmptyDesk
+                type={"group"}
                 key={index}
                 index={index}
                 klass={klass}

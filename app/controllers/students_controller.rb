@@ -20,7 +20,7 @@ class StudentsController < ApplicationController
   def update
     klass = Klass.find_by(id: params[:klass_id])
     @student = Student.find_by(id: params[:id])
-    @student.update(seat: params[:seat])
+    params[:type] == "pair" ? @student.update(seat_pair: params[:seat]) : @student.update(seat_group: params[:seat])
     render json: @student, status: 201
   end
 

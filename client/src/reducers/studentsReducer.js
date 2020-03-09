@@ -33,7 +33,12 @@ function studentsById(state = {}, action) {
 
     case 'NEW_SEAT_REQUEST':
       const editedStudent = action.student
-      editedStudent.seat = action.seat
+      if (action.style == "pair"){
+        editedStudent.seatPair = action.seat
+      } else {
+        editedStudent.seatGroup = action.seat
+      }
+
       return {
         ...state,
         [`student${action.student.id}`]: editedStudent

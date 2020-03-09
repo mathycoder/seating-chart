@@ -4,14 +4,14 @@ import { useDrag, useDrop } from 'react-dnd'
 import { newSeat } from '../../actions/studentActions.js'
 import { connect } from 'react-redux'
 
-const EmptyDesk = ({ klass, index, newSeat }) => {
+const EmptyDesk = ({ klass, index, newSeat, type }) => {
   const [{ hover }, drop] = useDrop({
     accept: "desk",
     collect: monitor => {
       return ({ hover: monitor.isOver() })
     },
     drop: (item, monitor) => {
-      newSeat(klass, item.student, index)
+      newSeat(klass, item.student, index, type)
     },
   })
 
@@ -28,7 +28,7 @@ const EmptyDesk = ({ klass, index, newSeat }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    newSeat: (klass, student, seat) => dispatch(newSeat(klass, student, seat))
+    newSeat: (klass, student, seat, type) => dispatch(newSeat(klass, student, seat, type))
   }
 }
 

@@ -67,10 +67,10 @@ export function swapSeats(klass, student1, student2, type){
   }
 }
 
-export function newSeat(klass, student, seat){
+export function newSeat(klass, student, seat, type){
   return dispatch => {
-    dispatch({ type: 'NEW_SEAT_REQUEST', student, seat })
-    const params = {seat: seat}
+    dispatch({ type: 'NEW_SEAT_REQUEST', student, seat, style: type })
+    const params = {seat: seat, type: type}
      fetch(`/klasses/${klass.id}/students/${student.id}`, {
       method: "PATCH",
       body: JSON.stringify(params),
