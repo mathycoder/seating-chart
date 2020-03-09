@@ -1,6 +1,7 @@
 import React from 'react'
 import Desk from './Desk'
 import EmptyDesk from './EmptyDesk'
+import DeskDrag from './DeskDrag'
 import { useDrag } from 'react-dnd'
 import './css/desks-containers.css'
 
@@ -43,6 +44,7 @@ const PairDesksContainer = ({ klass, students }) => {
                />
 
       })}
+      
     </div>
   )
 }
