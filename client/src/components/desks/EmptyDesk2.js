@@ -18,7 +18,7 @@ const EmptyDesk2 = ({ klass, index, newSeat }) => {
   return (
     <>
       <div ref={drop}>
-        <div className={`desk ${hover ? 'hover' : ''}`}>
+        <div className={`empty desk ${hover ? 'hover' : ''}`}>
         </div>
       </div>
       {index % 2 === 1 ? <div className="gap"></div> : null}

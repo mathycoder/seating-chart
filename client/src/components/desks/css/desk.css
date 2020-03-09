@@ -17,6 +17,10 @@
   margin-bottom: 38px;
 }
 
+.desk.empty {
+  border-color: lightgray;
+}
+
 .desk.hover {
   background-color: yellow;
 }
