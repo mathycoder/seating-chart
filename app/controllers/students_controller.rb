@@ -17,13 +17,6 @@ class StudentsController < ApplicationController
     end
   end
 
-  # def update
-  #   @klass = Klass.find_by(id: params[:klass_id])
-  #   student = Student.find_by(id: params[:id])
-  #   switch_student = Student.find_by(seat: params[:newIndex])
-  #   render json: @klass.new_seats(student, switch_student, params[:newIndex], params[:originalIndex]), status: 201
-  # end
-
   def update
     klass = Klass.find_by(id: params[:klass_id])
     @student = Student.find_by(id: params[:id])

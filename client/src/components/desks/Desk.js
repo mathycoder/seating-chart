@@ -1,7 +1,7 @@
 import React from 'react'
 import './css/desk.css'
 import { useDrag, useDrop } from 'react-dnd'
-import { swapSeats2 } from '../../actions/studentActions.js'
+import { swapSeats } from '../../actions/studentActions.js'
 import { connect } from 'react-redux'
 
 const Desk = ({ klass, student, students, index, swap }) => {
@@ -37,7 +37,7 @@ const Desk = ({ klass, student, students, index, swap }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    swap: (klass, student1, student2) => dispatch(swapSeats2(klass, student1, student2))
+    swap: (klass, student1, student2) => dispatch(swapSeats(klass, student1, student2))
   }
 }
 
