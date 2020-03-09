@@ -50,7 +50,8 @@ class StudentsController < ApplicationController
   end
 
   def dynamic_pairs
-    binding.pry
+    @klass = Klass.find_by(id: params[:klass_id])
+    render json: @klass.generate_seats_pairs, status: 201
   end
 
   private
