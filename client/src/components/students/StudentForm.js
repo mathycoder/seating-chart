@@ -20,6 +20,12 @@ const StudentForm = ({ klass, addStudent }) => {
       }
     }
     addStudent(klass, studentData)
+    window.setTimeout(() => {
+      setFirstName('')
+      setLastName('')
+      setAcademicScore(1)
+      setBehaviorScore(1)
+    },100)
   }
 
   return (

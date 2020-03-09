@@ -38,7 +38,7 @@ const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs }) 
               </NavLink>
             </div>
             <div>
-              <button onClick={() => dynamicPairs(klass)} className="myButton">Dynamic Pairs</button>
+              <button onClick={() => dynamicPairs(klass)} className="myButton">Generate Dynamic Pairs</button>
             </div>
           </div>
           <Switch>
