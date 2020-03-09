@@ -3,7 +3,7 @@ import './signup.css'
 import { connect } from 'react-redux'
 import { signupTeacher } from '../../actions/teacherActions.js'
 
-const SignUp = ({ signupTeacher }) => {
+const SignUp = ({ signupTeacher, history }) => {
   const [ firstName, setFirstName ] = useState('')
   const [ lastName, setLastName ] = useState('')
   const [ email, setEmail ] = useState('')
@@ -16,7 +16,7 @@ const SignUp = ({ signupTeacher }) => {
       email: email,
       password: password
     }
-    signupTeacher(data)
+    signupTeacher(data, history)
   }
 
   return (
@@ -64,7 +64,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    signupTeacher: (data) => dispatch(signupTeacher(data))
+    signupTeacher: (data, history) => dispatch(signupTeacher(data, history))
   }
 }
 
