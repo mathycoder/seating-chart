@@ -11,7 +11,7 @@ const PairDesksContainer = ({ klass, students }) => {
     return students.allIds.sort((a,b) => {
       const studentA = students.byId[a]
       const studentB = students.byId[b]
-      return studentA.seat - studentB.seat
+      return studentA.seatPair - studentB.seatPair
     })
   }
 
@@ -19,7 +19,7 @@ const PairDesksContainer = ({ klass, students }) => {
     return [...Array(32).keys()].map(seatNumber => {
       const studentId = students.allIds.find(stId => {
         const st = students.byId[stId]
-        return st.seat === seatNumber
+        return st.seatPair === seatNumber
       })
       return studentId ? studentId : null
     })

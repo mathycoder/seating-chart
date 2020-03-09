@@ -81,7 +81,8 @@ function normalizedObject(students){
       academicScore: student.academic_score,
       behaviorScore: student.behavior_score,
       id: student.id,
-      seat: student.seat
+      seatGroup: student.seat_group,
+      seatPair: student.seat_pair
     }
   })
   return normalizedObj
