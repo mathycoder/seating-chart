@@ -37,6 +37,9 @@ const KlassesShowContainer = ({ klass, fetchStudents, students }) => {
                 <button className="myButton">Groups</button>
               </NavLink>
             </div>
+            <div>
+              <button className="myButton">Dynamic Pairs</button>
+            </div>
           </div>
           <Switch>
             <Route path="/classes/:id/students"

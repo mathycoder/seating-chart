@@ -34,3 +34,13 @@
   background-color: white;
   opacity: 1;
 }
+
+.desk .behavior-score {
+  color: red;
+  margin: 0 10px;
+}
+
+.desk .academic-score {
+  color: green;
+  margin: 0 10px;
+}

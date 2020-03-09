@@ -26,8 +26,12 @@ const Desk = ({ klass, student, students, index, swap, type }) => {
     <>
       <div ref={drop}>
         <div ref={drag} className={`desk ${hover ? 'hover' : ''} ${isDragging ? 'dragging' : ''}`}>
-          {student.firstName}<br/>
-        {student.lastName}
+          {student.firstName}
+          <br/>
+          {student.lastName}
+          <br/>
+          <span className="academic-score">{student.academicScore}</span>
+          <span className="behavior-score">{student.behaviorScore}</span>
         </div>
       </div>
       {index % 2 === 1 ? <div className="gap"></div> : null}
