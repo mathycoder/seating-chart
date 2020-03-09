@@ -41,6 +41,19 @@ function studentsById(state = {}, action) {
         ...state, ...normalizedObject(action.students)
       }
 
+    case 'NEW_SEAT_REQUEST':
+      const editedStudent = action.student
+      editedStudent.seat = action.seat
+      return {
+        ...state,
+        [`student${action.student.id}`]: editedStudent
+      }
+
+    case 'NEW_SEAT':
+      return {
+        ...state, ...normalizedObject([action.student])
+      }
+
     case 'DELETE_STUDENT':
       const {[`student${action.student.id}`]: value, ...newState } = state
       return {

@@ -92,7 +92,7 @@ export function swapSeats2(klass, student1, student2){
 
 export function newSeat(klass, student, seat){
   return dispatch => {
-    dispatch({ type: 'NEW_SEAT_REQUEST' })
+    dispatch({ type: 'NEW_SEAT_REQUEST', student, seat })
     const params = {seat: seat}
      fetch(`/klasses/${klass.id}/students/${student.id}`, {
       method: "PATCH",
