@@ -20,3 +20,9 @@
 .desk.hover {
   background-color: yellow;
 }
+
+.desk.dragging {
+  border-color: lightgray;
+  color: lightgray;
+  opacity: 1;
+}

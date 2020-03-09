@@ -5,7 +5,6 @@ import { swapSeats2 } from '../../actions/studentActions.js'
 import { connect } from 'react-redux'
 
 const Desk2 = ({ klass, student, students, index, swap }) => {
-
   const [{ isDragging }, drag] = useDrag({
     item: { type: "desk", student: student },
     collect: monitor => ({
@@ -26,7 +25,7 @@ const Desk2 = ({ klass, student, students, index, swap }) => {
   return (
     <>
       <div ref={drop}>
-        <div ref={drag} className={`desk ${hover ? 'hover' : ''}`}>
+        <div ref={drag} className={`desk ${hover ? 'hover' : ''} ${isDragging ? 'dragging' : ''}`}>
           {student.firstName}<br/>
           {student.lastName}
         </div>
