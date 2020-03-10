@@ -64,6 +64,28 @@ export function addStudent(klass, studentData){
   }
 }
 
+export function editStudent(klass, studentData){
+  return (dispatch) => {
+    dispatch({type: 'START_EDITING_STUDENT'})
+    fetch(`/klasses/${klass.id}/students/${studentData.id}`, {
+      method: 'PATCH',
+      credentials: "include",
+      body: JSON.stringify(studentData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(resp => resp.json())
+      .then(student => {
+        if (student.error){
+          dispatch({ type: 'ADD_FLASH_MESSAGE', message: student.error })
+        } else {
+          dispatch({ type: 'EDIT_STUDENT', student })
+        }
+      })
+  }
+}
+
 export function swapSeats(klass, student1, student2, type){
   return (dispatch) => {
     dispatch({ type: 'SWAP_STUDENTS_REQUEST2' })

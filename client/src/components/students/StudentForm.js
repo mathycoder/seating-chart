@@ -1,13 +1,22 @@
-import React, { useState } from 'react'
-import { addStudent } from '../../actions/studentActions.js'
+import React, { useState, useEffect } from 'react'
+import { addStudent, editStudent } from '../../actions/studentActions.js'
 import { connect } from 'react-redux'
 import './css/studentForm.css'
 
-const StudentForm = ({ klass, addStudent }) => {
+const StudentForm = ({ klass, student, addStudent, setEditStudentId }) => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [academicScore, setAcademicScore] = useState(1)
   const [behaviorScore, setBehaviorScore] = useState(1)
+
+  useEffect(() => {
+    if (student){
+      setFirstName(student.firstName)
+      setLastName(student.lastName)
+      setAcademicScore(student.academicScore)
+      setBehaviorScore(student.behaviorScore)
+    }
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -75,6 +84,13 @@ const StudentForm = ({ klass, addStudent }) => {
 
       <div className="student-edit-buttons">
         <input type="submit" value="Add" className="myButton little" />
+        {student ? <button
+                    onClick={() => setEditStudentId(null)}
+                    className="myButton little">
+                      Cancel
+                   </button>
+                 : null
+        }
       </div>
     </form>
   )
@@ -82,7 +98,8 @@ const StudentForm = ({ klass, addStudent }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addStudent: (klass, studentData) => dispatch(addStudent(klass, studentData))
+    addStudent: (klass, studentData) => dispatch(addStudent(klass, studentData)),
+    editStudent: (klass, studentData) => dispatch(editStudent(klass, studentData))
   }
 }
 

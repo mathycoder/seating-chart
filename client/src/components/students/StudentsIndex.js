@@ -6,6 +6,7 @@ import './css/studentIndex.css'
 
 const StudentsIndex = ({ klass, students, deleteStudent }) => {
   const [showForm, setShowForm] = useState(false)
+  const [editStudentId, setEditStudentId] = useState(null)
 
   return (
     <>
@@ -20,15 +21,24 @@ const StudentsIndex = ({ klass, students, deleteStudent }) => {
         {students.allIds.map(studentId => {
           const student = students.byId[studentId]
           return (
-            <div key={studentId} className="student-index-row">
-              <div>{student.firstName}</div>
-              <div>{student.lastName}</div>
-              <div className="scores">{student.academicScore}</div>
-              <div className="scores">{student.behaviorScore}</div>
-              <div className="student-edit-buttons">
-                <button className="myButton little">Edit</button>
-                <button className="myButton little" onClick={() => deleteStudent(klass, student)}>Delete</button>
-              </div>
+            <div key={studentId}>
+              {editStudentId && student.id === editStudentId
+                ? <StudentForm
+                    klass={klass}
+                    student={student}
+                    setEditStudentId={setEditStudentId}
+                  />
+                : <div key={studentId} className="student-index-row">
+                    <div>{student.firstName}</div>
+                    <div>{student.lastName}</div>
+                    <div className="scores">{student.academicScore}</div>
+                    <div className="scores">{student.behaviorScore}</div>
+                    <div className="student-edit-buttons">
+                      <button className="myButton little" onClick={() => setEditStudentId(student.id)}>Edit</button>
+                      <button className="myButton little" onClick={() => deleteStudent(klass, student)}>Delete</button>
+                    </div>
+                  </div>
+              }
             </div>
           )
         })}
