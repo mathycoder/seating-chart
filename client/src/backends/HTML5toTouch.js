@@ -8,7 +8,7 @@ export default {
   }, {
     backend: TouchBackend,
     options: {
-      enableMouseEvents: true
+      enableMouseEvents: false
     },
     preview: true,
     transition: TouchTransition
