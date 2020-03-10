@@ -24,22 +24,9 @@ const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs, se
       <DndProvider backend={Backend}>
         <div className="klass-show-wrapper">
           <div className="klass-show-header">
-            <div className="klass-title">
-              <NavLink to={`/classes/${klass.id}`}>Class { klass.name }</NavLink>
-            </div>
             <div>
               <NavLink to={`/classes/${klass.id}/students`}>
                 <button className="myButton">Manage Students</button>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink to={`/classes/${klass.id}/pairs`}>
-                <button className="myButton">Pairs</button>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink to={`/classes/${klass.id}/groups`}>
-                <button className="myButton">Groups</button>
               </NavLink>
             </div>
             <div>

@@ -28,6 +28,10 @@ const NavBar = ({ currentUser, klasses, currentKlass }) => {
       if (refKlassDropdown.current.contains(e.target) || refKlassButton.current.contains(e.target)) { return }
       setKlassDropdown(false)
     }
+    if (groupingDropdownRef.current){
+      if (refGroupingDropdown.current.contains(e.target) || refGroupingButton.current.contains(e.target)) { return }
+      setGroupingDropdown(false)
+    }
   }
 
   useEffect(() => {
@@ -87,7 +91,7 @@ const NavBar = ({ currentUser, klasses, currentKlass }) => {
           <NavLink to="/classes">{title()}</NavLink>
         </div>
         <div className="dropdown-button" ref={refKlassButton} onClick={() => setKlassDropdown(!klassDropdown)}>
-          Classes
+          {currentKlass ? `Class ${currentKlass.name}` : 'Classes'}
         </div>
         {currentKlass ?
           <div className="dropdown-button" ref={refGroupingButton} onClick={() => setGroupingDropdown(!groupingDropdown)}>
