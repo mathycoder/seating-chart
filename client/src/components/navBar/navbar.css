@@ -7,7 +7,7 @@
 }
 
 .navbar-wrapper > div {
-  margin: 0 10px;
+  margin: 0 15px;
 }
 
 .navbar-wrapper a {
@@ -63,11 +63,11 @@
 }
 
 .dropdown-menu.klass-dropdown {
-  margin-left: 130px;
+  margin-left: 145px;
 }
 
 .dropdown-menu.grouping-dropdown {
-  margin-left: 210px;
+  margin-left: 245px;
 }
 
 .dropdown-menu.opened {

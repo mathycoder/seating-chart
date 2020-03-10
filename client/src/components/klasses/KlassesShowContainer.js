@@ -10,7 +10,7 @@ import './css/klassShow.css'
 import { DndProvider } from 'react-dnd'
 import Backend from 'react-dnd-html5-backend'
 
-const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs, setCurrentKlass }) => {
+const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs, setCurrentKlass, currentGrouping }) => {
 
   useEffect(() => {
     if (klass) {
@@ -29,9 +29,13 @@ const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs, se
                 <button className="myButton">Manage Students</button>
               </NavLink>
             </div>
-            <div>
-              <button onClick={() => dynamicPairs(klass)} className="myButton">Generate Dynamic Pairs</button>
-            </div>
+            {currentGrouping === "Pairs"
+              ? <div>
+                  <button onClick={() => dynamicPairs(klass)} className="myButton">Generate Dynamic Pairs</button>
+                </div>
+              : null
+            }
+
           </div>
           <Switch>
             <Route path="/classes/:id/students"
@@ -54,7 +58,8 @@ const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs, se
 
 const mapStateToProps = (state) => {
   return {
-    students: state.students
+    students: state.students,
+    currentGrouping: state.currentKlass.grouping
   }
 }
 
