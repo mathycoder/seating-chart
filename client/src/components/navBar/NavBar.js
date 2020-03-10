@@ -3,7 +3,7 @@ import './navbar.css'
 import { NavLink } from "react-router-dom"
 import { connect } from 'react-redux'
 
-const NavBar = ({ currentUser, klasses, currentKlass }) => {
+const NavBar = ({ currentUser, klasses, currentKlass, currentGrouping }) => {
   const [ klassDropdown, _setKlassDropdown ] = useState(false)
   const refKlassDropdown = useRef()
   const refKlassButton = useRef()
@@ -95,7 +95,7 @@ const NavBar = ({ currentUser, klasses, currentKlass }) => {
         </div>
         {currentKlass ?
           <div className="dropdown-button" ref={refGroupingButton} onClick={() => setGroupingDropdown(!groupingDropdown)}>
-            Grouping
+            {currentGrouping ? `${currentGrouping}`: 'Grouping'}
           </div>
           : null
         }
@@ -129,7 +129,8 @@ const NavBar = ({ currentUser, klasses, currentKlass }) => {
 function mapStateToProps(state){
   return {
     currentUser: state.currentUser,
-    currentKlass: state.currentKlass,
+    currentKlass: state.currentKlass.klass,
+    currentGrouping: state.currentKlass.grouping,
     klasses: state.klasses
   }
 }

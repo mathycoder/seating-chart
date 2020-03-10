@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Desk from './Desk'
 import EmptyDesk from './EmptyDesk'
 import DeskDrag from './DeskDrag'
 import { useDrag } from 'react-dnd'
+import { setCurrentGroup } from '../../actions/currentKlassActions.js'
+import { connect } from 'react-redux'
 import './css/desks-containers.css'
 import './css/group-desk.css'
 
-const GroupDesksContainer = ({ students, klass }) => {
+const GroupDesksContainer = ({ students, klass, setCurrentGroup }) => {
+  useEffect(() => {
+    setCurrentGroup("Groups")
+  }, [])
+
+
   const studentsInTheirSeats = () => {
     return students.allIds.sort((a,b) => {
       const studentA = students.byId[a]
@@ -49,4 +56,10 @@ const GroupDesksContainer = ({ students, klass }) => {
   )
 }
 
-export default GroupDesksContainer
+const mapDispatchToProps = dispatch => {
+  return {
+    setCurrentGroup: group => dispatch(setCurrentGroup(group))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(GroupDesksContainer)
