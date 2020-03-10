@@ -18,10 +18,21 @@ class StudentsController < ApplicationController
   end
 
   def update
-    klass = Klass.find_by(id: params[:klass_id])
-    @student = Student.find_by(id: params[:id])
-    params[:type] == "pair" ? @student.update(seat_pair: params[:seat]) : @student.update(seat_group: params[:seat])
-    render json: @student, status: 201
+    if params[:type]
+      klass = Klass.find_by(id: params[:klass_id])
+      @student = Student.find_by(id: params[:id])
+      params[:type] == "pair" ? @student.update(seat_pair: params[:seat]) : @student.update(seat_group: params[:seat])
+      render json: @student, status: 201
+    else
+      @student = Student.find_by(id: params[:id])
+      if @student.update(student_params)
+        render json: @student, status: 201
+      else
+        render json: {
+          error: @student.errors.full_messages[0]
+          }, status: 422
+      end
+    end
   end
 
   def destroy

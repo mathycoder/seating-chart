@@ -64,10 +64,10 @@ export function addStudent(klass, studentData){
   }
 }
 
-export function editStudent(klass, studentData){
+export function editStudent(klass, studentData, studentId){
   return (dispatch) => {
-    dispatch({type: 'START_EDITING_STUDENT'})
-    fetch(`/klasses/${klass.id}/students/${studentData.id}`, {
+    dispatch({type: 'START_EDITING_STUDENT', studentData, studentId})
+    fetch(`/klasses/${klass.id}/students/${studentId}`, {
       method: 'PATCH',
       credentials: "include",
       body: JSON.stringify(studentData),

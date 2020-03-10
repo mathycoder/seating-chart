@@ -21,6 +21,17 @@ function studentsById(state = {}, action) {
         ...state, ...normalizedObject([action.student])
       }
 
+    case 'START_EDITING_STUDENT':
+      return {
+        ...state,
+        [`student${action.studentId}`]: action.studentData
+      }
+
+    case 'EDIT_STUDENT':
+      return {
+        ...state, ...normalizedObject([action.student])
+      }
+
     case 'SWAP_STUDENTS_REQUEST2':
       return {
         ...state

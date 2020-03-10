@@ -3,11 +3,12 @@ import { addStudent, editStudent } from '../../actions/studentActions.js'
 import { connect } from 'react-redux'
 import './css/studentForm.css'
 
-const StudentForm = ({ klass, student, addStudent, setEditStudentId }) => {
+const StudentForm = ({ klass, student, addStudent, setEditStudentId, editStudent }) => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [academicScore, setAcademicScore] = useState(1)
   const [behaviorScore, setBehaviorScore] = useState(1)
+  const [id, setId] = useState(null)
 
   useEffect(() => {
     if (student){
@@ -15,6 +16,7 @@ const StudentForm = ({ klass, student, addStudent, setEditStudentId }) => {
       setLastName(student.lastName)
       setAcademicScore(student.academicScore)
       setBehaviorScore(student.behaviorScore)
+      setId(student.id)
     }
   }, [])
 
@@ -28,13 +30,15 @@ const StudentForm = ({ klass, student, addStudent, setEditStudentId }) => {
         behavior_score: behaviorScore
       }
     }
-    addStudent(klass, studentData)
-    window.setTimeout(() => {
+    student ? editStudent(klass, studentData, id) : addStudent(klass, studentData)
+    if (student) {
+      setEditStudentId(null)
+    } else {
       setFirstName('')
       setLastName('')
       setAcademicScore(1)
       setBehaviorScore(1)
-    },100)
+    }
   }
 
   return (
@@ -83,7 +87,7 @@ const StudentForm = ({ klass, student, addStudent, setEditStudentId }) => {
       </div>
 
       <div className="student-edit-buttons">
-        <input type="submit" value="Add" className="myButton little" />
+        <input type="submit" value={student ? 'Save' : 'Add'} className="myButton little" />
         {student ? <button
                     onClick={() => setEditStudentId(null)}
                     className="myButton little">
@@ -99,7 +103,7 @@ const StudentForm = ({ klass, student, addStudent, setEditStudentId }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addStudent: (klass, studentData) => dispatch(addStudent(klass, studentData)),
-    editStudent: (klass, studentData) => dispatch(editStudent(klass, studentData))
+    editStudent: (klass, studentData, studentId) => dispatch(editStudent(klass, studentData, studentId))
   }
 }
 
