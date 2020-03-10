@@ -25,7 +25,7 @@ const Desk = ({ klass, student, students, index, swap, type }) => {
 
   const generatePreview = ({itemType, item, style}) => {
     return (
-      <div className={`desk`}>
+      <div style={style} className={`desk`}>
         {student.firstName}
         <br/>
         {student.lastName}
