@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Login from './components/sessions/Login'
 import Logout from './components/sessions/Logout'
 import SignUp from './components/teachers/SignUp'
+import FlashMessage from './components/flash/FlashMessage'
 import NavBar from './components/navBar/NavBar'
 import KlassesContainer from './components/klasses/KlassesContainer'
 import { getCurrentUser } from './actions/currentUserActions.js'
@@ -25,7 +26,7 @@ const App = ({ currentUser, getCurrentUser }) => {
       </Switch>
     )
   }
-
+  
   return (
     <Router>
       <div className="App">
@@ -33,6 +34,7 @@ const App = ({ currentUser, getCurrentUser }) => {
           <NavBar />
         </header>
         <main>
+          <FlashMessage />
           { currentUser ? renderRoutes() : null }
         </main>
       </div>

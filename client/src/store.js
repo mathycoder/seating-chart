@@ -3,13 +3,15 @@ import thunk from 'redux-thunk'
 import currentUserReducer from './reducers/currentUserReducer.js'
 import klassesReducer from './reducers/klassesReducer.js'
 import studentsReducer from './reducers/studentsReducer.js'
+import flashReducer from './reducers/flashReducer.js'
 import { combineReducers } from 'redux'
 
 
 const rootReducer = combineReducers({
   currentUser: currentUserReducer,
   klasses: klassesReducer,
-  students: studentsReducer
+  students: studentsReducer,
+  flashMessage: flashReducer
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
