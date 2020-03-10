@@ -55,7 +55,7 @@ export function addStudent(klass, studentData){
       .then(resp => resp.json())
       .then(student => {
         if (student.error){
-
+          dispatch({ type: 'ADD_FLASH_MESSAGE', message: student.error })
         } else {
           dispatch({ type: 'ADD_STUDENT', student })
         }
