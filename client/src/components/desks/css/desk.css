@@ -1,22 +1,102 @@
-.desk-container {
-  background-color: yellow;
-  height:82px;
-  width:122px;
-  overflow: hidden;
+.pair-desks-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 102px 102px 40px);
+  grid-template-rows: repeat(4, 120px);
+}
+
+.group-desks-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 102px 102px 40px);
+  grid-template-rows: repeat(4, 72px 121px);
 }
 
 .desk {
-  padding: 20px;
   border: 1px solid black;
-  /* border-color: rgb(166, 152, 143); */
-  width: 80px;
-  height: 40px;
+  width: 100px;
+  height: 70px;
   text-align: center;
-  font-weight: bold;
+  font-weight: 400;
   border-radius: 10px;
-  /* background-color: white; */
   background-color: rgb(225, 217, 214);
-  margin-bottom: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.desk div {
+  width: 100%;
+}
+
+@media screen and (max-width: 1000px){
+  .desk {
+    width: 80px;
+    height: 48px;
+    font-size: 14px;
+  }
+
+  .desk .ratings {
+    display: none;
+  }
+
+  .pair-desks-container {
+    grid-template-columns: repeat(4, 82px 82px 30px);
+    grid-template-rows: repeat(4, 120px);
+  }
+
+  .group-desks-container {
+    grid-template-columns: repeat(4, 82px 82px 30px);
+    grid-template-rows: repeat(4, 50px 121px);
+  }
+}
+
+@media screen and (max-width: 800px){
+  .desk .last-name {
+    display: none;
+  }
+
+  .desk .ratings {
+    display: none;
+  }
+
+  .desk {
+    font-size: 12px;
+    width: 60px;
+    height: 46px;
+    border-radius: 5px;
+  }
+
+  .pair-desks-container {
+    grid-template-columns: repeat(4, 62px 62px 22px);
+    grid-template-rows: repeat(4, 120px);
+  }
+
+  .group-desks-container {
+    grid-template-columns: repeat(4, 62px 62px 22px);
+    grid-template-rows: repeat(4, 48px 121px);
+  }
+}
+
+@media screen and (max-width: 600px){
+  .desk {
+    font-size: 12px;
+    width: 50px;
+    height: 38px;
+    border-radius: 5px;
+  }
+
+  .pair-desks-container {
+    grid-template-columns: repeat(4, 52px 52px 15px);
+    grid-template-rows: repeat(4, 120px);
+  }
+
+  .group-desks-container {
+    grid-template-columns: repeat(4, 52px 52px 15px);
+    grid-template-rows: repeat(4, 40px 121px);
+  }
 }
 
 .desk.empty {

@@ -6,7 +6,6 @@ import { useDrag } from 'react-dnd'
 import { setCurrentGroup } from '../../actions/currentKlassActions.js'
 import { connect } from 'react-redux'
 import './css/desks-containers.css'
-import './css/group-desk.css'
 
 const GroupDesksContainer = ({ students, klass, setCurrentGroup }) => {
   useEffect(() => {
