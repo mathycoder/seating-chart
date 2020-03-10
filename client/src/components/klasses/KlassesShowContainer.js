@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchStudents, dynamicPairs } from '../../actions/studentActions.js'
+import { setCurrentKlass } from '../../actions/currentKlassActions.js'
 import StudentsIndex from '../students/StudentsIndex'
 import PairDesksContainer from '../desks/PairDesksContainer'
 import GroupDesksContainer from '../desks/GroupDesksContainer'
@@ -9,10 +10,13 @@ import './css/klassShow.css'
 import { DndProvider } from 'react-dnd'
 import Backend from 'react-dnd-html5-backend'
 
-const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs }) => {
+const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs, setCurrentKlass }) => {
 
   useEffect(() => {
-    if (klass) {fetchStudents(klass)}
+    if (klass) {
+      fetchStudents(klass)
+      setCurrentKlass(klass)
+    }
   }, [klass])
 
   if (klass) {
@@ -70,7 +74,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchStudents: klass => dispatch(fetchStudents(klass)),
-    dynamicPairs: klass => dispatch(dynamicPairs(klass))
+    dynamicPairs: klass => dispatch(dynamicPairs(klass)),
+    setCurrentKlass: klass => dispatch(setCurrentKlass(klass))
   }
 }
 

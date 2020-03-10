@@ -3,15 +3,24 @@ import './navbar.css'
 import { NavLink } from "react-router-dom"
 import { connect } from 'react-redux'
 
-const NavBar = ({ currentUser, klasses }) => {
+const NavBar = ({ currentUser, klasses, currentKlass }) => {
   const [ klassDropdown, _setKlassDropdown ] = useState(false)
   const refKlassDropdown = useRef()
   const refKlassButton = useRef()
+  const [ groupingDropdown, _setGroupingDropdown ] = useState(false)
+  const refGroupingDropdown = useRef()
+  const refGroupingButton = useRef()
 
   const klassDropdownRef = React.useRef(klassDropdown);
     const setKlassDropdown = data => {
       klassDropdownRef.current = data;
       _setKlassDropdown(data);
+    };
+
+  const groupingDropdownRef = React.useRef(klassDropdown);
+    const setGroupingDropdown = data => {
+      groupingDropdownRef.current = data;
+      _setGroupingDropdown(data);
     };
 
   const handleClick = (e) => {
@@ -51,6 +60,26 @@ const NavBar = ({ currentUser, klasses }) => {
     )
   }
 
+  const renderGroupingDropdown = () => {
+    return (
+      <div
+        ref={refGroupingDropdown}
+        className={`dropdown-menu grouping-dropdown ${groupingDropdown ? 'opened': 'closed'}`}>
+          {["Pairs", "Groups"].map((type, index) => {
+            return (
+              <NavLink
+                to={`/classes/${currentKlass.id}/${type.toLowerCase()}`}
+                onClick={() => setGroupingDropdown(false)}
+                key={index}
+                >
+                {type}
+              </NavLink>
+              )
+          })}
+        </div>
+    )
+  }
+
   const loggedInNavBar = () => {
     return (
       <>
@@ -60,6 +89,13 @@ const NavBar = ({ currentUser, klasses }) => {
         <div className="dropdown-button" ref={refKlassButton} onClick={() => setKlassDropdown(!klassDropdown)}>
           Classes
         </div>
+        {currentKlass ?
+          <div className="dropdown-button" ref={refGroupingButton} onClick={() => setGroupingDropdown(!groupingDropdown)}>
+            Grouping
+          </div>
+          : null
+        }
+
         <div id="logout-button"><NavLink to="/logout">Logout</NavLink></div>
       </>
     )
@@ -81,6 +117,7 @@ const NavBar = ({ currentUser, klasses }) => {
         {currentUser && currentUser !== 'none' ? loggedInNavBar() : loggedOutNavBar()}
       </div>
       {renderKlassDropdown()}
+      {currentKlass ? renderGroupingDropdown(): null}
     </>
   )
 }
@@ -88,6 +125,7 @@ const NavBar = ({ currentUser, klasses }) => {
 function mapStateToProps(state){
   return {
     currentUser: state.currentUser,
+    currentKlass: state.currentKlass,
     klasses: state.klasses
   }
 }

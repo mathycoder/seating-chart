@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchKlasses } from '../../actions/klassActions.js'
+import { clearCurrentKlass } from '../../actions/currentKlassActions.js'
 import { NavLink } from 'react-router-dom'
 import KlassForm from './KlassForm'
 import './css/klassesIndexContainer.css'
 
-const KlassesIndexContainer = ({ currentUser, fetchKlasses, klasses }) => {
+const KlassesIndexContainer = ({ currentUser, fetchKlasses, clearCurrentKlass, klasses }) => {
   const [displayForm, displayFormSet] = useState(false)
   const [editKlassId, setEditKlassId] = useState(null)
+
+  useEffect(() => {
+    clearCurrentKlass()
+  }, [])
 
   return (
     <div className="signup-wrapper klass-index-wrapper">
@@ -63,7 +68,8 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    fetchKlasses: () => dispatch(fetchKlasses())
+    fetchKlasses: () => dispatch(fetchKlasses()),
+    clearCurrentKlass: () => dispatch(clearCurrentKlass())
   }
 }
 

@@ -26,7 +26,7 @@ const App = ({ currentUser, getCurrentUser }) => {
       </Switch>
     )
   }
-  
+
   return (
     <Router>
       <div className="App">
