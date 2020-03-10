@@ -9,8 +9,9 @@ import { Switch, Route, NavLink } from 'react-router-dom'
 import './css/klassShow.css'
 import { DndProvider } from 'react-dnd'
 import Backend from 'react-dnd-html5-backend'
-import MultiBackend from 'react-dnd-multi-backend'
+import MultiBackend, { Preview } from 'react-dnd-multi-backend';
 import HTML5toTouch from '../../backends/HTML5toTouch'
+import GeneratePreview from '../../backends/GeneratePreview'
 
 const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs, setCurrentKlass, currentGrouping }) => {
 
@@ -27,6 +28,7 @@ const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs, se
   if (klass) {
     return (
       <DndProvider backend={MultiBackend} options={HTML5toTouch}>
+        <Preview generator={GeneratePreview} />
         <div className="klass-show-wrapper">
           <div className="klass-show-header">
             <div>

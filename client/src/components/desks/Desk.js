@@ -3,7 +3,7 @@ import './css/desk.css'
 import { useDrag, useDrop } from 'react-dnd'
 import { swapSeats } from '../../actions/studentActions.js'
 import { connect } from 'react-redux'
-import MultiBackend, { Preview } from 'react-dnd-multi-backend';
+// import MultiBackend, { Preview } from 'react-dnd-multi-backend';
 
 const Desk = ({ klass, student, students, index, swap, type }) => {
   const [{ isDragging }, drag] = useDrag({
@@ -23,20 +23,6 @@ const Desk = ({ klass, student, students, index, swap, type }) => {
     },
   })
 
-  const generatePreview = ({itemType, item, style}) => {
-    const { student } = item
-    return (
-      <div style={style} className={`desk`}>
-        {student.firstName}
-        <br/>
-        {student.lastName}
-        <br/>
-        <span className="academic-score">{student.academicScore}</span>
-        <span className="behavior-score">{student.behaviorScore}</span>
-      </div>
-    )
-  };
-
   return (
     <>
       <div ref={drop}>
@@ -48,7 +34,6 @@ const Desk = ({ klass, student, students, index, swap, type }) => {
           <span className="academic-score">{student.academicScore}</span>
           <span className="behavior-score">{student.behaviorScore}</span>
         </div>
-        <Preview generator={generatePreview} />
       </div>
       {index % 2 === 1 ? <div className="gap"></div> : null}
     </>
