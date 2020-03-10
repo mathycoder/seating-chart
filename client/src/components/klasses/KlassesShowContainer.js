@@ -10,6 +10,7 @@ import { DndProvider } from 'react-dnd'
 import Backend from 'react-dnd-html5-backend'
 
 const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs }) => {
+
   useEffect(() => {
     if (klass) {fetchStudents(klass)}
   }, [klass])

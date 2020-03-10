@@ -22,3 +22,62 @@
 .navbar-wrapper .title {
   font-size: 24px;
 }
+
+.dropdown-button:hover {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  padding: 0px;
+  position: absolute;
+  z-index: 10;
+  background-color: #f9f9f9;
+  width: 200px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 2px 3px 3px lightgray, -2px 3px 3px lightgray;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  transition-property: max-height;
+  transition-duration: .4s;
+  transition-timing-function: cubic-bezier(.56, 1, .56, 1);
+}
+
+.navbar a:hover, .navbar .klass-dropdown:hover, .klass-dropdown-menu a:hover, .klass-dropdown-menu a:hover  {
+  color: gray;
+  cursor: pointer;
+}
+
+.dropdown-menu.klass-dropdown {
+  margin-left: 70px;
+}
+
+.dropdown-menu.opened {
+  max-height: 270px;
+}
+
+.dropdown-menu.closed {
+  max-height: 0;
+}
+
+.dropdown-menu a, .dropdown-menu div {
+  margin: 0;
+  padding: 12px 15px;
+  font-weight: 400;
+  font-size: 18px;
+  text-decoration: none;
+  color: #666666;
+  background-color: rgb(250, 250, 250);
+}
+
+.dropdown-menu a:hover, .dropdown-menu div:hover {
+  background-color: lightgray;
+  color: white;
+  cursor: pointer;
+}
+
+.dropdown-menu a:last-child, .dropdown-menu div:last-child  {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
