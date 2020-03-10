@@ -1,7 +1,7 @@
 .student-index-wrapper {
   border: 1px solid black;
   width: 90vw;
-  max-width: 600px;
+  max-width: 610px;
 }
 
 .student-index-wrapper > div:nth-child(2n+3) {
@@ -22,6 +22,10 @@
 .student-index-row div {
   margin: 20px 10px;
   width: 100px;
+}
+
+.student-index-row div:last-child {
+  width: 110px;
 }
 
 .scores {

@@ -26,8 +26,8 @@ const StudentsIndex = ({ klass, students, deleteStudent }) => {
               <div className="scores">{student.academicScore}</div>
               <div className="scores">{student.behaviorScore}</div>
               <div className="student-edit-buttons">
-                <button>Edit</button>
-                <button onClick={() => deleteStudent(klass, student)}>Delete</button>
+                <button className="myButton little">Edit</button>
+                <button className="myButton little" onClick={() => deleteStudent(klass, student)}>Delete</button>
               </div>
             </div>
           )

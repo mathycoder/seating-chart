@@ -74,7 +74,7 @@ const StudentForm = ({ klass, addStudent }) => {
       </div>
 
       <div className="student-edit-buttons">
-        <input type="submit" value="Add" />
+        <input type="submit" value="Add" className="myButton little" />
       </div>
     </form>
   )
