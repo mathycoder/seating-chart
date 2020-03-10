@@ -4,12 +4,21 @@ import { NavLink } from "react-router-dom"
 import { connect } from 'react-redux'
 
 const NavBar = ({ currentUser, klasses }) => {
-  const [ klassDropdown, setKlassDropdown ] = useState(false)
-  const refKlassDropdown = useRef();
+  const [ klassDropdown, _setKlassDropdown ] = useState(false)
+  const refKlassDropdown = useRef()
+  const refKlassButton = useRef()
+
+  const klassDropdownRef = React.useRef(klassDropdown);
+    const setKlassDropdown = data => {
+      klassDropdownRef.current = data;
+      _setKlassDropdown(data);
+    };
 
   const handleClick = (e) => {
-    if (refKlassDropdown.current.contains(e.target)) { return }
-    setKlassDropdown(false)
+    if (klassDropdownRef.current){
+      if (refKlassDropdown.current.contains(e.target) || refKlassButton.current.contains(e.target)) { return }
+      setKlassDropdown(false)
+    }
   }
 
   useEffect(() => {
@@ -18,10 +27,6 @@ const NavBar = ({ currentUser, klasses }) => {
       document.removeEventListener('mousedown', handleClick)
     }
   }, [])
-
-  // useEffect(() => {
-  //
-  // }, [])
 
   const title = () => <><strong>Flex</strong>Seats</>
 
@@ -52,10 +57,10 @@ const NavBar = ({ currentUser, klasses }) => {
         <div className="title">
           <NavLink to="/classes">{title()}</NavLink>
         </div>
-        <div className="dropdown-button" onClick={() => setKlassDropdown(!klassDropdown)}>
+        <div className="dropdown-button" ref={refKlassButton} onClick={() => setKlassDropdown(!klassDropdown)}>
           Classes
         </div>
-        <div><NavLink to="/logout">Logout</NavLink></div>
+        <div id="logout-button"><NavLink to="/logout">Logout</NavLink></div>
       </>
     )
   }
@@ -64,8 +69,8 @@ const NavBar = ({ currentUser, klasses }) => {
     return (
       <>
         <div className="title">{title()}</div>
-        <div><NavLink to="/login">Login</NavLink></div>
-        <div><NavLink to="/signup">Sign Up</NavLink></div>
+        <div id="login-button"><NavLink to="/login">Login</NavLink></div>
+        <div id="signup"><NavLink to="/signup">Sign Up</NavLink></div>
       </>
     )
   }

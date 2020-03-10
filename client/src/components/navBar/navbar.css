@@ -27,6 +27,19 @@
   cursor: pointer;
 }
 
+#logout-button {
+  margin-left: auto;
+  margin-right: 30px;
+}
+
+#login-button {
+  margin-left: auto;
+}
+
+#signup {
+  margin-right: 30px;
+}
+
 .dropdown-menu {
   padding: 0px;
   position: absolute;
