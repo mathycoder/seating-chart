@@ -43,13 +43,14 @@ const StudentsIndex = ({ klass, students, deleteStudent }) => {
           )
         })}
         {showForm ? <StudentForm klass={ klass }/> : null}
+        <button
+          className="myButton"
+          id="add-student-button"
+          onClick={() => setShowForm(!showForm)}
+        >
+          {showForm ? 'Cancel' : 'Add Student'}
+        </button>
       </div>
-      <button
-        className="myButton"
-        onClick={() => setShowForm(!showForm)}
-      >
-        {showForm ? 'Cancel' : 'Add Student'}
-      </button>
     </>
   )
 }

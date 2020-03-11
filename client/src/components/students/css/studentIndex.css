@@ -40,3 +40,15 @@
 .student-edit-buttons button {
   margin: 0 2px;
 }
+
+#add-student-button {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 0;
+  border-color: rgb(128,128,128);
+  background: none;
+  background-color: rgb(128,128,128);
+  color: white;
+  text-shadow: none;
+}
