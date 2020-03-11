@@ -30,7 +30,7 @@ const PairDesksContainer = ({ klass, students, setCurrentGroup }) => {
   }
 
   return (
-    <div className="pair-desks-container">
+    <div className="pair-desks-container noselect">
       {seats().map((studentId, index) => {
         const student = students.byId[studentId]
         return student ?

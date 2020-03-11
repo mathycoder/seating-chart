@@ -15,3 +15,8 @@
   text-decoration: none;
   color: black;
 }
+
+.gear img {
+  width: 20px;
+  margin-top: -20px;
+}

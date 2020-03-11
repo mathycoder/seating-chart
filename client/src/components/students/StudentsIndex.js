@@ -9,7 +9,7 @@ const StudentsIndex = ({ klass, students, deleteStudent }) => {
   const [editStudentId, setEditStudentId] = useState(null)
 
   return (
-    <>
+    <div className="student-index-page">
       <div className="student-index-wrapper">
         <div className="student-index-row header">
           <div>First Name</div>
@@ -51,7 +51,7 @@ const StudentsIndex = ({ klass, students, deleteStudent }) => {
           {showForm ? 'Cancel' : 'Add Student'}
         </button>
       </div>
-    </>
+    </div>
   )
 }
 

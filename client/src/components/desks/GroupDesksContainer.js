@@ -31,7 +31,7 @@ const GroupDesksContainer = ({ students, klass, setCurrentGroup }) => {
   }
 
   return (
-    <div className="group-desks-container">
+    <div className="group-desks-container noselect">
       {seats().map((studentId, index) => {
         const student = students.byId[studentId]
         return student ?

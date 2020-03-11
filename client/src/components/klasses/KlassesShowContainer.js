@@ -5,6 +5,7 @@ import { setCurrentKlass } from '../../actions/currentKlassActions.js'
 import StudentsIndex from '../students/StudentsIndex'
 import PairDesksContainer from '../desks/PairDesksContainer'
 import GroupDesksContainer from '../desks/GroupDesksContainer'
+import Gear from '../gear/Gear'
 import { Switch, Route, NavLink } from 'react-router-dom'
 import './css/klassShow.css'
 import { DndProvider } from 'react-dnd'
@@ -22,27 +23,35 @@ const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs, se
     }
   }, [klass])
 
-
-// <DndProvider backend={Backend}>
-
   if (klass) {
     return (
       <DndProvider backend={MultiBackend} options={HTML5toTouch}>
         <Preview generator={GeneratePreview} />
         <div className="klass-show-wrapper">
-          <div className="desks-wrapper">
-            <Switch>
-              <Route path="/classes/:id/students"
-                render={() => <StudentsIndex klass={klass} students={students} />}
-              />
-              <Route path="/classes/:id/pairs"
-                render={() => <PairDesksContainer klass={klass} students={students} />}
-              />
-              <Route path="/classes/:id/groups"
-                render={() => <GroupDesksContainer klass={klass} students={students} />}
-              />
-            </Switch>
-          </div>
+          <Switch>
+            <Route path="/classes/:id/students"
+              render={() => <StudentsIndex klass={klass} students={students} />}
+            />
+            <Route path="/classes/:id/pairs"
+              render={() => <>
+                              <Gear type="pairs"/>
+                              <div className="desks-wrapper noselect">
+                                <PairDesksContainer klass={klass} students={students} />
+                              </div>
+                            </>
+                      }
+            />
+            <Route path="/classes/:id/groups"
+              render={() => <>
+                              <Gear type="groups"/>
+                              <div className="desks-wrapper noselect">
+                                <GroupDesksContainer klass={klass} students={students} />
+                              </div>
+                            </>
+                      }
+            />
+          </Switch>
+
         </div>
       </DndProvider>
     )
