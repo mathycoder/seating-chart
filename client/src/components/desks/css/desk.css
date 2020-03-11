@@ -99,6 +99,16 @@
   }
 }
 
+@media screen and (max-height: 450px){
+  .pair-desks-container {
+    grid-template-rows: repeat(4, 60px);
+  }
+
+  .group-desks-container {
+    grid-template-rows: repeat(4, 40px 80px);
+  }
+}
+
 .desk.empty {
   border-color: lightgray;
   background-color: white;

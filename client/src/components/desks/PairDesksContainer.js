@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import Desk from './Desk'
 import EmptyDesk from './EmptyDesk'
-import DeskDrag from './DeskDrag'
 import { useDrag } from 'react-dnd'
 import { connect } from 'react-redux'
 import { setCurrentGroup } from '../../actions/currentKlassActions.js'
