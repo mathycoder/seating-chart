@@ -81,7 +81,7 @@
 
   .group-desks-container {
     grid-template-columns: repeat(4, 62px 62px 22px);
-    grid-template-rows: repeat(4, 48px 121px);
+    grid-template-rows: repeat(2, 48px 121px);
   }
 }
 
@@ -100,7 +100,7 @@
 
   .group-desks-container {
     grid-template-columns: repeat(4, 52px 52px 15px);
-    grid-template-rows: repeat(4, 40px 121px);
+    grid-template-rows: repeat(2, 40px 121px);
   }
 }
 
@@ -116,13 +116,20 @@
   }
 }
 
+@media screen and (max-height: 590px){
+  .pair-desks-container {
+    grid-template-rows: repeat(4, 80px);
+  }
+
+}
+
 @media screen and (max-height: 450px){
   .pair-desks-container {
     grid-template-rows: repeat(4, 60px);
   }
 
   .group-desks-container {
-    grid-template-rows: repeat(4, 40px 80px);
+    grid-template-rows: repeat(2, 48px 80px);
   }
 }
 
