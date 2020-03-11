@@ -22,7 +22,30 @@ export function fetchStudents(klass){
 
 export function dynamicPairsHetero(klass){
   return (dispatch) => {
+    dispatch({ type: 'REQUEST_DYNAMIC_PAIRS_HETERO' })
      fetch(`/klasses/${klass.id}/students/dynamic_pairs_hetero`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
+    })
+      .then(resp => resp.json())
+      .then(students => {
+        if (students.error){
+
+        } else {
+          dispatch({ type: 'FETCH_STUDENTS', students })
+        }
+      })
+      .catch(console.log)
+  }
+}
+
+export function dynamicPairsHomo(klass){
+  return (dispatch) => {
+    dispatch({ type: 'REQUEST_DYNAMIC_PAIRS_HOMO' })
+     fetch(`/klasses/${klass.id}/students/dynamic_pairs_homo`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"

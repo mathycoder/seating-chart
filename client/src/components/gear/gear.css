@@ -50,6 +50,10 @@
   height: 60px;
 }
 
+.gear-menu .options button {
+  margin: 0 10px;
+}
+
 @media screen and (max-height: 450px), (max-width: 500px){
   .gear-menu {
     position: relative;

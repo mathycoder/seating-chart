@@ -21,7 +21,7 @@ class Klass < ApplicationRecord
     self.students
   end
 
-  def generate_seats_pairs
+  def generate_seats_pairs_hetero
     sorted_students = self.students.sort_by{|student| student.academic_score + student.behavior_score}.reverse
     seated_students = []
     while sorted_students.length > 0
@@ -33,6 +33,15 @@ class Klass < ApplicationRecord
       student.update(seat_pair: index)
     end
     seated_students
+  end
+
+  def generate_seats_pairs_homo
+    sorted_students = self.students.sort_by{|student| student.academic_score + student.behavior_score}.reverse
+    sorted_students.each_with_index do |student, index|
+      sorted_students[index].seat_pair = index
+      student.update(seat_pair: index)
+    end
+    sorted_students
   end
 
 end

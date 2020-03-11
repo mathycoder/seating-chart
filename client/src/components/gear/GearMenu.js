@@ -1,18 +1,26 @@
 import React from 'react'
-import { dynamicPairsHetero } from '../../actions/studentActions.js'
+import { dynamicPairsHetero, dynamicPairsHomo } from '../../actions/studentActions.js'
 import { connect } from 'react-redux'
 
 
-const GearMenu = ({ open, currentKlass, currentGrouping, dynamicPairsHetero }) => {
+const GearMenu = ({ open, currentKlass, currentGrouping, dynamicPairsHetero, dynamicPairsHomo }) => {
 
   const renderPairMenu = () => {
     return (
-      <button
-          className="myButton"
-          onClick={() => dynamicPairsHetero(currentKlass)}
-        >
-          Heterogenous
-      </button>
+      <>
+        <button
+            className="myButton"
+            onClick={() => dynamicPairsHetero(currentKlass)}
+          >
+            Heterogenous
+        </button>
+        <button
+            className="myButton"
+            onClick={() => dynamicPairsHomo(currentKlass)}
+          >
+            Homogenous
+        </button>
+      </>
     )
   }
 
@@ -38,7 +46,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dynamicPairsHetero: klass => dispatch(dynamicPairsHetero(klass))
+    dynamicPairsHetero: klass => dispatch(dynamicPairsHetero(klass)),
+    dynamicPairsHomo: klass => dispatch(dynamicPairsHomo(klass))
   }
 }
 
