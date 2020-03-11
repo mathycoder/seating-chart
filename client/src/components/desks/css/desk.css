@@ -2,8 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* height: 85vh;
-  overflow-y: scroll; */
+  height: 85vh;
 }
 
 .pair-desks-container {
@@ -55,7 +54,7 @@
 
   .group-desks-container {
     grid-template-columns: repeat(4, 82px 82px 30px);
-    grid-template-rows: repeat(4, 50px 121px);
+    grid-template-rows: repeat(2, 50px 121px);
   }
 }
 
@@ -127,7 +126,10 @@
 
   .desks-wrapper {
     padding-top: 20px;
+    height: 65vh;
   }
+
+
 }
 
 @media screen and (max-height: 450px){
