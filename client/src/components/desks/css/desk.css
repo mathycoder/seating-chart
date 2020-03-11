@@ -150,6 +150,7 @@
   }
 
   .group-desks-container {
+    padding-top: 20px;
     grid-template-rows: repeat(2, 48px 80px);
   }
 }

@@ -1,4 +1,46 @@
+.gear {
+  display: flex;
+  align-items: flex-start;
+}
+
 .gear img {
   width: 20px;
-  margin-top: -20px;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+
+.gear .clock{
+  transform-origin: center;
+  transform: rotate(45deg);
+  transition: transform 250ms ease;
+}
+
+.gear .counterclock{
+  transform-origin: center;
+  transform: rotate(-45deg);
+  transition: transform 250ms ease;
+}
+
+.gear-menu {
+  position: absolute;
+  display: hidden;
+  margin-left: 20px;
+  margin-top: -10px;
+  background-color: yellow;
+  width: 85%;
+  height: 0px;
+  transition: height 250ms ease;
+  overflow-y: hidden;
+}
+
+.gear-menu.slide {
+  display: block;
+  height: 80px;
+}
+
+@media screen and (max-height: 450px), (max-width: 500px){
+  .gear-menu {
+    position: relative;
+    margin-bottom: 10px;
+  }
 }
