@@ -1,6 +1,7 @@
 import React from 'react'
+import './gear.css'
 
-const Gear = () => {
+const Gear = ({ type }) => {
   return (
     <div className="gear">
       <img src="/gear.png" alt="gear"/>
