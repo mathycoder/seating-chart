@@ -22,20 +22,32 @@
 }
 
 .gear-menu {
-  position: absolute;
-  display: hidden;
+  /* position: absolute; */
   margin-left: 20px;
   margin-top: -10px;
-  background-color: yellow;
+  background-color: rgb(254, 252, 196);
   width: 85%;
   height: 0px;
   transition: height 250ms ease;
   overflow-y: hidden;
+  border-radius: 5px;
 }
 
 .gear-menu.slide {
   display: block;
-  height: 80px;
+  height: 100px;
+}
+
+.gear-menu .gear-title {
+  padding: 5px;
+  text-align: center;
+}
+
+.gear-menu .options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
 }
 
 @media screen and (max-height: 450px), (max-width: 500px){
