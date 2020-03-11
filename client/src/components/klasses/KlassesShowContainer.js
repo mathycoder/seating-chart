@@ -39,17 +39,19 @@ const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs, se
             }
 
           </div>
-          <Switch>
-            <Route path="/classes/:id/students"
-              render={() => <StudentsIndex klass={klass} students={students} />}
-            />
-            <Route path="/classes/:id/pairs"
-              render={() => <PairDesksContainer klass={klass} students={students} />}
-            />
-            <Route path="/classes/:id/groups"
-              render={() => <GroupDesksContainer klass={klass} students={students} />}
-            />
-          </Switch>
+          <div className="desks-wrapper">
+            <Switch>
+              <Route path="/classes/:id/students"
+                render={() => <StudentsIndex klass={klass} students={students} />}
+              />
+              <Route path="/classes/:id/pairs"
+                render={() => <PairDesksContainer klass={klass} students={students} />}
+              />
+              <Route path="/classes/:id/groups"
+                render={() => <GroupDesksContainer klass={klass} students={students} />}
+              />
+            </Switch>
+          </div>
         </div>
       </DndProvider>
     )

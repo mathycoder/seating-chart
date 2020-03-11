@@ -1,3 +1,8 @@
+.desks-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .pair-desks-container {
   margin-top: 20px;
   display: grid;
@@ -96,6 +101,18 @@
   .group-desks-container {
     grid-template-columns: repeat(4, 52px 52px 15px);
     grid-template-rows: repeat(4, 40px 121px);
+  }
+}
+
+@media screen and (max-width: 500px) and (orientation: portrait){
+  .desks-wrapper {
+    display: block;
+    width: 100vw + 20px;
+    overflow-x: scroll;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 

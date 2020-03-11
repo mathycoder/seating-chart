@@ -100,11 +100,11 @@ const NavBar = ({ currentUser, klasses, currentKlass, currentGrouping }) => {
           <NavLink to={currentKlass && currentGrouping ? `/classes/${currentKlass.id}/${currentGrouping.toLowerCase()}` : '/classes'}>{title()}</NavLink>
         </div>
         <div className="dropdown-button" ref={refKlassButton} onClick={() => setKlassDropdown(!klassDropdown)}>
-          {currentKlass ? `${currentKlass.name}` : 'Classes'}
+          {currentKlass ? <strong>{`${currentKlass.name}`}</strong> : 'Classes'}
         </div>
         {currentKlass ?
           <div className="dropdown-button" ref={refGroupingButton} onClick={() => setGroupingDropdown(!groupingDropdown)}>
-            {currentGrouping ? `${currentGrouping}`: 'Grouping'}
+            {currentGrouping ? <strong>{`${currentGrouping}`}</strong>: 'Grouping'}
           </div>
           : null
         }
