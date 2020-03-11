@@ -31,11 +31,6 @@ const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs, se
         <Preview generator={GeneratePreview} />
         <div className="klass-show-wrapper">
           <div className="klass-show-header">
-            <div>
-              <NavLink to={`/classes/${klass.id}/students`}>
-                <button className="myButton">Manage Students</button>
-              </NavLink>
-            </div>
             {currentGrouping === "Pairs"
               ? <div>
                   <button onClick={() => dynamicPairs(klass)} className="myButton">Generate Dynamic Pairs</button>

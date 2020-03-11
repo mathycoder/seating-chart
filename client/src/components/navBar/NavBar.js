@@ -41,7 +41,10 @@ const NavBar = ({ currentUser, klasses, currentKlass, currentGrouping }) => {
     }
   }, [])
 
-  const title = () => <><strong>Flex</strong>Seats</>
+  const title = () => <>
+                        <span className="title-a"></span>
+                        <span className="title-b"></span>
+                      </>
 
   const renderKlassDropdown = () => {
     return (
@@ -105,6 +108,13 @@ const NavBar = ({ currentUser, klasses, currentKlass, currentGrouping }) => {
           </div>
           : null
         }
+        { currentKlass
+          ? <div className="dropdown-button">
+              <NavLink to={`/classes/${currentKlass.id}/students`}>Students</NavLink>
+            </div>
+          : null
+        }
+
 
         <div id="logout-button"><NavLink to="/logout">Logout</NavLink></div>
       </>

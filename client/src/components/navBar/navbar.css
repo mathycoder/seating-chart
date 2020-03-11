@@ -1,3 +1,12 @@
+.title-a::after{
+  content: "Flex";
+  font-weight: bold;
+}
+
+.title-b::after{
+  content: "Seats";
+}
+
 .navbar-wrapper {
   display: flex;
   /* background-color: gray; */
@@ -10,19 +19,17 @@
   margin: 0 15px;
 }
 
-@media screen and (max-width: 500px){
-  .navbar-wrapper > div {
-    margin: 0 8px;
-  }
-}
-
 .navbar-wrapper a {
   text-decoration: none;
   color: black;
 }
 
 .navbar-wrapper a:hover {
-  color: lightgray;
+  cursor: pointer;
+}
+
+.navbar-wrapper a:active {
+  color: gray;
 }
 
 .navbar-wrapper .title {
@@ -63,17 +70,12 @@
   transition-timing-function: cubic-bezier(.56, 1, .56, 1);
 }
 
-.navbar a:hover  {
-  color: gray;
-  cursor: pointer;
-}
-
 .dropdown-menu.klass-dropdown {
   margin-left: 145px;
 }
 
 .dropdown-menu.grouping-dropdown {
-  margin-left: 245px;
+  margin-left: 200px;
 }
 
 .dropdown-menu.opened {
@@ -103,4 +105,31 @@
 .dropdown-menu a:last-child, .dropdown-menu div:last-child  {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+@media screen and (max-width: 500px){
+  .navbar-wrapper > div {
+    margin: 0 8px;
+  }
+
+  .title-a::after{
+    content: "F";
+  }
+
+  .title-b::after{
+    content: "S";
+  }
+
+  #logout-button {
+    margin-left: auto;
+    margin-right: 10px;
+  }
+
+  .dropdown-menu.klass-dropdown {
+    margin-left: 45px;
+  }
+
+  .dropdown-menu.grouping-dropdown {
+    margin-left: 90px;
+  }
 }
