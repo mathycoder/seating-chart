@@ -60,7 +60,7 @@ class StudentsController < ApplicationController
     render json: @klass.students, status: 201
   end
 
-  def dynamic_pairs
+  def dynamic_pairs_hetero
     @klass = Klass.find_by(id: params[:klass_id])
     render json: @klass.generate_seats_pairs, status: 201
   end

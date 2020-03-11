@@ -1,9 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import GearMenu from './GearMenu'
 import './gear.css'
 
 const Gear = ({ type }) => {
   const [open, setOpen] = useState(false)
+
+  // useEffect(() => {
+  //   return () => {
+  //     setOpen(false)
+  //   }
+  // }, [])
 
   return (
     <div className="gear">
@@ -13,7 +19,7 @@ const Gear = ({ type }) => {
         src="/gear.png"
         alt="gear"
       />
-      <GearMenu open={open}/> 
+      <GearMenu open={open}/>
     </div>
   )
 }

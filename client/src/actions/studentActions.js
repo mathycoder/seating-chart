@@ -20,9 +20,9 @@ export function fetchStudents(klass){
   }
 }
 
-export function dynamicPairs(klass){
+export function dynamicPairsHetero(klass){
   return (dispatch) => {
-     fetch(`/klasses/${klass.id}/students/dynamic_pairs`, {
+     fetch(`/klasses/${klass.id}/students/dynamic_pairs_hetero`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -88,7 +88,7 @@ export function editStudent(klass, studentData, studentId){
 
 export function swapSeats(klass, student1, student2, type){
   return (dispatch) => {
-    dispatch({ type: 'SWAP_STUDENTS_REQUEST2' })
+    dispatch({ type: 'SWAP_STUDENTS_REQUEST', student1, student2, grouping: type })
     const params = {studentId1: student1.id, studentId2: student2.id, type: type}
      fetch(`/klasses/${klass.id}/students/swap`, {
       method: "POST",
@@ -103,7 +103,7 @@ export function swapSeats(klass, student1, student2, type){
         if (students.error){
 
         } else {
-          dispatch({ type: 'SWAP_STUDENTS2', students })
+          dispatch({ type: 'SWAP_STUDENTS', students })
         }
       })
       .catch(console.log)

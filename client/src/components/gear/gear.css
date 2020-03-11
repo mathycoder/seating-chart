@@ -56,3 +56,9 @@
     margin-bottom: 10px;
   }
 }
+
+@media screen and (max-width: 450px) and (orientation: portrait){
+  .gear-menu {
+    margin-bottom: -10px;
+  }
+}
