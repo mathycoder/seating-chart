@@ -1,20 +1,20 @@
 .desks-wrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 85vh;
 }
 
 .pair-desks-container {
-  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(4, 102px 102px 40px);
   grid-template-rows: repeat(4, 120px);
 }
 
 .group-desks-container {
-  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(4, 102px 102px 40px);
-  grid-template-rows: repeat(4, 72px 121px);
+  grid-template-rows: repeat(2, 72px 121px);
 }
 
 .desk {
@@ -86,6 +86,7 @@
 }
 
 @media screen and (max-width: 600px){
+
   .desk {
     font-size: 12px;
     width: 50px;
@@ -113,6 +114,8 @@
     margin-right: -20px;
     padding-left: 20px;
     padding-right: 20px;
+    height: 100%;
+    margin-top: 80px;
   }
 }
 
@@ -121,6 +124,9 @@
     grid-template-rows: repeat(4, 80px);
   }
 
+  .desks-wrapper {
+    height: 75vh;
+  }
 }
 
 @media screen and (max-height: 450px){

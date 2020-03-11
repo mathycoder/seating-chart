@@ -30,15 +30,6 @@ const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs, se
       <DndProvider backend={MultiBackend} options={HTML5toTouch}>
         <Preview generator={GeneratePreview} />
         <div className="klass-show-wrapper">
-          <div className="klass-show-header">
-            {currentGrouping === "Pairs"
-              ? <div>
-                  <button onClick={() => dynamicPairs(klass)} className="myButton">Generate Dynamic Pairs</button>
-                </div>
-              : null
-            }
-
-          </div>
           <div className="desks-wrapper">
             <Switch>
               <Route path="/classes/:id/students"
