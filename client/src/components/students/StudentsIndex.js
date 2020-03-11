@@ -14,8 +14,8 @@ const StudentsIndex = ({ klass, students, deleteStudent }) => {
         <div className="student-index-row header">
           <div>First Name</div>
           <div>Last Name</div>
-          <div className="scores">Academic Score <br/>(5 is best)</div>
-          <div className="scores">Behavior Score <br/>(5 is best)</div>
+          <div className="scores">Acad. Score <br/>(5 is best)</div>
+          <div className="scores">Behav. Score <br/>(5 is best)</div>
           <div></div>
         </div>
         {students.allIds.map(studentId => {

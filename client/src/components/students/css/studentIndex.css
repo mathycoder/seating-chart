@@ -52,3 +52,38 @@
   color: white;
   text-shadow: none;
 }
+
+@media screen and (max-width: 700px){
+  .student-index-wrapper {
+    margin-left: -10px;
+    width: 95vw;
+  }
+
+  .student-index-row div {
+    margin: 20px 10px;
+    width: 90px;
+  }
+
+  .student-index-row div:last-child {
+    width: 70px;
+  }
+
+  .student-index-row.header {
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .student-index-row div {
+    margin: 20px 10px;
+    width: 40px;
+  }
+
+  .student-index-row div:last-child {
+    width: 70px;
+  }
+
+  .student-index-row.header {
+    font-size: 14px;
+  }
+}
