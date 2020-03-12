@@ -50,16 +50,14 @@ class Klass < ApplicationRecord
   end
 
   def generate_seats_groups_hetero
-    # my goal is to group by averages
+  #  my goal is to group by averages
     total_groups = (self.students.length.to_f / 4).ceil
-    sorted_students = self.students.sort_by{|student| student.academic_score + student.behavior_score}.reverse
+    sorted_students = self.students.sort_by{|student| student.academic_score + student.behavior_score}
     student_data = {}
-    seated_students = []
-    while sorted_students.length > 0
-      seated_students << sorted_students.pop
-      seated_students << sorted_students.shift if sorted_students.length != 0
+    sorted_students.each_with_index do |student, index|
+      adjusted_index = index % 2 == 0 ? index : sorted_students.length - index
+      student_data[student.id] = { group: adjusted_index % total_groups }
     end
-    seated_students.each_with_index{|student, index| student_data[student.id] = {group: index % total_groups} }
     student_data_array = student_data.sort_by{|stId, hash| hash[:group]}
     student_array = student_data_array.map{|arr| Student.find_by(id: arr[0])}
     student_array.each_with_index do |student, index|
@@ -68,5 +66,25 @@ class Klass < ApplicationRecord
     end
     student_array
   end
+
+  # def generate_seats_groups_hetero
+  #   # my goal is to group by averages
+  #   total_groups = (self.students.length.to_f / 4).ceil
+  #   sorted_students = self.students.sort_by{|student| student.academic_score + student.behavior_score}.reverse
+  #   student_data = {}
+  #   seated_students = []
+  #   while sorted_students.length > 0
+  #     seated_students << sorted_students.pop
+  #     seated_students << sorted_students.shift if sorted_students.length != 0
+  #   end
+  #   seated_students.each_with_index{|student, index| student_data[student.id] = {group: index % total_groups} }
+  #   student_data_array = student_data.sort_by{|stId, hash| hash[:group]}
+  #   student_array = student_data_array.map{|arr| Student.find_by(id: arr[0])}
+  #   student_array.each_with_index do |student, index|
+  #     student[:seat_group] = GROUPS_FLAT[index]
+  #     student.update(seat_group: GROUPS_FLAT[index])
+  #   end
+  #   student_array
+  # end
 
 end
