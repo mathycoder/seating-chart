@@ -77,7 +77,7 @@ class StudentsController < ApplicationController
 
   def dynamic_groups_homo
     @klass = Klass.find_by(id: params[:klass_id])
-    render json: @klass.generate_seats_groups_homo, status: 201
+    render json: @klass.generate_seats_groups_homo(params[:size]), status: 201
   end
 
   private

@@ -47,7 +47,7 @@ const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
           </button>
           <button
               className="myButton"
-              onClick={() => dynamicGroupsHomo(currentKlass)}
+              onClick={() => dynamicGroupsHomo(currentKlass, groupSize)}
             >
               Homogenous
           </button>
@@ -102,7 +102,7 @@ const mapDispatchToProps = (dispatch) => {
     dynamicPairsHetero: klass => dispatch(dynamicPairsHetero(klass)),
     dynamicPairsHomo: klass => dispatch(dynamicPairsHomo(klass)),
     dynamicGroupsHetero: (klass, size) => dispatch(dynamicGroupsHetero(klass, size)),
-    dynamicGroupsHomo: klass => dispatch(dynamicGroupsHomo(klass)),
+    dynamicGroupsHomo: (klass, size) => dispatch(dynamicGroupsHomo(klass, size)),
     hideRatings: () => dispatch(hideRatings()),
     showRatings: () => dispatch(showRatings())
   }

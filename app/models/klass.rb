@@ -75,13 +75,18 @@ class Klass < ApplicationRecord
     self.students
   end
 
-  def generate_seats_groups_homo
+  def generate_seats_groups_homo(size)
     sorted_students = self.students.sort_by{|student| student.academic_score + student.behavior_score}.reverse
-    sorted_students.each_with_index do |student, index|
-      sorted_students[index].seat_group = GROUPS_FLAT[index]
-      student.update(seat_group: GROUPS_FLAT[index])
+    group = 0
+    seat = 0
+    sorted_students.each do |student|
+      if seat >= size.to_i
+        seat = 0
+        group += 1
+      end
+      student.update(seat_group: GROUPS[group][seat])
+      seat += 1
     end
-    sorted_students
+    self.students
   end
-
 end
