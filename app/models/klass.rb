@@ -55,7 +55,7 @@ class Klass < ApplicationRecord
     sorted_students = self.students.sort_by{|student| student.academic_score + student.behavior_score}
     student_data = {}
     sorted_students.each_with_index do |student, index|
-      adjusted_index = index % 2 == 0 ? index : sorted_students.length - index
+      adjusted_index = index % 2 == 0 ? index/2 : sorted_students.length - (index+1)/2
       student_data[student.id] = { group: adjusted_index % total_groups }
     end
     student_data_array = student_data.sort_by{|stId, hash| hash[:group]}
