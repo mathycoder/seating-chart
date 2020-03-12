@@ -75,6 +75,11 @@ class StudentsController < ApplicationController
     render json: @klass.generate_seats_groups_hetero, status: 201
   end
 
+  def dynamic_groups_homo
+    @klass = Klass.find_by(id: params[:klass_id])
+    render json: @klass.generate_seats_groups_homo, status: 201
+  end
+
   private
     def student_params
       params.require(:student).permit(:first_name, :last_name, :behavior_score, :academic_score)

@@ -1,13 +1,13 @@
 import React from 'react'
 import { dynamicPairsHetero, dynamicPairsHomo,
-         dynamicGroupsHetero } from '../../actions/studentActions.js'
+         dynamicGroupsHetero, dynamicGroupsHomo } from '../../actions/studentActions.js'
 import { hideRatings, showRatings } from '../../actions/optionActions.js'
 import { connect } from 'react-redux'
 
 
 const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
                     dynamicPairsHetero, dynamicPairsHomo,
-                    dynamicGroupsHetero,
+                    dynamicGroupsHetero, dynamicGroupsHomo,
                     hideRatings, showRatings }) => {
 
   const renderPairMenu = () => {
@@ -38,6 +38,12 @@ const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
               onClick={() => dynamicGroupsHetero(currentKlass)}
             >
               Heterogenous
+          </button>
+          <button
+              className="myButton"
+              onClick={() => dynamicGroupsHomo(currentKlass)}
+            >
+              Homogenous
           </button>
         </>
       )
@@ -76,6 +82,7 @@ const mapDispatchToProps = (dispatch) => {
     dynamicPairsHetero: klass => dispatch(dynamicPairsHetero(klass)),
     dynamicPairsHomo: klass => dispatch(dynamicPairsHomo(klass)),
     dynamicGroupsHetero: klass => dispatch(dynamicGroupsHetero(klass)),
+    dynamicGroupsHomo: klass => dispatch(dynamicGroupsHomo(klass)),
     hideRatings: () => dispatch(hideRatings()),
     showRatings: () => dispatch(showRatings())
   }
