@@ -35,7 +35,7 @@
 
 .gear-menu.slide {
   display: block;
-  height: 100px;
+  height: 120px;
 }
 
 .gear-menu .gear-title {
@@ -48,6 +48,13 @@
   justify-content: center;
   align-items: center;
   height: 60px;
+}
+
+.gear-menu .other-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
 }
 
 .gear-menu .options button {

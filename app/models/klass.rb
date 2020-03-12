@@ -49,9 +49,9 @@ class Klass < ApplicationRecord
     sorted_students
   end
 
-  def generate_seats_groups_hetero
+  def generate_seats_groups_hetero(size)
   #  my goal is to group by averages
-    total_groups = (self.students.length.to_f / 4).ceil
+    total_groups = (self.students.length.to_f / size.to_f).ceil
     sorted_students = self.students.sort_by{|student| student.academic_score + student.behavior_score}
     student_data = {}
     sorted_students.each_with_index do |student, index|

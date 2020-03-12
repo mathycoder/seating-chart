@@ -64,11 +64,12 @@ export function dynamicPairsHomo(klass){
   }
 }
 
-export function dynamicGroupsHetero(klass){
+export function dynamicGroupsHetero(klass, size){
   return (dispatch) => {
     dispatch({ type: 'REQUEST_DYNAMIC_GROUPS_HETERO' })
      fetch(`/klasses/${klass.id}/students/dynamic_groups_hetero`, {
-      method: "GET",
+      method: "PATCH",
+      body: JSON.stringify({size: size}),
       headers: {
         "Content-Type": "application/json"
       },
