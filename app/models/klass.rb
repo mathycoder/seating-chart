@@ -44,4 +44,8 @@ class Klass < ApplicationRecord
     sorted_students
   end
 
+  def generate_seats_groups_hetero
+    binding.pry
+  end
+
 end

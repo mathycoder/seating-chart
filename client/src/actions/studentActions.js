@@ -64,6 +64,28 @@ export function dynamicPairsHomo(klass){
   }
 }
 
+export function dynamicGroupsHetero(klass){
+  return (dispatch) => {
+    dispatch({ type: 'REQUEST_DYNAMIC_GROUPS_HETERO' })
+     fetch(`/klasses/${klass.id}/students/dynamic_groups_hetero`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
+    })
+      .then(resp => resp.json())
+      .then(students => {
+        if (students.error){
+
+        } else {
+          dispatch({ type: 'FETCH_STUDENTS', students })
+        }
+      })
+      .catch(console.log)
+  }
+}
+
 export function addStudent(klass, studentData){
   return (dispatch) => {
     dispatch({ type: 'ADD_STUDENT_REQUEST' })

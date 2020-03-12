@@ -43,7 +43,9 @@ const NavBar = ({ currentUser, klasses, currentKlass, currentGrouping }) => {
 
   const title = () => <>
                         <span className="title-a"></span>
+                        <img src="/desk.png" width="20px" />
                         <span className="title-b"></span>
+
                       </>
 
   const renderKlassDropdown = () => {
