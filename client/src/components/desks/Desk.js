@@ -5,7 +5,7 @@ import { swapSeats } from '../../actions/studentActions.js'
 import { connect } from 'react-redux'
 // import MultiBackend, { Preview } from 'react-dnd-multi-backend';
 
-const Desk = ({ klass, student, students, index, swap, type }) => {
+const Desk = ({ klass, student, students, index, swap, type, currentRatings }) => {
   const [{ isDragging }, drag] = useDrag({
     item: { type: "desk", student: student },
     collect: monitor => ({
@@ -29,15 +29,24 @@ const Desk = ({ klass, student, students, index, swap, type }) => {
         <div ref={drag} className={`desk ${hover ? 'hover' : ''} ${isDragging ? 'dragging' : ''}`}>
           <div className="first-name">{student.firstName}</div>
           <div className="last-name">{student.lastName}</div>
-          <div className="ratings">
-            <span className="academic-score">{student.academicScore}</span>
-            <span className="behavior-score">{student.behaviorScore}</span>
-          </div>
+          { currentRatings
+            ?  <div className="ratings">
+                  <span className="academic-score">{student.academicScore}</span>
+                  <span className="behavior-score">{student.behaviorScore}</span>
+                </div>
+            : null
+          }    
         </div>
       </div>
       {index % 2 === 1 ? <div className="gap"></div> : null}
     </>
   )
+}
+
+const mapStateToProps = state => {
+  return {
+    currentRatings: state.currentKlass.ratings
+  }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -46,4 +55,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Desk)
+export default connect(mapStateToProps, mapDispatchToProps)(Desk)

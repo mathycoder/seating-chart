@@ -40,6 +40,7 @@ const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
           onChange={() => {
             currentRatings ? hideRatings() : showRatings()
           }}
+          checked={currentRatings}
           value={currentRatings} />Show Ratings
       </div>
     </div>

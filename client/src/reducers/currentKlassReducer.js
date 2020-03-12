@@ -35,7 +35,7 @@ function currentGrouping(state = null, action) {
   }
 }
 
-function showRatings(state = true, action) {
+function showRatings(state = false, action) {
   switch(action.type) {
     case 'SHOW_RATINGS':
       return true
