@@ -1,9 +1,12 @@
 import React from 'react'
 import { dynamicPairsHetero, dynamicPairsHomo } from '../../actions/studentActions.js'
+import { hideRatings, showRatings } from '../../actions/optionActions.js'
 import { connect } from 'react-redux'
 
 
-const GearMenu = ({ open, currentKlass, currentGrouping, dynamicPairsHetero, dynamicPairsHomo }) => {
+const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
+                    dynamicPairsHetero, dynamicPairsHomo,
+                    hideRatings, showRatings }) => {
 
   const renderPairMenu = () => {
     return (
@@ -24,14 +27,20 @@ const GearMenu = ({ open, currentKlass, currentGrouping, dynamicPairsHetero, dyn
     )
   }
 
-
   return (
     <div className={`gear-menu ${open ? 'slide' : ''}`}>
       <div className="gear-title">
-        {`Flexible ${currentGrouping === 'Pairs' ? 'Pairs' : 'Groups'} Menu`}
+        <strong>{`Flexible ${currentGrouping === 'Pairs' ? 'Pairs' : 'Groups'} Menu`}</strong>
       </div>
       <div className="options">
         {currentGrouping === "Pairs" ? renderPairMenu() : null}
+        <input
+          type='checkbox'
+          name='ratings'
+          onChange={() => {
+            currentRatings ? hideRatings() : showRatings()
+          }}
+          value={currentRatings} />Show Ratings
       </div>
     </div>
   )
@@ -40,14 +49,17 @@ const GearMenu = ({ open, currentKlass, currentGrouping, dynamicPairsHetero, dyn
 const mapStateToProps = (state) => {
   return {
     currentKlass: state.currentKlass.klass,
-    currentGrouping: state.currentKlass.grouping
+    currentGrouping: state.currentKlass.grouping,
+    currentRatings: state.currentKlass.ratings
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     dynamicPairsHetero: klass => dispatch(dynamicPairsHetero(klass)),
-    dynamicPairsHomo: klass => dispatch(dynamicPairsHomo(klass))
+    dynamicPairsHomo: klass => dispatch(dynamicPairsHomo(klass)),
+    hideRatings: () => dispatch(hideRatings()),
+    showRatings: () => dispatch(showRatings())
   }
 }
 

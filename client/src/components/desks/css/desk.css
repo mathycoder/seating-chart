@@ -55,8 +55,12 @@
     border-radius: 5px;
   }
 
-  .desk .ratings {
+  .desk .last-name {
     display: none;
+  }
+
+  .desk .ratings {
+    /* display: none; */
   }
 
   .pair-desks-container {
@@ -76,7 +80,8 @@
   }
 
   .desk .ratings {
-    display: none;
+    font-size: 10px;
+    /* display: none; */
   }
 
   .desk {
@@ -114,6 +119,11 @@
   .group-desks-container {
     grid-template-columns: repeat(4, 52px 52px 15px);
     grid-template-rows: repeat(2, 40px 121px);
+  }
+
+  .desk .ratings {
+    font-size: 10px;
+    /* display: none; */
   }
 }
 
