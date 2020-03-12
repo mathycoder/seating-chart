@@ -55,16 +55,24 @@ class Klass < ApplicationRecord
     sorted_students = self.students.sort_by{|student| student.academic_score + student.behavior_score}
     student_data = {}
     sorted_students.each_with_index do |student, index|
-      adjusted_index = index % 2 == 0 ? index/2 : sorted_students.length - (index+1)/2
-      student_data[student.id] = { group: adjusted_index % total_groups }
+      adjusted_index = index % 2 == 0 ? index / 2 : sorted_students.length - (index+1)/2
+      student_data[student.id] = { group: adjusted_index % total_groups, student: student }
     end
     student_data_array = student_data.sort_by{|stId, hash| hash[:group]}
-    student_array = student_data_array.map{|arr| Student.find_by(id: arr[0])}
-    student_array.each_with_index do |student, index|
-      student[:seat_group] = GROUPS_FLAT[index]
-      student.update(seat_group: GROUPS_FLAT[index])
+
+    groups = {0 => 0, 1=> 0, 2=> 0, 3=> 0, 4=> 0, 5=> 0, 6=> 0, 7=> 0, 8=> 0 }
+    student_data_array.each_with_index do |arr, index|
+      group = arr[1][:group]
+      student_data_array[index][1][:seat] = groups[group]
+      groups[group] += 1
     end
-    student_array
+
+    student_data_array.each_with_index do |array, index|
+      group = array[1][:group]
+      seat = array[1][:seat]
+      array[1][:student].update(seat_group: GROUPS[group][seat])
+    end
+    self.students
   end
 
   def generate_seats_groups_homo
