@@ -4,8 +4,8 @@ const currentKlassReducer = combineReducers({
   klass: currentKlass,
   grouping: currentGrouping,
   ratings: showRatings,
-  showAcademics: showAcademics,
-  showBehavior: showBehavior
+  academics: showAcademics,
+  behavior: showBehavior
 })
 
 

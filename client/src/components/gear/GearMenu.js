@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 
 
 const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
+                    currentAcademics, currentBehavior,
                     dynamicPairsHetero, dynamicPairsHomo,
                     dynamicGroupsHetero, dynamicGroupsHomo,
                     showBehavior, hideBehavior, showAcademics, hideAcademics,
@@ -123,7 +124,25 @@ const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
           }}
           checked={currentRatings}
           value={currentRatings} />Show Ratings
-        </div>
+
+        <input
+          type='checkbox'
+          name='academics'
+          onChange={() => {
+            currentAcademics ? hideAcademics() : showAcademics()
+          }}
+          checked={currentAcademics}
+          value={currentAcademics} />Show Academic Scores
+
+        <input
+          type='checkbox'
+          name='behavior'
+          onChange={() => {
+            currentBehavior ? hideBehavior() : showBehavior()
+          }}
+          checked={currentBehavior}
+          value={currentBehavior} />Show Behavior Scores
+      </div>
     </div>
   )
 }
@@ -133,6 +152,8 @@ const mapStateToProps = (state) => {
     currentKlass: state.currentKlass.klass,
     currentGrouping: state.currentKlass.grouping,
     currentRatings: state.currentKlass.ratings,
+    currentBehavior: state.currentKlass.behavior,
+    currentAcademics: state.currentKlass.academics,
     students: state.students
   }
 }
@@ -144,7 +165,11 @@ const mapDispatchToProps = (dispatch) => {
     dynamicGroupsHetero: (klass, size, groupBy) => dispatch(dynamicGroupsHetero(klass, size, groupBy)),
     dynamicGroupsHomo: (klass, size, groupBy) => dispatch(dynamicGroupsHomo(klass, size, groupBy)),
     hideRatings: () => dispatch(hideRatings()),
-    showRatings: () => dispatch(showRatings())
+    showRatings: () => dispatch(showRatings()),
+    hideAcademics: () => dispatch(hideAcademics()),
+    showAcademics: () => dispatch(showAcademics()),
+    hideBehavior: () => dispatch(hideBehavior()),
+    showBehavior: () => dispatch(showBehavior()),
   }
 }
 
