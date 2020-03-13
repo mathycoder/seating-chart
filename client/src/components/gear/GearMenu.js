@@ -76,19 +76,19 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
     const renderGroupMenu = () => {
       return (
         <>
-          <div>
-            {'Type: '}
+          <div className="gear-option">
+            <div className="label">Type</div>
             <select name="grouping"
               value={groupingType}
               onChange={(e) => setGroupingType(e.target.value)}
             >
               {['Heterogenous', 'Homogenous'].map(type => (
-                <option key={type} value={type}>{type}</option>
+                <option key={type} value={type}>{`${type}`}</option>
               )) }
             </select>
           </div>
-          <div>
-            {'Group By: '}
+          <div className="gear-option">
+            <div className="label">By</div>
             <select name="group-by"
               value={groupBy}
               onChange={(e) => setGroupBy(e.target.value)}
@@ -99,8 +99,8 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
             </select>
           </div>
 
-          <div>
-            {'Group Size: '}
+          <div className="gear-option">
+            <div className="label">Group Size</div>
             <select name="group-size"
               value={groupSize}
               onChange={(e) => setGroupSize(e.target.value)}
@@ -111,7 +111,7 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
             </select>
           </div>
 
-          <div>
+          <div className="gear-option">
             <button
                 className="myButton little"
                 onClick={() => handleSubmit()}

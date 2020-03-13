@@ -35,18 +35,24 @@
 
 .gear-menu.slide {
   display: block;
-  height: 120px;
+  height: 150px;
 }
 
-@media screen and (max-width: 738px){
+@media screen and (max-width: 684px){
   .gear-menu.slide {
-    height: 160px;
+    height: 180px;
   }
 }
 
-@media screen and (max-width: 467px){
+@media screen and (max-width: 569px){
   .gear-menu.slide {
-    height: 190px;
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 392px){
+  .gear-menu.slide {
+    height: 300px;
   }
 }
 
@@ -63,6 +69,26 @@
   flex-wrap: wrap;
 }
 
+.gear-menu select {
+  font-size: 15px;
+  margin: 0 5px;
+}
+
+.gear-menu .gear-option {
+  display: flex;
+  width: 150px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.gear-menu .gear-option .label {
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
 .gear-menu .options div {
   margin-bottom: 10px;
 }
@@ -74,30 +100,6 @@
   height: 20px;
   padding-bottom: 15px;
 }
-
-
-.gear-menu select {
-  font-size: 15px;
-  margin: 0 5px;
-}
-
-
-
-/* .dropdown-menu.type-dropdown {
-  margin-left: 70px;
-  margin-top: -30px;
-  width: 120px;
-}
-
-.dropdown-menu.type-dropdown div {
-  font-size: 14px;
-  padding-left: 10px;
-  padding-right: 10px;
-} */
-
-
-
-
 
 
 .gear-menu .other-options .academic {
