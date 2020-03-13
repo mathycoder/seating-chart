@@ -28,13 +28,24 @@
 }
 
 .desk {
-  border: 1px solid black;
   width: 100px;
   height: 70px;
   text-align: center;
   font-weight: 400;
   border-radius: 10px;
-  background-color: rgb(225, 217, 214);
+  border: 1px solid black;
+
+  /* background-color: rgb(225, 217, 214); */
+
+  background-color: #f6f6f6;
+  background-image: linear-gradient(315deg, #f6f6f6 0%, #e9e9e9 74%);
+
+  /* background-image: url('/school-desk.png');
+  background-size: 100px 70px;
+  background-repeat: no-repeat; */
+
+
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,6 +58,45 @@
   width: 100%;
 }
 
+.desk.dragging {
+  border-color: lightgray;
+  color: lightgray;
+  background-color: white;
+  opacity: 1;
+
+  background: none;
+  border: 1px solid lightgray;
+}
+
+.desk span {
+  font-weight: lighter;
+  margin: 0 10px;
+  font-size: 12px;
+}
+
+.desk .behavior-score {
+  color: red;
+}
+
+.desk .academic-score {
+  color: green;
+}
+
+.desk.dragging span {
+  color: lightgray;
+}
+
+.desk.empty {
+  background: none;
+  border: 1px solid lightgray;
+  background-color: white;
+}
+
+.desk.hover {
+  background: none;
+  background-color: rgb(255, 254, 194);
+}
+
 @media screen and (max-width: 1000px){
   .desk {
     width: 80px;
@@ -57,10 +107,6 @@
 
   .desk .last-name {
     display: none;
-  }
-
-  .desk .ratings {
-    /* display: none; */
   }
 
   .pair-desks-container {
@@ -163,38 +209,4 @@
     padding-top: 20px;
     grid-template-rows: repeat(2, 48px 80px);
   }
-}
-
-.desk.empty {
-  border-color: lightgray;
-  background-color: white;
-}
-
-.desk.hover {
-  background-color: rgb(255, 254, 194);
-}
-
-.desk.dragging {
-  border-color: lightgray;
-  color: lightgray;
-  background-color: white;
-  opacity: 1;
-}
-
-.desk span {
-  font-weight: lighter;
-  margin: 0 10px;
-  font-size: 12px;
-}
-
-.desk .behavior-score {
-  color: red;
-}
-
-.desk .academic-score {
-  color: green;
-}
-
-.desk.dragging span {
-  color: lightgray;
 }
