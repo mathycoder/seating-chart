@@ -33,42 +33,66 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
     }
   }
 
+  const renderTypeOption = () => (
+    <div className="gear-option">
+      <div className="label">Type</div>
+      <select name="grouping"
+        value={groupingType}
+        onChange={(e) => setGroupingType(e.target.value)}
+      >
+        {['Heterogenous', 'Homogenous'].map(type => (
+          <option key={type} value={type}>{`${type}`}</option>
+        )) }
+      </select>
+    </div>
+  )
+
+  const renderGroupByOption = () => (
+    <div className="gear-option">
+      <div className="label">By</div>
+      <select name="group-by"
+        value={groupBy}
+        onChange={(e) => setGroupBy(e.target.value)}
+      >
+        {['Academics', 'Behavior', 'Both'].map(type => (
+          <option key={type} value={type}>{type}</option>
+        )) }
+      </select>
+    </div>
+  )
+
+  const renderSizeOption = () => (
+    <div className="gear-option">
+      <div className="label">Group Size</div>
+      <select name="group-size"
+        value={groupSize}
+        onChange={(e) => setGroupSize(e.target.value)}
+      >
+        {possibleGroups().map(score => (
+          <option key={score} value={score}>{score}</option>
+        )) }
+      </select>
+    </div>
+  )
+
+  const renderGenerateButton = () => (
+    <div className="gear-option">
+      <button
+          className="myButton little"
+          onClick={() => handleSubmit()}
+        >
+          Generate
+      </button>
+    </div>
+  )
+
   const renderPairMenu = () => {
     return (
       <>
-        <div>
-          {'Type: '}
-          <select name="grouping"
-            value={groupingType}
-            onChange={(e) => setGroupingType(e.target.value)}
-          >
-            {['Heterogenous', 'Homogenous'].map(type => (
-              <option key={type} value={type}>{type}</option>
-            )) }
-          </select>
-        </div>
-
-        <div>
-          {'Group By: '}
-          <select name="group-by"
-            value={groupBy}
-            onChange={(e) => setGroupBy(e.target.value)}
-          >
-            {['Academics', 'Behavior', 'Both'].map(type => (
-              <option key={type} value={type}>{type}</option>
-            )) }
-          </select>
-        </div>
-
-        <div>
-          <button
-              className="myButton little"
-              onClick={() => handleSubmit()}
-            >
-              Generate
-          </button>
-        </div>
-        </>
+        {renderTypeOption()}
+        {renderGroupByOption()}
+        {renderGenerateButton()}
+      </>
     )
   }
 
@@ -76,49 +100,10 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
     const renderGroupMenu = () => {
       return (
         <>
-          <div className="gear-option">
-            <div className="label">Type</div>
-            <select name="grouping"
-              value={groupingType}
-              onChange={(e) => setGroupingType(e.target.value)}
-            >
-              {['Heterogenous', 'Homogenous'].map(type => (
-                <option key={type} value={type}>{`${type}`}</option>
-              )) }
-            </select>
-          </div>
-          <div className="gear-option">
-            <div className="label">By</div>
-            <select name="group-by"
-              value={groupBy}
-              onChange={(e) => setGroupBy(e.target.value)}
-            >
-              {['Academics', 'Behavior', 'Both'].map(type => (
-                <option key={type} value={type}>{type}</option>
-              )) }
-            </select>
-          </div>
-
-          <div className="gear-option">
-            <div className="label">Group Size</div>
-            <select name="group-size"
-              value={groupSize}
-              onChange={(e) => setGroupSize(e.target.value)}
-            >
-              {possibleGroups().map(score => (
-                <option key={score} value={score}>{score}</option>
-              )) }
-            </select>
-          </div>
-
-          <div className="gear-option">
-            <button
-                className="myButton little"
-                onClick={() => handleSubmit()}
-              >
-                Generate
-            </button>
-          </div>
+          {renderTypeOption()}
+          {renderGroupByOption()}
+          {renderSizeOption()}
+          {renderGenerateButton()}
         </>
       )
     }
