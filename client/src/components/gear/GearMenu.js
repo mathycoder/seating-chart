@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { dynamicPairsHetero, dynamicPairsHomo,
          dynamicGroupsHetero, dynamicGroupsHomo } from '../../actions/studentActions.js'
-import { showBehavior, hideBehavior, 
+import { showBehavior, hideBehavior,
          showAcademics, hideAcademics } from '../../actions/optionActions.js'
 import { connect } from 'react-redux'
 
@@ -116,6 +116,7 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
         {currentGrouping === "Pairs" ? renderPairMenu() : renderGroupMenu()}
       </div>
       <div className="other-options">
+        Display:
         <input
           type='checkbox'
           name='academics'
@@ -123,7 +124,8 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
             currentAcademics ? hideAcademics() : showAcademics()
           }}
           checked={currentAcademics}
-          value={currentAcademics} />Show Academic Scores
+          value={currentAcademics} />
+        <span className="academic">Academic</span>
 
         <input
           type='checkbox'
@@ -132,7 +134,8 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
             currentBehavior ? hideBehavior() : showBehavior()
           }}
           checked={currentBehavior}
-          value={currentBehavior} />Show Behavior Scores
+          value={currentBehavior} />
+        <span className="behavior">Behavior</span>
       </div>
     </div>
   )
