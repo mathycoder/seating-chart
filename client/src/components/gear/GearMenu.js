@@ -12,6 +12,7 @@ const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
 
   const [groupSize, setGroupSize] = useState(4)
   const [groupingType, setGroupingType] = useState('Heterogenous')
+  const [groupBy, setGroupBy] = useState('Academics')
 
   const possibleGroups = () => {
     return [4,3,2,1].filter(size => students.allIds.length / size <= 8)
@@ -20,12 +21,12 @@ const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
   const handleSubmit = () => {
     if (currentGrouping === "Groups"){
       groupingType === 'Heterogenous'
-        ? dynamicGroupsHetero(currentKlass, groupSize)
-        : dynamicGroupsHomo(currentKlass, groupSize)
+        ? dynamicGroupsHetero(currentKlass, groupSize, groupBy)
+        : dynamicGroupsHomo(currentKlass, groupSize, groupBy)
     } else {
       groupingType === 'Heterogenous'
-        ? dynamicPairsHetero(currentKlass)
-        : dynamicPairsHomo(currentKlass)
+        ? dynamicPairsHetero(currentKlass, groupBy)
+        : dynamicPairsHomo(currentKlass, groupBy)
     }
   }
 
@@ -38,6 +39,15 @@ const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
           onChange={(e) => setGroupingType(e.target.value)}
         >
           {['Heterogenous', 'Homogenous'].map(type => (
+            <option key={type} value={type}>{type}</option>
+          )) }
+        </select>
+        {'Group By: '}
+        <select name="group-by"
+          value={groupBy}
+          onChange={(e) => setGroupBy(e.target.value)}
+        >
+          {['Academics', 'Behavior', 'Both'].map(type => (
             <option key={type} value={type}>{type}</option>
           )) }
         </select>
@@ -61,6 +71,15 @@ const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
             onChange={(e) => setGroupingType(e.target.value)}
           >
             {['Heterogenous', 'Homogenous'].map(type => (
+              <option key={type} value={type}>{type}</option>
+            )) }
+          </select>
+          {'Group By: '}
+          <select name="group-by"
+            value={groupBy}
+            onChange={(e) => setGroupBy(e.target.value)}
+          >
+            {['Academics', 'Behavior', 'Both'].map(type => (
               <option key={type} value={type}>{type}</option>
             )) }
           </select>
@@ -118,10 +137,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dynamicPairsHetero: klass => dispatch(dynamicPairsHetero(klass)),
-    dynamicPairsHomo: klass => dispatch(dynamicPairsHomo(klass)),
-    dynamicGroupsHetero: (klass, size) => dispatch(dynamicGroupsHetero(klass, size)),
-    dynamicGroupsHomo: (klass, size) => dispatch(dynamicGroupsHomo(klass, size)),
+    dynamicPairsHetero: (klass, groupBy) => dispatch(dynamicPairsHetero(klass, groupBy)),
+    dynamicPairsHomo: (klass, groupBy) => dispatch(dynamicPairsHomo(klass, groupBy)),
+    dynamicGroupsHetero: (klass, size, groupBy) => dispatch(dynamicGroupsHetero(klass, size, groupBy)),
+    dynamicGroupsHomo: (klass, size, groupBy) => dispatch(dynamicGroupsHomo(klass, size, groupBy)),
     hideRatings: () => dispatch(hideRatings()),
     showRatings: () => dispatch(showRatings())
   }

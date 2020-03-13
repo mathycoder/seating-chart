@@ -49,13 +49,12 @@ class Klass < ApplicationRecord
     sorted_students
   end
 
-  def generate_seats_groups_hetero(size)
+  def generate_seats_groups_hetero(size, group_by)
   #  my goal is to group by averages
     total_groups = (self.students.length.to_f / size.to_f).ceil
-    sorted_students = self.students.sort_by{|student| student.academic_score + student.behavior_score}
     student_data = {}
-    sorted_students.each_with_index do |student, index|
-      adjusted_index = index % 2 == 0 ? index / 2 : sorted_students.length - (index+1)/2
+    sorted_students(group_by).each_with_index do |student, index|
+      adjusted_index = index % 2 == 0 ? index / 2 : self.students.length - (index+1)/2
       student_data[student.id] = { group: adjusted_index % total_groups, student: student }
     end
     student_data_array = student_data.sort_by{|stId, hash| hash[:group]}
@@ -75,11 +74,10 @@ class Klass < ApplicationRecord
     self.students
   end
 
-  def generate_seats_groups_homo(size)
-    sorted_students = self.students.sort_by{|student| student.academic_score + student.behavior_score}.reverse
+  def generate_seats_groups_homo(size, group_by)
     group = 0
     seat = 0
-    sorted_students.each do |student|
+    sorted_students(group_by).each do |student|
       if seat >= size.to_i
         seat = 0
         group += 1
@@ -89,4 +87,15 @@ class Klass < ApplicationRecord
     end
     self.students
   end
+end
+
+def sorted_students(group_by)
+  if group_by == 'Academics'
+    sorted = self.students.sort_by{|student| student.academic_score }
+  elsif group_by == "Behavior"
+    sorted = sorted = self.students.sort_by{|student| student.behavior_score}
+  else
+    sorted = self.students.sort_by{|student| student.academic_score + student.behavior_score}
+  end
+  sorted
 end
