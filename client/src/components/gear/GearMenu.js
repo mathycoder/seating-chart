@@ -22,25 +22,32 @@ const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
       groupingType === 'Heterogenous'
         ? dynamicGroupsHetero(currentKlass, groupSize)
         : dynamicGroupsHomo(currentKlass, groupSize)
+    } else {
+      groupingType === 'Heterogenous'
+        ? dynamicPairsHetero(currentKlass)
+        : dynamicPairsHomo(currentKlass)
     }
   }
 
   const renderPairMenu = () => {
     return (
       <>
+        {'Type: '}
+        <select name="grouping"
+          value={groupingType}
+          onChange={(e) => setGroupingType(e.target.value)}
+        >
+          {['Heterogenous', 'Homogenous'].map(type => (
+            <option key={type} value={type}>{type}</option>
+          )) }
+        </select>
         <button
             className="myButton"
-            onClick={() => dynamicPairsHetero(currentKlass)}
+            onClick={() => handleSubmit()}
           >
-            Heterogenous
+            Generate
         </button>
-        <button
-            className="myButton"
-            onClick={() => dynamicPairsHomo(currentKlass)}
-          >
-            Homogenous
-        </button>
-      </>
+        </>
     )
   }
 
