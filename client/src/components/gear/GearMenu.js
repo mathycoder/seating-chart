@@ -11,9 +11,18 @@ const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
                     hideRatings, showRatings, students }) => {
 
   const [groupSize, setGroupSize] = useState(4)
+  const [groupingType, setGroupingType] = useState('Heterogenous')
 
   const possibleGroups = () => {
     return [4,3,2,1].filter(size => students.allIds.length / size <= 8)
+  }
+
+  const handleSubmit = () => {
+    if (currentGrouping === "Groups"){
+      groupingType === 'Heterogenous'
+        ? dynamicGroupsHetero(currentKlass, groupSize)
+        : dynamicGroupsHomo(currentKlass, groupSize)
+    }
   }
 
   const renderPairMenu = () => {
@@ -39,18 +48,15 @@ const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
     const renderGroupMenu = () => {
       return (
         <>
-          <button
-              className="myButton"
-              onClick={() => dynamicGroupsHetero(currentKlass, groupSize)}
-            >
-              Heterogenous
-          </button>
-          <button
-              className="myButton"
-              onClick={() => dynamicGroupsHomo(currentKlass, groupSize)}
-            >
-              Homogenous
-          </button>
+          {'Type: '}
+          <select name="grouping"
+            value={groupingType}
+            onChange={(e) => setGroupingType(e.target.value)}
+          >
+            {['Heterogenous', 'Homogenous'].map(type => (
+              <option key={type} value={type}>{type}</option>
+            )) }
+          </select>
           <div>
             {'Group Size: '}
             <select name="group-size"
@@ -61,6 +67,12 @@ const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
                 <option key={score} value={score}>{score}</option>
               )) }
             </select>
+            <button
+                className="myButton"
+                onClick={() => handleSubmit()}
+              >
+                Generate
+            </button>
           </div>
         </>
       )
