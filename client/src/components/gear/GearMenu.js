@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { dynamicPairsHetero, dynamicPairsHomo,
          dynamicGroupsHetero, dynamicGroupsHomo } from '../../actions/studentActions.js'
-import { hideRatings, showRatings } from '../../actions/optionActions.js'
+import { hideRatings, showRatings, showBehavior,
+         hideBehavior, showAcademics, hideAcademics } from '../../actions/optionActions.js'
 import { connect } from 'react-redux'
 
 
 const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
                     dynamicPairsHetero, dynamicPairsHomo,
                     dynamicGroupsHetero, dynamicGroupsHomo,
+                    showBehavior, hideBehavior, showAcademics, hideAcademics,
                     hideRatings, showRatings, students }) => {
 
   const [groupSize, setGroupSize] = useState(4)
