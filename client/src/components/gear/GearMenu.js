@@ -36,38 +36,7 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
   const renderPairMenu = () => {
     return (
       <>
-        {'Type: '}
-        <select name="grouping"
-          value={groupingType}
-          onChange={(e) => setGroupingType(e.target.value)}
-        >
-          {['Heterogenous', 'Homogenous'].map(type => (
-            <option key={type} value={type}>{type}</option>
-          )) }
-        </select>
-        {'Group By: '}
-        <select name="group-by"
-          value={groupBy}
-          onChange={(e) => setGroupBy(e.target.value)}
-        >
-          {['Academics', 'Behavior', 'Both'].map(type => (
-            <option key={type} value={type}>{type}</option>
-          )) }
-        </select>
-        <button
-            className="myButton"
-            onClick={() => handleSubmit()}
-          >
-            Generate
-        </button>
-        </>
-    )
-  }
-
-
-    const renderGroupMenu = () => {
-      return (
-        <>
+        <div>
           {'Type: '}
           <select name="grouping"
             value={groupingType}
@@ -77,6 +46,9 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
               <option key={type} value={type}>{type}</option>
             )) }
           </select>
+        </div>
+
+        <div>
           {'Group By: '}
           <select name="group-by"
             value={groupBy}
@@ -86,6 +58,47 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
               <option key={type} value={type}>{type}</option>
             )) }
           </select>
+        </div>
+
+        <div>
+          <button
+              className="myButton little"
+              onClick={() => handleSubmit()}
+            >
+              Generate
+          </button>
+        </div>
+        </>
+    )
+  }
+
+
+    const renderGroupMenu = () => {
+      return (
+        <>
+          <div>
+            {'Type: '}
+            <select name="grouping"
+              value={groupingType}
+              onChange={(e) => setGroupingType(e.target.value)}
+            >
+              {['Heterogenous', 'Homogenous'].map(type => (
+                <option key={type} value={type}>{type}</option>
+              )) }
+            </select>
+          </div>
+          <div>
+            {'Group By: '}
+            <select name="group-by"
+              value={groupBy}
+              onChange={(e) => setGroupBy(e.target.value)}
+            >
+              {['Academics', 'Behavior', 'Both'].map(type => (
+                <option key={type} value={type}>{type}</option>
+              )) }
+            </select>
+          </div>
+
           <div>
             {'Group Size: '}
             <select name="group-size"
@@ -96,8 +109,11 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
                 <option key={score} value={score}>{score}</option>
               )) }
             </select>
+          </div>
+
+          <div>
             <button
-                className="myButton"
+                className="myButton little"
                 onClick={() => handleSubmit()}
               >
                 Generate

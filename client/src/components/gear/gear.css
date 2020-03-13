@@ -38,6 +38,18 @@
   height: 120px;
 }
 
+@media screen and (max-width: 738px){
+  .gear-menu.slide {
+    height: 160px;
+  }
+}
+
+@media screen and (max-width: 467px){
+  .gear-menu.slide {
+    height: 190px;
+  }
+}
+
 .gear-menu .gear-title {
   padding: 5px;
   text-align: center;
@@ -47,7 +59,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px;
+  margin: 15px 0px;
+  flex-wrap: wrap;
+}
+
+.gear-menu .options div {
+  margin-bottom: 10px;
 }
 
 .gear-menu .other-options {
@@ -55,12 +72,13 @@
   justify-content: center;
   align-items: center;
   height: 20px;
+  padding-bottom: 15px;
 }
 
 
 .gear-menu select {
-  font-size: 16px;
-  margin: 0 7px;
+  font-size: 15px;
+  margin: 0 5px;
 }
 
 
