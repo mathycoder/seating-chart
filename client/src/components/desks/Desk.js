@@ -28,6 +28,7 @@ const Desk = ({ klass, student, students, index, swap, type,
     <>
       <div ref={drop}>
         <div ref={drag} className={`desk ${hover ? 'hover' : ''} ${isDragging ? 'dragging' : ''}`}>
+          <div className={`${currentAcademics || currentBehavior ? '' : 'groove'}`}/>
           <div className="first-name">{student.firstName}</div>
           <div className="last-name">{student.lastName}</div>
           <div className="ratings">

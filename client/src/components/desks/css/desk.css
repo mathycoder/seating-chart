@@ -44,14 +44,20 @@
   background-size: 100px 70px;
   background-repeat: no-repeat; */
 
-
-
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
   overflow: hidden;
+}
+
+.desk .groove {
+  position: absolute;
+  margin-top: -30px;
+  background-color: darkgray;
+  height: 2px;
+  width: 50px;
 }
 
 .desk div {
