@@ -28,7 +28,7 @@
   background-color: rgb(254, 252, 196);
   width: 85%;
   height: 0px;
-  transition: height 250ms ease;
+  transition: height 450ms ease;
   overflow-y: hidden;
   border-radius: 5px;
 }
@@ -52,7 +52,7 @@
 
 @media screen and (max-width: 392px){
   .gear-menu.slide {
-    height: 300px;
+    height: 310px;
   }
 }
 
@@ -101,6 +101,9 @@
   padding-bottom: 15px;
 }
 
+.gear-menu .other-options input[type=checkbox]{
+  margin-left: 10px;
+}
 
 .gear-menu .other-options .academic {
   color: green;
