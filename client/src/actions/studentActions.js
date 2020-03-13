@@ -24,7 +24,8 @@ export function dynamicPairsHetero(klass, groupBy){
   return (dispatch) => {
     dispatch({ type: 'REQUEST_DYNAMIC_PAIRS_HETERO' })
      fetch(`/klasses/${klass.id}/students/dynamic_pairs_hetero`, {
-      method: "GET",
+       method: "PATCH",
+       body: JSON.stringify({group_by: groupBy}),
       headers: {
         "Content-Type": "application/json"
       },
@@ -46,7 +47,8 @@ export function dynamicPairsHomo(klass, groupBy){
   return (dispatch) => {
     dispatch({ type: 'REQUEST_DYNAMIC_PAIRS_HOMO' })
      fetch(`/klasses/${klass.id}/students/dynamic_pairs_homo`, {
-      method: "GET",
+       method: "PATCH",
+       body: JSON.stringify({group_by: groupBy}),
       headers: {
         "Content-Type": "application/json"
       },

@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   post '/klasses/:klass_id/students/swap', to: 'students#swap'
-  get '/klasses/:klass_id/students/dynamic_pairs_hetero', to: 'students#dynamic_pairs_hetero'
-  get '/klasses/:klass_id/students/dynamic_pairs_homo', to: 'students#dynamic_pairs_homo'
+  patch '/klasses/:klass_id/students/dynamic_pairs_hetero', to: 'students#dynamic_pairs_hetero'
+  patch '/klasses/:klass_id/students/dynamic_pairs_homo', to: 'students#dynamic_pairs_homo'
   patch '/klasses/:klass_id/students/dynamic_groups_hetero', to: 'students#dynamic_groups_hetero'
   patch '/klasses/:klass_id/students/dynamic_groups_homo', to: 'students#dynamic_groups_homo'
 

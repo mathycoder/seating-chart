@@ -26,12 +26,12 @@ class Klass < ApplicationRecord
     self.students
   end
 
-  def generate_seats_pairs_hetero
-    sorted_students = self.students.sort_by{|student| student.academic_score + student.behavior_score}.reverse
+  def generate_seats_pairs_hetero(group_by)
+    sorted = sorted_students(group_by)
     seated_students = []
-    while sorted_students.length > 0
-      seated_students << sorted_students.pop
-      seated_students << sorted_students.shift if sorted_students.length != 0
+    while sorted.length > 0
+      seated_students << sorted.pop
+      seated_students << sorted.shift if sorted.length != 0
     end
     seated_students.each_with_index do |student, index|
       seated_students[index].seat_pair = index
@@ -40,13 +40,13 @@ class Klass < ApplicationRecord
     seated_students
   end
 
-  def generate_seats_pairs_homo
-    sorted_students = self.students.sort_by{|student| student.academic_score + student.behavior_score}.reverse
-    sorted_students.each_with_index do |student, index|
-      sorted_students[index].seat_pair = index
+  def generate_seats_pairs_homo(group_by)
+    sorted = sorted_students(group_by)
+    sorted.each_with_index do |student, index|
+      sorted[index].seat_pair = index
       student.update(seat_pair: index)
     end
-    sorted_students
+    sorted
   end
 
   def generate_seats_groups_hetero(size, group_by)
