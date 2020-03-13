@@ -3,7 +3,6 @@ import { combineReducers } from 'redux'
 const currentKlassReducer = combineReducers({
   klass: currentKlass,
   grouping: currentGrouping,
-  ratings: showRatings,
   academics: showAcademics,
   behavior: showBehavior
 })
@@ -31,19 +30,6 @@ function currentGrouping(state = null, action) {
 
     case 'CLEAR_CURRENT_KLASS':
       return null
-
-    default:
-      return state;
-  }
-}
-
-function showRatings(state = false, action) {
-  switch(action.type) {
-    case 'SHOW_RATINGS':
-      return true
-
-    case 'HIDE_RATINGS':
-      return false
 
     default:
       return state;

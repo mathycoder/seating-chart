@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { dynamicPairsHetero, dynamicPairsHomo,
          dynamicGroupsHetero, dynamicGroupsHomo } from '../../actions/studentActions.js'
-import { hideRatings, showRatings, showBehavior,
-         hideBehavior, showAcademics, hideAcademics } from '../../actions/optionActions.js'
+import { showBehavior, hideBehavior, 
+         showAcademics, hideAcademics } from '../../actions/optionActions.js'
 import { connect } from 'react-redux'
 
 
-const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
+const GearMenu = ({ open, currentKlass, currentGrouping,
                     currentAcademics, currentBehavior,
                     dynamicPairsHetero, dynamicPairsHomo,
                     dynamicGroupsHetero, dynamicGroupsHomo,
                     showBehavior, hideBehavior, showAcademics, hideAcademics,
-                    hideRatings, showRatings, students }) => {
+                    students }) => {
 
   const [groupSize, setGroupSize] = useState(4)
   const [groupingType, setGroupingType] = useState('Heterogenous')
@@ -118,15 +118,6 @@ const GearMenu = ({ open, currentKlass, currentGrouping, currentRatings,
       <div className="other-options">
         <input
           type='checkbox'
-          name='ratings'
-          onChange={() => {
-            currentRatings ? hideRatings() : showRatings()
-          }}
-          checked={currentRatings}
-          value={currentRatings} />Show Ratings
-
-        <input
-          type='checkbox'
           name='academics'
           onChange={() => {
             currentAcademics ? hideAcademics() : showAcademics()
@@ -151,7 +142,6 @@ const mapStateToProps = (state) => {
   return {
     currentKlass: state.currentKlass.klass,
     currentGrouping: state.currentKlass.grouping,
-    currentRatings: state.currentKlass.ratings,
     currentBehavior: state.currentKlass.behavior,
     currentAcademics: state.currentKlass.academics,
     students: state.students
@@ -164,8 +154,6 @@ const mapDispatchToProps = (dispatch) => {
     dynamicPairsHomo: (klass, groupBy) => dispatch(dynamicPairsHomo(klass, groupBy)),
     dynamicGroupsHetero: (klass, size, groupBy) => dispatch(dynamicGroupsHetero(klass, size, groupBy)),
     dynamicGroupsHomo: (klass, size, groupBy) => dispatch(dynamicGroupsHomo(klass, size, groupBy)),
-    hideRatings: () => dispatch(hideRatings()),
-    showRatings: () => dispatch(showRatings()),
     hideAcademics: () => dispatch(hideAcademics()),
     showAcademics: () => dispatch(showAcademics()),
     hideBehavior: () => dispatch(hideBehavior()),
