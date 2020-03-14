@@ -50,19 +50,27 @@
   flex-wrap: wrap;
   flex-direction: column;
   overflow: hidden;
+  box-shadow: 0.5px 1px 2px #888888;
+}
+
+#preview.desk {
+  box-shadow: none;
 }
 
 .desk .groove {
+  /* display: none; */
   position: absolute;
   margin-top: -30px;
   background-color: darkgray;
   height: 2px;
   width: 50px;
+
 }
 
 .desk.dragging .groove {
   background-color: lightgray;
   opacity: 0.7;
+
 }
 
 .desk div {
@@ -72,11 +80,10 @@
 .desk.dragging {
   border-color: lightgray;
   color: lightgray;
-  background-color: white;
-  opacity: 1;
-
   background: none;
+  background-color: white;
   border: 1px solid lightgray;
+  box-shadow: 0.5px 1px 2px lightgray;
 }
 
 .desk span {
@@ -101,6 +108,7 @@
   background: none;
   border: 1px solid lightgray;
   background-color: white;
+  box-shadow: none;
 }
 
 .desk.hover {
