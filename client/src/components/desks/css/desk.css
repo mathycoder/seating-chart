@@ -34,37 +34,34 @@
   font-weight: 400;
   border-radius: 10px;
   border: 1px solid black;
-
-  /* background-color: rgb(225, 217, 214); */
-
   background-color: #f6f6f6;
   background-image: linear-gradient(315deg, #f6f6f6 0%, #e9e9e9 74%);
-
-  /* background-image: url('/school-desk.png');
-  background-size: 100px 70px;
-  background-repeat: no-repeat; */
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  flex-direction: column;
-  overflow: hidden;
   box-shadow: 0.5px 1px 2px #888888;
+
+  display: grid;
+  grid-template-rows: 5px 65px;
 }
 
 #preview.desk {
   box-shadow: none;
 }
 
+.desk .desk-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 .desk .groove {
-  /* display: none; */
-  position: absolute;
-  margin-top: -30px;
   background-color: darkgray;
   height: 2px;
   width: 50px;
-
+  display: block;
+  margin: 0 auto;
+  margin-top: 4px;
 }
 
 .desk.dragging .groove {
@@ -122,11 +119,16 @@
     height: 48px;
     font-size: 14px;
     border-radius: 5px;
+    grid-template-rows: 5px 43px;
   }
 
   .desk .groove {
-    margin-top: -19px;
+    margin-top: 3px;
     width: 40px;
+  }
+
+  #preview.desk {
+    box-shadow: none;
   }
 
   .desk .last-name {
@@ -159,10 +161,11 @@
     width: 60px;
     height: 46px;
     border-radius: 5px;
+    grid-template-rows: 2px 41px;
   }
 
   .desk .groove {
-    margin-top: -19px;
+    margin-top: 2px;
     width: 30px;
     height: 2px;
   }
@@ -185,10 +188,11 @@
     width: 50px;
     height: 38px;
     border-radius: 5px;
+    grid-template-rows: 2px 36px;
   }
 
   .desk .groove {
-    margin-top: -15px;
+    margin-top: 2px;
     width: 25px;
     height: 2px;
   }
