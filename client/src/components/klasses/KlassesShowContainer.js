@@ -33,21 +33,21 @@ const KlassesShowContainer = ({ klass, fetchStudents, students, dynamicPairs, se
               render={() => <StudentsIndex klass={klass} students={students} />}
             />
             <Route path="/classes/:id/pairs"
-              render={() => <>
+              render={() => <div className="desks-and-menu">
                               <Gear type="pairs"/>
                               <div className="desks-wrapper noselect">
                                 <PairDesksContainer klass={klass} students={students} />
                               </div>
-                            </>
+                            </div>
                       }
             />
             <Route path="/classes/:id/groups"
-              render={() => <>
+              render={() => <div className="desks-and-menu">
                               <Gear type="groups"/>
                               <div className="desks-wrapper noselect">
                                 <GroupDesksContainer klass={klass} students={students} />
                               </div>
-                            </>
+                            </div>
                       }
             />
           </Switch>

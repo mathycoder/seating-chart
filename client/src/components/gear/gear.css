@@ -1,3 +1,7 @@
+.desks-and-menu {
+  /* display: flex; */
+}
+
 .gear {
   display: flex;
   align-items: flex-start;
@@ -12,13 +16,13 @@
 .gear .clock{
   transform-origin: center;
   transform: rotate(45deg);
-  transition: transform 250ms ease;
+  transition: transform 450ms ease;
 }
 
 .gear .counterclock{
   transform-origin: center;
   transform: rotate(-45deg);
-  transition: transform 250ms ease;
+  transition: transform 450ms ease;
 }
 
 .gear-menu {

@@ -5,12 +5,6 @@ import './gear.css'
 const Gear = ({ type }) => {
   const [open, setOpen] = useState(false)
 
-  // useEffect(() => {
-  //   return () => {
-  //     setOpen(false)
-  //   }
-  // }, [])
-
   return (
     <div className="gear">
       <img
