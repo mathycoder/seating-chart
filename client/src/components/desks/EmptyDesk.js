@@ -17,7 +17,7 @@ const EmptyDesk = ({ klass, index, newSeat, type }) => {
 
   return (
     <>
-      <div ref={drop}>
+      <div ref={drop} className="desk-drop-area">
         <div className={`empty desk ${hover ? 'hover' : ''}`}>
         </div>
       </div>

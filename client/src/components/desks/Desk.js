@@ -26,7 +26,7 @@ const Desk = ({ klass, student, students, index, swap, type,
 
   return (
     <>
-      <div ref={drop}>
+      <div className="desk-drop-area" ref={drop}>
         <div ref={drag} className={`desk ${hover ? 'hover' : ''} ${isDragging ? 'dragging' : ''}`}>
           <div className='groove' />
           <div className="desk-items">

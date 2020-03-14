@@ -27,6 +27,11 @@
   grid-template-rows: repeat(2, 72px 121px);
 }
 
+.desk-drop-area {
+  height: min-content;
+}
+
+
 .desk {
   width: 100px;
   height: 70px;
@@ -37,7 +42,6 @@
   background-color: #f6f6f6;
   background-image: linear-gradient(315deg, #f6f6f6 0%, #e9e9e9 74%);
   box-shadow: 0.5px 1px 2px #888888;
-
   display: grid;
   grid-template-rows: 5px 65px;
 }
@@ -115,10 +119,12 @@
 
 @media screen and (max-width: 1000px){
   .desk {
+    /* width: 100px;
+    height: 70px; */
     width: 80px;
-    height: 48px;
+    height: 56px;
     font-size: 14px;
-    border-radius: 5px;
+    border-radius: 8px;
     grid-template-rows: 5px 43px;
   }
 
@@ -142,7 +148,7 @@
 
   .group-desks-container {
     grid-template-columns: repeat(4, 82px 82px 30px);
-    grid-template-rows: repeat(2, 50px 121px);
+    grid-template-rows: repeat(2, 58px 121px);
   }
 }
 
@@ -160,7 +166,7 @@
     font-size: 12px;
     width: 60px;
     height: 46px;
-    border-radius: 5px;
+    border-radius: 6px;
     grid-template-rows: 2px 41px;
   }
 
