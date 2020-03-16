@@ -106,9 +106,9 @@ def shuffled_pairs(sorted)
   final_array = []
   shuffled_pair_indicies = (0..(sorted.length / 2).ceil - 1).to_a.shuffle
   shuffled_pair_indicies.each do |index|
-    binding.pry
-    pairs_array[index]
+    final_array.push(pairs_array[index])
   end
+  final_array.flatten
 
 end
 
