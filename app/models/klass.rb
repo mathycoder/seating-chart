@@ -42,6 +42,7 @@ class Klass < ApplicationRecord
 
   def generate_seats_pairs_homo(group_by)
     sorted = sorted_students(group_by)
+    sorted = shuffled_pairs(sorted)
     sorted.each_with_index do |student, index|
       sorted[index].seat_pair = index
       student.update(seat_pair: index)
@@ -98,4 +99,29 @@ def sorted_students(group_by)
     sorted = self.students.sort_by{|student| student.academic_score + student.behavior_score}
   end
   sorted
+end
+
+def shuffled_pairs(sorted)
+  pairs_array = paired_array(sorted)
+  final_array = []
+  shuffled_pair_indicies = (0..(sorted.length / 2).ceil - 1).to_a.shuffle
+  shuffled_pair_indicies.each do |index|
+    binding.pry
+    pairs_array[index]
+  end
+
+end
+
+def paired_array(sorted)
+  pair_array = []
+  count = 0
+  pair = []
+  sorted.each_with_index do |student, index|
+    if index % 2 == 0 || index == sorted.length - 1
+      pair_array.push(pair)
+      pair = []
+    end
+    pair.push(student)
+  end
+  pair_array
 end
