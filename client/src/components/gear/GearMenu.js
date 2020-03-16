@@ -11,7 +11,7 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
                     dynamicPairsHetero, dynamicPairsHomo,
                     dynamicGroupsHetero, dynamicGroupsHomo,
                     showBehavior, hideBehavior, showAcademics, hideAcademics,
-                    students }) => {
+                    students, loading }) => {
 
   const [groupSize, setGroupSize] = useState(4)
   const [groupingType, setGroupingType] = useState('Heterogenous')
@@ -78,7 +78,7 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
   const renderGenerateButton = () => (
     <div className="gear-option generate-button-div">
       <button
-          className="myButton little"
+          className={`myButton little ${loading ? 'loading' : ''}`}
           onClick={() => handleSubmit()}
         >
           Generate
@@ -109,7 +109,7 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
     }
 
   return (
-    <div className={`gear-menu ${open ? 'slide' : ''}`}>
+    <div className={`gear-menu noselect ${open ? 'slide' : ''}`}>
       <div className="gear-title">
         <strong>{`Generate ${currentGrouping === 'Pairs' ? 'Pairs' : 'Groups'}`}</strong>
       </div>
@@ -148,7 +148,8 @@ const mapStateToProps = (state) => {
     currentGrouping: state.currentKlass.grouping,
     currentBehavior: state.currentKlass.behavior,
     currentAcademics: state.currentKlass.academics,
-    students: state.students
+    students: state.students,
+    loading: state.students.loading
   }
 }
 

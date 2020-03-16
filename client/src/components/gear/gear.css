@@ -26,12 +26,7 @@
 }
 
 .gear-menu {
-  /* position: absolute; */
-  /* margin-left: 20px;
-  margin-top: -10px; */
-  /* background-color: rgb(254, 252, 196); */
   background-color: rgb(101, 104, 112);
-  /* border: rgb(81, 84, 92) 3px solid; */
   max-width: 500px;
   width: 95%;
   margin: 0 auto;
@@ -45,26 +40,7 @@
 
 .gear-menu.slide {
   display: block;
-  /* height: 150px; */
   max-height: 300px;
-}
-
-@media screen and (max-width: 684px){
-  .gear-menu.slide {
-    /* height: 180px; */
-  }
-}
-
-@media screen and (max-width: 569px){
-  .gear-menu.slide {
-    /* height: 200px; */
-  }
-}
-
-@media screen and (max-width: 392px){
-  .gear-menu.slide {
-    /* height: 310px; */
-  }
 }
 
 .gear-menu .gear-title {
@@ -150,6 +126,13 @@
   color: white;
   text-shadow: none;
 }
+
+.gear-menu .options button.loading.little {
+  pointer-events: none;
+  background-color: gray;
+}
+
+
 
 @media screen and (max-width: 600px){
   .gear-menu {

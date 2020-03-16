@@ -2,7 +2,8 @@ import { combineReducers } from 'redux'
 
 const studentsReducer = combineReducers({
   byId: studentsById,
-  allIds: allStudents
+  allIds: allStudents,
+  loading: loading
 })
 
 export default studentsReducer
@@ -10,7 +11,6 @@ export default studentsReducer
 function studentsById(state = {}, action) {
 
   switch(action.type) {
-
     case 'FETCH_STUDENTS':
       return {
         ...normalizedObject(action.students)
@@ -86,6 +86,19 @@ function allStudents(state = [], action) {
 
     default:
       return state;
+  }
+}
+
+function loading(state = false, action){
+  switch(action.type){
+    case 'REQUEST_GENERATE':
+      return true
+
+    case 'FETCH_STUDENTS':
+      return false
+
+    default:
+      return state
   }
 }
 

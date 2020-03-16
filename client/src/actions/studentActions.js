@@ -22,7 +22,7 @@ export function fetchStudents(klass){
 
 export function dynamicPairsHetero(klass, groupBy){
   return (dispatch) => {
-    dispatch({ type: 'REQUEST_DYNAMIC_PAIRS_HETERO' })
+    dispatch({ type: 'REQUEST_GENERATE' })
      fetch(`/klasses/${klass.id}/students/dynamic_pairs_hetero`, {
        method: "PATCH",
        body: JSON.stringify({group_by: groupBy}),
@@ -45,7 +45,7 @@ export function dynamicPairsHetero(klass, groupBy){
 
 export function dynamicPairsHomo(klass, groupBy){
   return (dispatch) => {
-    dispatch({ type: 'REQUEST_DYNAMIC_PAIRS_HOMO' })
+    dispatch({ type: 'REQUEST_GENERATE' })
      fetch(`/klasses/${klass.id}/students/dynamic_pairs_homo`, {
        method: "PATCH",
        body: JSON.stringify({group_by: groupBy}),
@@ -68,7 +68,7 @@ export function dynamicPairsHomo(klass, groupBy){
 
 export function dynamicGroupsHetero(klass, size, groupBy){
   return (dispatch) => {
-    dispatch({ type: 'REQUEST_DYNAMIC_GROUPS_HETERO' })
+    dispatch({ type: 'REQUEST_GENERATE' })
      fetch(`/klasses/${klass.id}/students/dynamic_groups_hetero`, {
       method: "PATCH",
       body: JSON.stringify({size: size, group_by: groupBy}),
@@ -91,7 +91,7 @@ export function dynamicGroupsHetero(klass, size, groupBy){
 
 export function dynamicGroupsHomo(klass, size, groupBy){
   return (dispatch) => {
-    dispatch({ type: 'REQUEST_DYNAMIC_GROUPS_HOMO' })
+    dispatch({ type: 'REQUEST_GENERATE' })
      fetch(`/klasses/${klass.id}/students/dynamic_groups_homo`, {
       method: "PATCH",
       body: JSON.stringify({size: size, group_by: groupBy}),
