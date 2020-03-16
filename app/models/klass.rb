@@ -33,6 +33,7 @@ class Klass < ApplicationRecord
       seated_students << sorted.pop
       seated_students << sorted.shift if sorted.length != 0
     end
+    seated_students = shuffled_pairs(seated_students)
     seated_students.each_with_index do |student, index|
       seated_students[index].seat_pair = index
       student.update(seat_pair: index)
