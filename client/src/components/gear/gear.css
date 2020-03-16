@@ -29,40 +29,49 @@
   /* position: absolute; */
   margin-left: 20px;
   margin-top: -10px;
-  background-color: rgb(254, 252, 196);
-  width: 85%;
-  height: 0px;
-  transition: height 450ms ease;
+  /* background-color: rgb(254, 252, 196); */
+  background-color: rgb(101, 104, 112);
+  /* border: rgb(81, 84, 92) 3px solid; */
+  max-width: 600px;
+  width: 95%;
+  margin: 0 auto;
+  height: auto;
+  max-height: 0px;
+  transition: max-height 800ms ease;
   overflow-y: hidden;
   border-radius: 5px;
+  color: white;
 }
 
 .gear-menu.slide {
   display: block;
-  height: 150px;
+  /* height: 150px; */
+  max-height: 300px;
 }
 
 @media screen and (max-width: 684px){
   .gear-menu.slide {
-    height: 180px;
+    /* height: 180px; */
   }
 }
 
 @media screen and (max-width: 569px){
   .gear-menu.slide {
-    height: 200px;
+    /* height: 200px; */
   }
 }
 
 @media screen and (max-width: 392px){
   .gear-menu.slide {
-    height: 310px;
+    /* height: 310px; */
   }
 }
 
 .gear-menu .gear-title {
   padding: 5px;
   text-align: center;
+  background-color: rgb(81, 84, 92);
+  margin: 0 auto;
 }
 
 .gear-menu .options {
@@ -76,6 +85,10 @@
 .gear-menu select {
   font-size: 15px;
   margin: 0 5px;
+}
+
+.gear-menu select:focus {
+  outline: none;
 }
 
 .gear-menu .gear-option {
@@ -102,7 +115,9 @@
   justify-content: center;
   align-items: center;
   height: 20px;
+
   padding-bottom: 15px;
+  /* background-color: rgb(81, 84, 92); */
 }
 
 .gear-menu .other-options input[type=checkbox]{
@@ -110,15 +125,33 @@
 }
 
 .gear-menu .other-options .academic {
-  color: green;
+  /* color: green; */
+  color: white;
 }
 
 .gear-menu .other-options .behavior {
-  color: red;
+  /* color: red; */
+  color: white;
 }
 
 .gear-menu .options button {
   margin: 0 10px;
+  background-color: rgb(81, 84, 92);
+  color: white;
+  text-shadow: none;
+}
+
+.gear-menu .options button:hover {
+  background-color: rgb(81, 84, 92);
+  color: white;
+  text-shadow: none;
+}
+
+@media screen and (max-width: 600px){
+  .gear-menu {
+    margin-left: 20px;
+    margin-top: -10px;
+  }
 }
 
 @media screen and (max-height: 450px), (max-width: 500px){
