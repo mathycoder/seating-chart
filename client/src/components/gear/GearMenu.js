@@ -76,7 +76,7 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
   )
 
   const renderGenerateButton = () => (
-    <div className="gear-option">
+    <div className="gear-option generate-button-div">
       <button
           className="myButton little"
           onClick={() => handleSubmit()}

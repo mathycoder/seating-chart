@@ -32,7 +32,7 @@
   /* background-color: rgb(254, 252, 196); */
   background-color: rgb(101, 104, 112);
   /* border: rgb(81, 84, 92) 3px solid; */
-  max-width: 600px;
+  max-width: 500px;
   width: 95%;
   margin: 0 auto;
   height: auto;
@@ -107,7 +107,7 @@
 }
 
 .gear-menu .options div {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .gear-menu .other-options {
@@ -132,6 +132,10 @@
 .gear-menu .other-options .behavior {
   /* color: red; */
   color: white;
+}
+
+.gear-menu .options .generate-button-div{
+  /* width: 100%; */
 }
 
 .gear-menu .options button {
