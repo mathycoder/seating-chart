@@ -68,10 +68,12 @@ class Klass < ApplicationRecord
       groups[group] += 1
     end
 
+    groups = random_groups(size)
+
     student_data_array.each_with_index do |array, index|
-      group = array[1][:group]
+      group_index = array[1][:group]
       seat = array[1][:seat]
-      array[1][:student].update(seat_group: GROUPS[group][seat])
+      array[1][:student].update(seat_group: GROUPS[groups[group_index]][seat])
     end
     self.students
   end
