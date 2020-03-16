@@ -83,6 +83,9 @@ const GearMenu = ({ open, currentKlass, currentGrouping,
         >
           Generate
       </button>
+      <div>
+        <img className={`loading-wheel ${loading ? '' : 'hide'}`} src="/loading.png" alt="loading" />
+      </div>
     </div>
   )
 

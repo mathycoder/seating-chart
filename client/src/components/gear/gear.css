@@ -111,7 +111,28 @@
 }
 
 .gear-menu .options .generate-button-div{
-  /* width: 100%; */
+  /* flex-direction: column; */
+  display: grid;
+  grid-template-rows: 30px 0px;
+}
+
+.gear-menu .options .generate-button-div .loading-wheel {
+  margin-top: 45px;
+  margin-left: 37px;
+  animation: rotation 2.5s infinite linear;
+}
+
+.gear-menu .options .generate-button-div .loading-wheel.hide {
+  display: none;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 
 .gear-menu .options button {
