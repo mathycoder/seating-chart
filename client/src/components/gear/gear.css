@@ -27,8 +27,8 @@
 
 .gear-menu {
   /* position: absolute; */
-  margin-left: 20px;
-  margin-top: -10px;
+  /* margin-left: 20px;
+  margin-top: -10px; */
   /* background-color: rgb(254, 252, 196); */
   background-color: rgb(101, 104, 112);
   /* border: rgb(81, 84, 92) 3px solid; */
@@ -149,7 +149,6 @@
 
 @media screen and (max-width: 600px){
   .gear-menu {
-    margin-left: 20px;
     margin-top: -10px;
   }
 }
