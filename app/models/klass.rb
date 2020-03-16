@@ -77,18 +77,24 @@ class Klass < ApplicationRecord
   end
 
   def generate_seats_groups_homo(size, group_by)
-    group = 0
+    groups = random_groups(size)
+    group_index = 0
     seat = 0
     sorted_students(group_by).each do |student|
       if seat >= size.to_i
         seat = 0
-        group += 1
+        group_index += 1
       end
-      student.update(seat_group: GROUPS[group][seat])
+      student.update(seat_group: GROUPS[groups[group_index]][seat])
       seat += 1
     end
     self.students
   end
+end
+
+def random_groups(size)
+  num_of_groups = (self.students.length / size).ceil
+  (0..(num_of_groups - 1)).to_a.shuffle
 end
 
 def sorted_students(group_by)
