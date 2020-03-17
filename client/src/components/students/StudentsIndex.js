@@ -33,8 +33,8 @@ const StudentsIndex = ({ klass, students, deleteStudent }) => {
                 key={index}
                 className="column-header"
                 onClick={() => {
+                  filter === item[0] ? setOrder(!order) : setOrder(true)
                   setFilter(item[0])
-                  setOrder(!order)
                 }}
               >
                 {item[1]}
