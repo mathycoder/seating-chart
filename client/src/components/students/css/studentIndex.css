@@ -20,6 +20,14 @@
   align-items: center;
 }
 
+.column-header:hover {
+  cursor: pointer;
+}
+
+.column-header:active {
+  color: lightgray;
+}
+
 .student-index-row {
   display: flex;
   flex-wrap: wrap;
@@ -44,7 +52,7 @@
 }
 
 .student-edit-buttons button {
-  margin: 0 2px;
+  margin: 0 5px;
 }
 
 #add-student-button {

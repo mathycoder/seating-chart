@@ -7,16 +7,15 @@ import './css/studentIndex.css'
 const StudentsIndex = ({ klass, students, deleteStudent }) => {
   const [showForm, setShowForm] = useState(false)
   const [editStudentId, setEditStudentId] = useState(null)
-  const [filter, setFilter] = useState('lastName')
-  const [order, setOrder] = useState('ascending')
+  const [filter, setFilter] = useState('firstName')
+  const [order, setOrder] = useState(true)
 
-  const studentIdsByFilter = (filter, order ) => {
+  const studentIdsByFilter = (filter, ascending ) => {
     return students.allIds.sort((idA, idB) => {
       const studentA = students.byId[idA]
       const studentB = students.byId[idB]
-      debugger
-      if (studentA[filter] > studentB[filter]) { return order === 'ascending' ? 1 : -1 }
-      else if (studentA[filter] < studentB[filter]) { return order === 'ascending' ? -1 : 1 }
+      if (studentA[filter] > studentB[filter]) { return ascending ? 1 : -1 }
+      else if (studentA[filter] < studentB[filter]) { return ascending ? -1 : 1 }
       else { return 0 }
     })
   }
@@ -29,24 +28,16 @@ const StudentsIndex = ({ klass, students, deleteStudent }) => {
             [['firstName', 'First Name'],
             ['lastName', 'Last Name'],
             ['academicScore', 'Acad. Score'],
-            ['behaviorScore', 'Behav. Score']].map(item => (
-              <div>
-                <div>{item[1]}</div>
-                <span
-                  onClick={() => {
-                    setFilter(item[0])
-                    setOrder('ascending')
-                  }}
-                >
-                  &#x25B2;
-                </span>
-
-                <span
-                  onClick={() => {
-                    setFilter(item[0])
-                    setOrder('descending')
-                  }}
-                >&#x25BC;</span>
+            ['behaviorScore', 'Behav. Score']].map((item, index) => (
+              <div
+                key={index}
+                className="column-header"
+                onClick={() => {
+                  setFilter(item[0])
+                  setOrder(!order)
+                }}
+              >
+                {item[1]}
               </div>
             ))
           }
@@ -68,7 +59,7 @@ const StudentsIndex = ({ klass, students, deleteStudent }) => {
                     <div className="scores">{student.behaviorScore}</div>
                     <div className="student-edit-buttons">
                       <button className="myButton little" onClick={() => setEditStudentId(student.id)}>Edit</button>
-                      <button className="myButton little" onClick={() => deleteStudent(klass, student)}>Delete</button>
+                      <button className="myButton little" onClick={() => deleteStudent(klass, student)}>X</button>
                     </div>
                   </div>
               }
