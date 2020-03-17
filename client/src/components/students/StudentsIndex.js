@@ -7,18 +7,51 @@ import './css/studentIndex.css'
 const StudentsIndex = ({ klass, students, deleteStudent }) => {
   const [showForm, setShowForm] = useState(false)
   const [editStudentId, setEditStudentId] = useState(null)
+  const [filter, setFilter] = useState('lastName')
+  const [order, setOrder] = useState('ascending')
+
+  const studentIdsByFilter = (filter, order ) => {
+    return students.allIds.sort((idA, idB) => {
+      const studentA = students.byId[idA]
+      const studentB = students.byId[idB]
+      debugger
+      if (studentA[filter] > studentB[filter]) { return order === 'ascending' ? 1 : -1 }
+      else if (studentA[filter] < studentB[filter]) { return order === 'ascending' ? -1 : 1 }
+      else { return 0 }
+    })
+  }
 
   return (
-    <div className="student-index-page">
+    <div className="student-index-page noselect">
       <div className="student-index-wrapper">
         <div className="student-index-row header">
-          <div>First Name</div>
-          <div>Last Name</div>
-          <div className="scores">Acad. Score <br/>(5 is best)</div>
-          <div className="scores">Behav. Score <br/>(5 is best)</div>
-          <div></div>
+          {
+            [['firstName', 'First Name'],
+            ['lastName', 'Last Name'],
+            ['academicScore', 'Acad. Score'],
+            ['behaviorScore', 'Behav. Score']].map(item => (
+              <div>
+                <div>{item[1]}</div>
+                <span
+                  onClick={() => {
+                    setFilter(item[0])
+                    setOrder('ascending')
+                  }}
+                >
+                  &#x25B2;
+                </span>
+
+                <span
+                  onClick={() => {
+                    setFilter(item[0])
+                    setOrder('descending')
+                  }}
+                >&#x25BC;</span>
+              </div>
+            ))
+          }
         </div>
-        {students.allIds.map(studentId => {
+        {studentIdsByFilter(filter, order).map(studentId => {
           const student = students.byId[studentId]
           return (
             <div key={studentId}>

@@ -5,7 +5,6 @@ import { showBehavior, hideBehavior,
          showAcademics, hideAcademics } from '../../actions/optionActions.js'
 import { connect } from 'react-redux'
 
-
 const GearMenu = ({ open, currentKlass, currentGrouping,
                     currentAcademics, currentBehavior,
                     dynamicPairsHetero, dynamicPairsHomo,
