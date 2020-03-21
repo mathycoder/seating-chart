@@ -44,7 +44,7 @@ export function addKlass(klassData){
 
 export function updateKlass(klassData, klass){
   return (dispatch) => {
-    dispatch({type: 'START_EDITING_KLASS_REQUEST'})
+    dispatch({type: 'START_EDITING_KLASS_REQUEST', klassData, klass})
     fetch(`/klasses/${klass.id}`, {
       method: "PATCH",
       credentials: "include",
