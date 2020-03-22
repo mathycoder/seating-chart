@@ -95,7 +95,7 @@ class Klass < ApplicationRecord
 end
 
 def random_groups(size)
-  num_of_groups = (self.students.length / size).ceil
+  num_of_groups = (self.students.length / size.to_f).ceil
   (0..(num_of_groups - 1)).to_a.shuffle
 end
 
