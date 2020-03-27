@@ -11,14 +11,6 @@ const PairDesksContainer = ({ klass, students, setCurrentGroup }) => {
     setCurrentGroup("Pairs")
   }, [])
 
-  const studentsInTheirSeats = () => {
-    return students.allIds.sort((a,b) => {
-      const studentA = students.byId[a]
-      const studentB = students.byId[b]
-      return studentA.seatPair - studentB.seatPair
-    })
-  }
-
   const seats = () => {
     return [...Array(32).keys()].map(seatNumber => {
       const studentId = students.allIds.find(stId => {
