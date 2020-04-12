@@ -34,6 +34,7 @@ class Klass < ApplicationRecord
       seated_students << sorted.shift if sorted.length != 0
     end
     seated_students = shuffled_pairs(seated_students)
+
     seated_students.each_with_index do |student, index|
       seated_students[index].seat_pair = index
       student.update(seat_pair: index)
@@ -118,19 +119,18 @@ def shuffled_pairs(sorted)
     final_array.push(pairs_array[index])
   end
   final_array.flatten
-
 end
 
 def paired_array(sorted)
   pair_array = []
-  count = 0
   pair = []
   sorted.each_with_index do |student, index|
-    if index % 2 == 0 || index == sorted.length - 1
+    pair.push(student)
+    if index % 2 == 1 || index == sorted.length - 1
       pair_array.push(pair)
       pair = []
     end
-    pair.push(student)
   end
+  pair_array = [[]] if sorted.length == 0
   pair_array
 end
